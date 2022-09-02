@@ -10,7 +10,7 @@ const Header = () => {
   // const location = useLocation();
   return (
     <header>
-      <Navbar bg='light' expand='lg' collapseOnSelect>
+      <Navbar bg='light' expand='sm' collapseOnSelect>
         <Container>
           <Navbar.Brand as={Link} to='/'>
             bcnMinimalista

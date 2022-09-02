@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import {notFound, errorHandler} from "./middleware/errorMiddleware.js";
 
 import userRoutes from "./routes/userRoutes.js";
+import blogRoutes from "./routes/blogRoutes.js";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoutes);
+app.use("/api/blogs", blogRoutes);
 
 //error middleware
 app.use(notFound)
