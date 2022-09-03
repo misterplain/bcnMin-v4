@@ -15,6 +15,7 @@ import InformScreen from "./screens/InformScreen";
 import ConnectScreen from "./screens/ConnectScreen";
 import ReduceScreen from "./screens/ReduceScreen";
 import TechScreen from "./screens/TechScreen";
+import RescueScreen from "./screens/RescueScreen";
 import CollabScreen from "./screens/CollabScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
 
@@ -32,6 +33,8 @@ function App() {
             <Route path='/connect' element={<ConnectScreen />} />
             <Route path='/reduce' element={<ReduceScreen />} />
             <Route path='/tech' element={<TechScreen />} />
+            <Route path='/rescue' element={<RescueScreen />} />
+
             <Route path='/collab' element={<CollabScreen />} />
             <Route path='/favorites' element={<FavoritesScreen />} />
           </Routes>

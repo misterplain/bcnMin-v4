@@ -6,6 +6,8 @@ import {notFound, errorHandler} from "./middleware/errorMiddleware.js";
 
 import userRoutes from "./routes/userRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
+import favoriteRoutes from "./routes/favoriteRoutes.js";
+import commentsRoutes from "./routes/commentsRoutes.js";
 
 dotenv.config();
 
@@ -21,6 +23,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/blogs", blogRoutes);
+app.use("/api/favorites", favoriteRoutes);
+app.use("/api/comments", commentsRoutes);
 
 //error middleware
 app.use(notFound)

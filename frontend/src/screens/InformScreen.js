@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Card, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogPosts } from "../actions/blogActions";
+import { addFavorite } from "../actions/favoriteActions";
+
 
 const InformScreen = () => {
   const dispatch = useDispatch();
 
-  const blogs = useSelector((state) => state.blogPosts);
-  const { loading, error, posts } = blogs;
+  const user = useSelector((state) => state.userLogin.userInfo);
+  const blogPosts = useSelector((state) => state.blogPosts);
+  const { loading, error, posts } = blogPosts;
 
   useEffect(() => {
     dispatch(fetchBlogPosts());
@@ -20,16 +23,24 @@ const InformScreen = () => {
   console.log(posts);
 
   return (
-    <>
-      <Row>
-        <Col sm={12}>Title</Col>
+    <Container fluid>
+      <Row className='justify-content-center'>
+        <Col sm={12} className='text-center'>
+          local news and conservation info
+        </Col>
         {loading && <Loader />}
         {error && <Message variant='danger'>{error}</Message>}
-        <Col sm={12} md={6}>
-          {posts &&
-            posts.map((post) => {
-              return (
-                <Card  style={{ width: '18rem' }}>
+        {posts &&
+          posts.map((post) => {
+            return (
+              <Col
+                xs={{ span: 8, offset: 2 }}
+                sm={{ span: 6, offset: 0 }}
+                md={6}
+                lg={4}
+                className='justify-content-center'
+              >
+                <Card style={{ width: "18rem" }} className='text-center'>
                   <Card.Img variant='top' src={post.img} />
                   <Card.Body>
                     <Card.Title>{post.title}</Card.Title>
@@ -37,13 +48,23 @@ const InformScreen = () => {
                     <Button variant='primary' href={post.src} target='__blank'>
                       Learn More
                     </Button>
+                    {user && (
+                      <Button
+                        variant='primary'
+                        onClick={() => {
+                          dispatch(addFavorite(post._id));
+                        }}
+                      >
+                        Add to Favorites
+                      </Button>
+                    )}
                   </Card.Body>
-                </Card>
-              );
-            })}{" "}
-        </Col>
+                </Card>{" "}
+              </Col>
+            );
+          })}{" "}
       </Row>
-    </>
+    </Container>
   );
 };
 

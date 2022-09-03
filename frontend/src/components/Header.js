@@ -3,11 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Outlet, Link } from "react-router-dom";
+import {logout} from '../actions/userActions'
+
+
 
 const Header = () => {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // const location = useLocation();
+
+  const logoutAndRedirect = () => {
+    dispatch(logout());
+    navigate("/login");
+  }
   return (
     <header>
       <Navbar bg='light' expand='sm' collapseOnSelect>
@@ -55,7 +63,7 @@ const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href='#action/3.4'>
-                  <Nav.Link as={Link} to='/logout'>
+                  <Nav.Link as={Link} to='/logout' onClick={logoutAndRedirect}>
                     Logout
                   </Nav.Link>
                 </NavDropdown.Item>

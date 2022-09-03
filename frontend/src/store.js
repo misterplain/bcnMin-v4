@@ -4,15 +4,17 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   userLoginReducer,
   userRegisterReducer,
-  userDetailsReducer,
 } from "./reducers/userReducers";
 import { blogReducer } from "./reducers/blogReducers";
+import { favoritesReducer } from "./reducers/favoritesReducers";
+import { commentsReducer } from "./reducers/commentsReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
-  userDetails: userDetailsReducer,
   blogPosts: blogReducer,
+  favorites: favoritesReducer,
+  comments: commentsReducer,
 });
 
 //userInfo stored in local storage

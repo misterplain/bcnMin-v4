@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+const Schema = mongoose.Schema;
 
 const userSchema = mongoose.Schema(
   {
@@ -20,6 +21,15 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       required: true,
       default: false,
+    },
+    favorites: {
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Blog", // ref allows populate function to work properly, the function replaces id with its corresponding blog object
+        },
+      ],
+      default: [],
     },
   },
   {
