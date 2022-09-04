@@ -1,6 +1,6 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Outlet, Link } from "react-router-dom";
 import {logout} from '../actions/userActions'
@@ -31,9 +31,6 @@ const Header = () => {
               </Nav.Link>
               <Nav.Link as={Link} to='/connect'>
                 Connect
-              </Nav.Link>
-              <Nav.Link as={Link} to='/reduce'>
-                Reduce
               </Nav.Link>
               <Nav.Link as={Link} to='/tech'>
                 Tech
