@@ -1,11 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Outlet, Link } from "react-router-dom";
-import {logout} from '../actions/userActions'
-
-
+import { logout } from "../actions/userActions";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -15,7 +13,11 @@ const Header = () => {
   const logoutAndRedirect = () => {
     dispatch(logout());
     navigate("/login");
-  }
+  };
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   return (
     <header>
       <Navbar bg='light' expand='sm' collapseOnSelect>
@@ -42,28 +44,39 @@ const Header = () => {
                 Collab
               </Nav.Link>
               <NavDropdown title='Account' id='basic-nav-dropdown'>
-                <NavDropdown.Item href='#action/3.2'>
-                  <Nav.Link as={Link} to='/login'>
-                    Login
-                  </Nav.Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.3'>
-                  <Nav.Link as={Link} to='/register'>
-                    Register
-                  </Nav.Link>
-                </NavDropdown.Item>
-
-                <NavDropdown.Item href='#action/3.4'>
-                  <Nav.Link as={Link} to='/favorites'>
-                    Favorite
-                  </Nav.Link>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href='#action/3.4'>
-                  <Nav.Link as={Link} to='/logout' onClick={logoutAndRedirect}>
-                    Logout
-                  </Nav.Link>
-                </NavDropdown.Item>
+                {userInfo ? (
+                  <>
+                    <NavDropdown.Item href='#action/3.4'>
+                      <Nav.Link as={Link} to='/favorites'>
+                        Favorites
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider/>
+                    <NavDropdown.Item href='#action/3.4'>
+                      <Nav.Link
+                        as={Link}
+                        to='/logout'
+                        onClick={logoutAndRedirect}
+                      >
+                        Logout
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                  </>
+                ) : (
+                  <>
+                    <NavDropdown.Item href='#action/3.2'>
+                      <Nav.Link as={Link} to='/login'>
+                        Login
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider/>
+                    <NavDropdown.Item href='#action/3.2'>
+                      <Nav.Link as={Link} to='/register'>
+                        Register
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                  </>
+                )}
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

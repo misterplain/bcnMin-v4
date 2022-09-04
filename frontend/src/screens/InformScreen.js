@@ -34,13 +34,13 @@ const InformScreen = () => {
           posts.map((post) => {
             return (
               <Col
-                xs={{ span: 8, offset: 2 }}
-                sm={{ span: 6, offset: 0 }}
-                md={6}
-                lg={4}
+                xs={{ span: 10, offset: 0 }}
+                sm={{ span: 5, offset: 0 }}
+                md={5}
+                lg={3}
                 className='justify-content-center'
               >
-                <Card style={{ width: "18rem" }} className='text-center'>
+                <Card style={{ width: "100%" }} className='text-center'>
                   <Card.Img variant='top' src={post.img} />
                   <Card.Body>
                     <Card.Title>{post.title}</Card.Title>
