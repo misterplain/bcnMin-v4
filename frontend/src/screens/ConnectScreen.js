@@ -38,7 +38,7 @@ const ConnectScreen = () => {
     <Container fluid>
       <Row>
         <Col xs={12}>
-          <h1>Comments</h1>
+          <h1 className="page-title">Comments</h1>
         </Col>
         {userInfo ? (
           <Form onSubmit={(e) => postComment(e)}>
@@ -56,7 +56,7 @@ const ConnectScreen = () => {
         ) : (
           <h1>Log in to post something to the message board</h1>
         )}
-        {comments.map((comment) => {
+        {comments && comments.map((comment) => {
           return (
             <Col xs={12} key={comment._id}>
               <Card style={{ width: "90%" }}>
