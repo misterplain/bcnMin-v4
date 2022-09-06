@@ -11,8 +11,14 @@ import {
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
 } from "../constants/userConstants";
+import setAuthToken from "../utils/setAuthToken";
 
 export const login = (email, password) => async (dispatch) => {
+
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,

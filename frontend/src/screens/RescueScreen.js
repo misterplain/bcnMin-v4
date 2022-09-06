@@ -5,7 +5,7 @@ const ResueScreen = () => {
   return (
     <Container>
       <Row>
-        <Col sm={12}>Rescue</Col>
+        <Col sm={12} className="page-title mb-3">adopt, don't shop</Col>
       </Row>
       <Row>
         <div className='rescue__container'>

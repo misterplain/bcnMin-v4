@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { useFormik } from "formik";
 import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
 const tools = TOOLS;
@@ -58,21 +59,33 @@ const TechScreen = () => {
 
   return (
     <Container className='justify-content-center text-center'>
-      <Row>
-        <Col sm={12}>Tech</Col>
+      <Row className='justify-content-center mb-3'>
+        <Col sm={12} className='page-title'>
+          tech
+        </Col>
+        <Col sm={12} md={6} className='page-subtitle '>
+          check in with your water footprint to see how you can reduce your
+          impact
+        </Col>
       </Row>
       <Row className='justify-content-center'>
-        <Col xs={12} sm={10} md={8} lg={6}>
-          <Form onSubmit={formik.handleSubmit}>
+        <Col xs={10} sm={10} md={8} lg={8}>
+          <Form
+            onSubmit={formik.handleSubmit}
+            style={{ padding: "40px", border: "2px solid green" }}
+          >
             <Form.Group className='mb-3' controlId='kilometers'>
               <Form.Control
                 type='text'
                 placeholder='kilometers driven per week on average'
                 value={formik.values.kilometers}
                 onChange={formik.handleChange}
+                style={{ width: "93%" }}
               />
               {formik.errors.kilometers && formik.touched.kilometers ? (
-                <div className=''>{formik.errors.kilometers}</div>
+                <div className='form-error-text'>
+                  {formik.errors.kilometers}
+                </div>
               ) : null}
             </Form.Group>
             <Form.Group className='mb-3' controlId='fastFashion'>
@@ -81,9 +94,12 @@ const TechScreen = () => {
                 placeholder='fast fashion items purchased per month on average'
                 value={formik.values.fastFashion}
                 onChange={formik.handleChange}
+                style={{ width: "93%" }}
               />
               {formik.errors.fastFashion && formik.touched.fastFashion ? (
-                <div className=''>{formik.errors.fastFashion}</div>
+                <div className='form-error-text'>
+                  {formik.errors.fastFashion}
+                </div>
               ) : null}
             </Form.Group>
             <Form.Group className='mb-3' controlId='flightHours'>
@@ -92,9 +108,12 @@ const TechScreen = () => {
                 placeholder='flight hours over the course of a year'
                 value={formik.values.flightHours}
                 onChange={formik.handleChange}
+                style={{ width: "93%" }}
               />
               {formik.errors.flightHours && formik.touched.flightHours ? (
-                <div className=''>{formik.errors.flightHours}</div>
+                <div className='form-error-text'>
+                  {formik.errors.flightHours}
+                </div>
               ) : null}
             </Form.Group>
             <Form.Group className='mb-3' controlId='meat'>
@@ -103,14 +122,15 @@ const TechScreen = () => {
                 placeholder='servings of meat consumed per week'
                 value={formik.values.meat}
                 onChange={formik.handleChange}
-              />
+                style={{ width: "93%" }}
+              />{" "}
+              {formik.errors.meat && formik.touched.meat ? (
+                <div className='form-error-text'>{formik.errors.meat}</div>
+              ) : null}
             </Form.Group>
-            {formik.errors.meat && formik.touched.meat ? (
-              <div className=''>{formik.errors.meat}</div>
-            ) : null}
 
-            <Button variant='primary' type='submit'>
-              Check Footprint
+            <Button variant='outline-success' type='submit'>
+              check footprint
             </Button>
           </Form>
         </Col>
@@ -121,23 +141,32 @@ const TechScreen = () => {
           </Modal.Header>
           <Modal.Body>
             {" "}
-            Your weekly water footprint is {answer} which is {answerMonth} over
-            the course of a month and {answerYear} over the course of a year
+            Your weekly water footprint is {answer.toFixed(1)} gallons, which is {answerMonth.toFixed(1)} gallons over
+            the course of a month and {answerYear.toFixed(1)} gallons over the course of a year
           </Modal.Body>
           <Modal.Footer>
-            <Button variant='secondary' onClick={handleClose}>
-              Close
+            <Button variant='outline-success' onClick={handleClose}>
+              try again 
             </Button>
           </Modal.Footer>
         </Modal>
       </Row>
       <Row className='justify-content-center'>
-        <Col sm={12}> tools to help you minimize</Col>
+        <Col sm={12} className='page-title mt-3 mb-2'>
+          {" "}
+          tools to help you minimize
+        </Col>
         {tools.map((tool) => (
           <Col xs={12} sm={5} lg={3} xl={2} key={tool.id}>
-            <Card>
-              <Card.Body>{tool.name}</Card.Body>
-            </Card>
+            <a
+              href={tool.src}
+              target='__blank'
+              style={{ textDecoration: "none" }}
+            >
+              <Card as='button' style={{ margin: "5px" }} className='tech-card'>
+                <Card.Body>{tool.name}</Card.Body>
+              </Card>
+            </a>
           </Col>
         ))}
       </Row>

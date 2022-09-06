@@ -16,6 +16,12 @@ import TechScreen from "./screens/TechScreen";
 import RescueScreen from "./screens/RescueScreen";
 import CollabScreen from "./screens/CollabScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
+import setAuthToken from "./utils/setAuthToken";
+
+//set local storage item to setAuthToken
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 function App() {
   return (

@@ -37,44 +37,64 @@ const ConnectScreen = () => {
   return (
     <Container fluid>
       <Row>
-        <Col xs={12}>
-          <h1 className="page-title">Comments</h1>
+        <Col xs={12} className='page-title mb-3'>
+          chat with your community
         </Col>
-        {userInfo ? (
-          <Form onSubmit={(e) => postComment(e)}>
-            <Form.Group controlId='comment'>
-              <Form.Control
-                as='textarea'
-                placeholder='Write comment here...'
-                rows={3}
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-            <Button>Post Comment</Button>
-          </Form>
-        ) : (
-          <h1>Log in to post something to the message board</h1>
-        )}
-        {comments && comments.map((comment) => {
-          return (
-            <Col xs={12} key={comment._id}>
-              <Card style={{ width: "90%" }}>
-                <Card.Body>
-                  <Card.Title>{comment.user.username} says:</Card.Title>
-                  <Card.Text>{comment.comment}</Card.Text>{" "}
-                  <Card.Subtitle className='mb-2 text-muted'>
-                    Posted on{" "}
-                    <Moment format='MM/DD/YYYY'>{comment.createdAt}</Moment>
-                  </Card.Subtitle>
-                  <Card.Link href='#'>Edit</Card.Link>
-                  <Card.Link href='#'>Delete</Card.Link>
+      </Row>
+      <Row className='justify-content-center mb-4'>
+        <Col sm={12} md={10} lg={8}>
+          {userInfo ? (
+            <Form
+              onSubmit={(e) => postComment(e)}
+              style={{ width: "95%" }}
+              className='text-center'
+            >
+              <Form.Group controlId='comment'>
+                <Form.Control
+                  as='textarea'
+                  placeholder='Write comment here...'
+                  rows={3}
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+              <Button variant='outline-success' className='mt-3'>
+                Post Comment
+              </Button>
+            </Form>
+          ) : (
+            <h1>Log in to post something to the message board</h1>
+          )}
+        </Col>
+      </Row>
+      <Row className='justify-content-center'>
+        <Col sm={12} md={10} lg={8}>
+          {comments &&
+            comments.map((comment) => {
+              return (
+                <Col key={comment._id} className="mb-2">
+                  <Card style={{ width: "100%" }}>
+                    <Card.Body>
+                      <Card.Title>{comment.user.username} says:</Card.Title>
+                      <Card.Text>
+                        <h2>{comment.comment}</h2>
+                      </Card.Text>{" "}
+                      <Card.Subtitle className='mb-2 text-muted'>
+                        <h6>Posted on: 
+                          <Moment format='MM/DD/YYYY'>
+                            {comment.createdAt}
+                          </Moment>
+                        </h6>
 
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        })}
+                      </Card.Subtitle>
+                      {/* <Card.Link href='#'>Edit</Card.Link>
+                      <Card.Link href='#'>Delete</Card.Link> */}
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+        </Col>
       </Row>
     </Container>
   );

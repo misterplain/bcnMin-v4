@@ -17,9 +17,21 @@ code {
 }
 
 .page-title {
-  font-size: 5rem;
-text-align: center;
-color: blue
+  font-size: 2.5rem;
+  text-align: center;
+  color: rgb(2, 99, 6);
+
+}
+
+.form-error-text {
+  color: rgb(193, 14, 14);
+  font-size: 0.8rem;
+}
+
+.tech-card {
+  border-radius: 30px;
+  border : 1px solid rgb(60, 16, 156);
+
 }
 
 /* rescue css */

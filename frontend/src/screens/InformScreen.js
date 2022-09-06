@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogPosts } from "../actions/blogActions";
 import { addFavorite } from "../actions/favoriteActions";
 
-
 const InformScreen = () => {
   const dispatch = useDispatch();
 
@@ -25,7 +24,7 @@ const InformScreen = () => {
   return (
     <Container fluid>
       <Row className='justify-content-center'>
-        <Col sm={12} className='text-center'>
+        <Col sm={12} className='page-title mb-3'>
           local news and conservation info
         </Col>
         {loading && <Loader />}
@@ -40,17 +39,30 @@ const InformScreen = () => {
                 lg={3}
                 className='justify-content-center'
               >
-                <Card style={{ width: "100%" }} className='text-center'>
+                <Card
+                  style={{
+                    width: "100%",
+                    border: "2px solid green",
+                    padding: "1px",
+                    margin: "3px",
+                  }}
+                  className='text-center'
+                >
                   <Card.Img variant='top' src={post.img} />
                   <Card.Body>
                     <Card.Title>{post.title}</Card.Title>
                     <Card.Text>{post.caption}</Card.Text>
-                    <Button variant='primary' href={post.src} target='__blank'>
+                    <Button
+                      variant='outline-primary'
+                      href={post.src}
+                      target='__blank'
+                      style={{ margin: "5px" }}
+                    >
                       Learn More
                     </Button>
                     {user && (
                       <Button
-                        variant='primary'
+                        variant='outline-success'
                         onClick={() => {
                           dispatch(addFavorite(post._id));
                         }}
