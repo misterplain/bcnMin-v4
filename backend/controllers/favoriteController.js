@@ -15,8 +15,9 @@ export const fetchFavorites = asyncHandler(async (req, res) => {
 
 export const addFavorite = asyncHandler(async (req, res) => {
   try {
+    console.log(req.params);
     const user = await User.findById(req.user.id).populate("favorites");
-    const blog = await Blog.findById(req.body.blogId);
+    const blog = await Blog.findById(req.params.blogId);
     if (user.favorites.includes(blog)) {
       res.status(400);
       throw new Error("Already favorited");

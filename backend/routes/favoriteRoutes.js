@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 import { protect } from "../middleware/authMiddleware.js";
 import pkg from "mongoose";
+
 const { Types } = pkg;
 import {
   fetchFavorites,

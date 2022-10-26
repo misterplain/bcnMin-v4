@@ -23,12 +23,16 @@ export const fetchFavorites = () => async (dispatch, getState) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
 
-    const { data } = await axios.get("/api/favorites", config);
+    const { data } = await axios.post("/api/favorites", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
 
     dispatch({
       type: GET_FAVORITES_SUCCESS,
@@ -76,6 +80,7 @@ export const addFavorite = (id) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message,
     });
+    console.log("add favorite request fail", error);
   }
 };
 

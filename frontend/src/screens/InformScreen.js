@@ -19,8 +19,6 @@ const InformScreen = () => {
     dispatch(fetchBlogPosts());
   }, []);
 
-  console.log(posts);
-
   return (
     <Container fluid>
       <Row className='justify-content-center'>
@@ -38,6 +36,7 @@ const InformScreen = () => {
                 md={5}
                 lg={3}
                 className='justify-content-center'
+                key={post._id}
               >
                 <Card
                   style={{
@@ -64,6 +63,8 @@ const InformScreen = () => {
                       <Button
                         variant='outline-success'
                         onClick={() => {
+                          console.log("add favorite clicked");
+                          console.log(post._id);
                           dispatch(addFavorite(post._id));
                         }}
                       >
