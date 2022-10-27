@@ -3,7 +3,8 @@ import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 
 const protect = asyncHandler(async (req, res, next) => {
-  let token = req.get("Authorization");
+  // let token = req.get("Authorization")
+  let token = req.body.headers.Authorization;
   if (token) {
     token = token.slice(token.indexOf(" ") + 1);
 
@@ -20,6 +21,7 @@ const protect = asyncHandler(async (req, res, next) => {
     }
   } else {
     res.status(401);
+    console.log("protect middleware token not found");
     throw new Error("No token, authorization denied");
   }
 });

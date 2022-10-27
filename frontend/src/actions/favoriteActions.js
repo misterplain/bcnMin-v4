@@ -27,12 +27,7 @@ export const fetchFavorites = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("/api/favorites", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    });
+    const { data } = await axios.post("/api/favorites", config);
 
     dispatch({
       type: GET_FAVORITES_SUCCESS,

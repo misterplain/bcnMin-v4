@@ -5,7 +5,7 @@ import User from "../models/userModel.js";
 
 export const fetchFavorites = asyncHandler(async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).populate("favorites");
+    const user = await User.findById(req.user.id)
     res.json(user.favorites);
   } catch (err) {
     console.error(err.message);
@@ -14,19 +14,23 @@ export const fetchFavorites = asyncHandler(async (req, res) => {
 });
 
 export const addFavorite = asyncHandler(async (req, res) => {
+  console.log("add favorite controller accessed");
   try {
-    console.log(req.params);
-    const user = await User.findById(req.user.id).populate("favorites");
+
+    const user = await User.findById(req.user._id)
+    user.populate("favorites");
     const blog = await Blog.findById(req.params.blogId);
-    if (user.favorites.includes(blog)) {
+    console.log(user.favorites)
+    if (user.favorites.includes(blog._id)) {
       res.status(400);
       throw new Error("Already favorited");
+    } else {
+      user.favorites.push(blog);
+      await user.save();
+      res.json(user.favorites);
     }
-    user.favorites.push(blog);
-    await user.save();
-    res.json(user.favorites);
   } catch (err) {
-    console.error(err.message);
+    console.error("add favorite controller", err.message);
     throw new Error("Cannot add favorite");
   }
 });
