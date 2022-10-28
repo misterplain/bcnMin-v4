@@ -3,10 +3,13 @@ import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 
 const protect = asyncHandler(async (req, res, next) => {
-  // let token = req.get("Authorization")
-  let token = req.body.headers.Authorization;
+  let token = req.get("Authorization")
+  // let token = req.body.headers.Authorization;
+
+  
   if (token) {
-    token = token.slice(token.indexOf(" ") + 1);
+      token = token.slice(token.indexOf(" ") + 1);
+    console.log(token)
 
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);

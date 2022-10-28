@@ -60,9 +60,14 @@ export const addFavorite = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
+    
 
-    const { data } = await axios.post(`/api/favorites/${id}`, config);
-
+    // const { data } = await axios.post(`, config);
+    const { data } = await axios({
+      method: "post",
+      url: `/api/favorites/${id}`,
+      headers: config.headers,
+    });
     dispatch({
       type: ADD_FAVORITE_SUCCESS,
       payload: data,
@@ -95,8 +100,15 @@ export const removeFavorite = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
+    console.log("remove favorite action accessed");
 
-    const { data } = await axios.delete(`/api/favorites/${id}`, config);
+    // const { data } = await axios.delete(`/api/favorites/${id}`, config);
+
+    const { data } = await axios({
+      method: "delete",
+      url: `/api/favorites/${id}`,
+      headers: config.headers,
+    });
 
     dispatch({
       type: REMOVE_FAVORITE_SUCCESS,
@@ -110,5 +122,6 @@ export const removeFavorite = (id) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message,
     });
+    console.log("remove favorite request fail", error);
   }
 };

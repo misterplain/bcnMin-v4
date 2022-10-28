@@ -118,7 +118,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.get(
-      `/api/users/${id}`, config
+      `/api/users/profile`, config
     );
 
     dispatch({

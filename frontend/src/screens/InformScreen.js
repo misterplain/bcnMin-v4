@@ -6,7 +6,8 @@ import Loader from "../components/Loader";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogPosts } from "../actions/blogActions";
-import { addFavorite } from "../actions/favoriteActions";
+import { addFavorite, removeFavorite } from "../actions/favoriteActions";
+import { getUserDetails } from "../actions/userActions";
 
 const InformScreen = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const InformScreen = () => {
 
   useEffect(() => {
     dispatch(fetchBlogPosts());
+    dispatch(getUserDetails(user?._id));
   }, []);
 
   return (
@@ -59,7 +61,18 @@ const InformScreen = () => {
                     >
                       Learn More
                     </Button>
-                    {user && (
+                    {user && user.favorites.includes(post._id) ? (
+                      <Button
+                        variant='outline-danger'
+                        onClick={() => {
+                          console.log("remove favorite clicked");
+                          dispatch(removeFavorite(post._id));
+                        }}
+                        style={{ margin: "5px" }}
+                      >
+                        Delete Favorite
+                      </Button>
+                    ) : (
                       <Button
                         variant='outline-success'
                         onClick={() => {
@@ -67,6 +80,7 @@ const InformScreen = () => {
                           console.log(post._id);
                           dispatch(addFavorite(post._id));
                         }}
+                        style={{ margin: "5px" }}
                       >
                         Add to Favorites
                       </Button>

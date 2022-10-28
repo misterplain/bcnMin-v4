@@ -33,8 +33,9 @@ export const favoritesReducer = (state = { favorites: [] }, action) => {
     case REMOVE_FAVORITE_REQUEST:
       return { loading: true };
 
-    case REMOVE_FAVORITE_SUCCESS:
+    case REMOVE_FAVORITE_SUCCESS: {
       return { loading: false, success: true, favorites: action.payload };
+    }
 
     case REMOVE_FAVORITE_FAIL:
       return { loading: false, error: action.payload };

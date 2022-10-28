@@ -17,6 +17,7 @@ const authUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
+      favorites: user.favorites
     });
   } else {
     res.status(401);
@@ -47,6 +48,7 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
+      favorites: user.favorites
     });
   } else {
     res.status(500);
@@ -66,6 +68,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
+      favorites: user.favorites
     });
   } else {
     res.status(404);
@@ -83,6 +86,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
     user.isAdmin = req.body.isAdmin || user.isAdmin;
+    user.favorites = req.body.favorites || user.favorites;
     if (req.body.password) {
       user.password = req.body.password;
     }
@@ -95,6 +99,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
       token: generateToken(user._id),
+      favorites: updatedUser.favorites
     });
   } else {
     res.status(404);
