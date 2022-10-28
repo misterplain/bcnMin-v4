@@ -67,6 +67,7 @@ const InformScreen = () => {
                         onClick={() => {
                           console.log("remove favorite clicked");
                           dispatch(removeFavorite(post._id));
+                          console.log(user.favorites)
                         }}
                         style={{ margin: "5px" }}
                       >
@@ -77,8 +78,8 @@ const InformScreen = () => {
                         variant='outline-success'
                         onClick={() => {
                           console.log("add favorite clicked");
-                          console.log(post._id);
                           dispatch(addFavorite(post._id));
+                          console.log(user.favorites)
                         }}
                         style={{ margin: "5px" }}
                       >
