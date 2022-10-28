@@ -18,7 +18,7 @@ const InformScreen = () => {
 
   useEffect(() => {
     dispatch(fetchBlogPosts());
-    dispatch(getUserDetails(user?._id));
+    // dispatch(getUserDetails(user?._id));
   }, []);
 
   return (
