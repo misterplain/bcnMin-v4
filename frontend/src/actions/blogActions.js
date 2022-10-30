@@ -17,7 +17,7 @@ export const fetchBlogPosts = () => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get("/api/blogs", config);
+    const { data } = await axios.get("/blogs", config);
 
     dispatch({
       type: BLOG_POST_SUCCESS,

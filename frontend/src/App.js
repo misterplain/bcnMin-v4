@@ -16,6 +16,7 @@ import TechScreen from "./screens/TechScreen";
 import RescueScreen from "./screens/RescueScreen";
 import CollabScreen from "./screens/CollabScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
+// import UsersScreen from "./screens/UsersScreen";
 import setAuthToken from "./utils/setAuthToken";
 
 //set local storage item to setAuthToken
@@ -37,9 +38,9 @@ function App() {
             <Route path='/connect' element={<ConnectScreen />} />
             <Route path='/tech' element={<TechScreen />} />
             <Route path='/rescue' element={<RescueScreen />} />
-
             <Route path='/collab' element={<CollabScreen />} />
             <Route path='/favorites' element={<FavoritesScreen />} />
+            {/* <Route path='/users' element={<UsersScreen />} /> */}
           </Routes>
         </Container>
       </main>

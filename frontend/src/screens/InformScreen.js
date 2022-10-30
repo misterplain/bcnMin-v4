@@ -12,13 +12,19 @@ import { getUserDetails } from "../actions/userActions";
 const InformScreen = () => {
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.userLogin.userInfo);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const blogPosts = useSelector((state) => state.blogPosts);
   const { loading, error, posts } = blogPosts;
 
+  // let userInfo = true;
+  // let loading = false;
+  // let error = false;
+
   useEffect(() => {
     dispatch(fetchBlogPosts());
-    // dispatch(getUserDetails(user?._id));
+    dispatch(getUserDetails());
   }, []);
 
   return (
@@ -61,13 +67,12 @@ const InformScreen = () => {
                     >
                       Learn More
                     </Button>
-                    {user && user.favorites.includes(post._id) ? (
+                    {/* {userInfo && userInfo.favorites.includes(post._id) ? (
                       <Button
                         variant='outline-danger'
                         onClick={() => {
                           console.log("remove favorite clicked");
                           dispatch(removeFavorite(post._id));
-                          console.log(user.favorites)
                         }}
                         style={{ margin: "5px" }}
                       >
@@ -79,13 +84,12 @@ const InformScreen = () => {
                         onClick={() => {
                           console.log("add favorite clicked");
                           dispatch(addFavorite(post._id));
-                          console.log(user.favorites)
                         }}
                         style={{ margin: "5px" }}
                       >
                         Add to Favorites
                       </Button>
-                    )}
+                    )} */}
                   </Card.Body>
                 </Card>{" "}
               </Col>

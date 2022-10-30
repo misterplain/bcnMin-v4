@@ -20,13 +20,13 @@ const LoginScreen = () => {
   const location = useLocation();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const { loading, error, authData } = userLogin;
 
   useEffect(() => {
-    if (userInfo) {
+    if (authData) {
       navigate("/");
     }
-  }, [navigate, userInfo]);
+  }, [navigate, authData]);
 
   const submitHandler = (e) => {
     e.preventDefault();

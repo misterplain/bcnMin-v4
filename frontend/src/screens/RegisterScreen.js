@@ -8,7 +8,7 @@ import FormContainer from "../components/FormContainer";
 import { register } from "../actions/userActions";
 
 const RegisterScreen = ({ match, history }) => {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -17,14 +17,14 @@ const RegisterScreen = ({ match, history }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const userRegister = useSelector((state) => state.userRegister);
-  const { loading, error, userInfo } = userRegister;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, authData } = userLogin;
 
   useEffect(() => {
-    if (userInfo) {
+    if (authData) {
       navigate("/");
     }
-  }, [userInfo, navigate]);
+  }, [authData, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const RegisterScreen = ({ match, history }) => {
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
     } else {
-      dispatch(register(name, email, password));
+      dispatch(register(username, email, password));
     }
   };
   return (
@@ -48,8 +48,8 @@ const RegisterScreen = ({ match, history }) => {
           <Form.Control
             type='name'
             placeholder='Enter name'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='email'>

@@ -17,16 +17,22 @@ const Header = () => {
   };
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const { authData } = userLogin;
 
   const [open, setOpen] = useState(false);
+
+  // const date = new Date();
+  // const today = new Intl.DateTimeFormat("en-US", {
+  //   dateStyle: "full",
+  //   timeStyle: "long"}).format(date);
+  
 
   return (
     <header>
       <Navbar bg='light' expand='md' expanded={open}>
         <Container>
           <Navbar.Brand as={Link} to='/'>
-            bcnMinimalista
+            bcnMinimalista 
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls='basic-navbar-nav'
@@ -51,8 +57,11 @@ const Header = () => {
               <Nav.Link as={Link} to='/collab' onClick={() => setOpen(false)}>
                 Collab
               </Nav.Link>
+              <Nav.Link as={Link} to='/users' onClick={() => setOpen(false)}>
+                Users
+              </Nav.Link>
               <NavDropdown title='Account' id='basic-nav-dropdown'>
-                {userInfo ? (
+                {authData ? (
                   <>
                     <NavDropdown.Item href='#action/3.4'>
                       <Nav.Link

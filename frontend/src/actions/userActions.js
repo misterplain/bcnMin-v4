@@ -15,8 +15,9 @@ import setAuthToken from "../utils/setAuthToken";
 
 export const login = (email, password) => async (dispatch) => {
 
-  if (localStorage.token) {
+  if (localStorage.profile.accessToken) {
     setAuthToken(localStorage.token);
+
   }
   
   try {
@@ -27,11 +28,12 @@ export const login = (email, password) => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+
       },
     };
 
     const { data } = await axios.post(
-      "/api/users/login",
+      "/users/login",
       { email, password },
       config
     );
@@ -41,7 +43,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("profile", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -54,12 +56,12 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  localStorage.removeItem("userInfo");
+  localStorage.removeItem("profile");
   dispatch({ type: USER_LOGOUT });
 };
 
 //register
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (username, email, password) => async (dispatch) => {
   try {
     dispatch({
       type: USER_REGISTER_REQUEST,
@@ -72,8 +74,8 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/users",
-      { name, email, password },
+      "/users/register",
+      { username, email, password },
       config
     );
 
@@ -87,7 +89,7 @@ export const register = (name, email, password) => async (dispatch) => {
       payload: data,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("profile", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
@@ -99,7 +101,7 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 };
 
-//get user details, token info is stored in localStorage/getState
+//decrypt the access token and insert this int othe userDetails state 
 export const getUserDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -107,25 +109,23 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     });
 
     const {
-      userLogin: { userInfo },
+      userLogin: { authData },
     } = getState();
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Bearer ${authData.accessToken}`,
       },
     };
 
-    const { data } = await axios.get(
-      `/api/users/profile`, config
-    );
+
+    const { data } = await axios.get(`/users/profile`, config);
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data,
     });
-    localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAIL,
@@ -135,5 +135,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
           : error.message,
     });
   }
-};
 
+
+}

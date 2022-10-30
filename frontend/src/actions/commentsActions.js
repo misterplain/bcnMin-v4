@@ -23,7 +23,7 @@ export const fetchComments = () => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.get("/api/comments", config);
+    const { data } = await axios.get("/comments", config);
 
     dispatch({
       type: GET_COMMENTS_SUCCESS,
@@ -58,7 +58,7 @@ export const addComment = (id, comment) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      `/api/comments/${id}`,
+      `/comments/${id}`,
       { comment },
       config
     );
@@ -95,7 +95,7 @@ export const removeComment = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/comments/${id}`, config);
+    await axios.delete(`/comments/${id}`, config);
 
     dispatch({
       type: REMOVE_COMMENT_SUCCESS,
