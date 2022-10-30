@@ -16,13 +16,8 @@ import TechScreen from "./screens/TechScreen";
 import RescueScreen from "./screens/RescueScreen";
 import CollabScreen from "./screens/CollabScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
-// import UsersScreen from "./screens/UsersScreen";
-import setAuthToken from "./utils/setAuthToken";
+import UsersScreen from "./screens/UsersScreen";
 
-//set local storage item to setAuthToken
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-}
 
 function App() {
   return (
@@ -40,7 +35,7 @@ function App() {
             <Route path='/rescue' element={<RescueScreen />} />
             <Route path='/collab' element={<CollabScreen />} />
             <Route path='/favorites' element={<FavoritesScreen />} />
-            {/* <Route path='/users' element={<UsersScreen />} /> */}
+            <Route path='/users' element={<UsersScreen />} />
           </Routes>
         </Container>
       </main>

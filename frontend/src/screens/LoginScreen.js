@@ -6,7 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 //redux
-import { login } from "../actions/userActions";
+import { login } from "../actions/authActions";
 
 const submitHandler = (e) => {
   console.log("submitHandler");

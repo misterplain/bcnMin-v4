@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogPosts } from "../actions/blogActions";
-import { addFavorite, removeFavorite } from "../actions/favoriteActions";
+import { addFavorite, removeFavorite } from "../actions/userActions";
 import { getUserDetails } from "../actions/userActions";
 
 const InformScreen = () => {

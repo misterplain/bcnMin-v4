@@ -1,107 +1,17 @@
 import axios from "axios";
 import {
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FAIL,
-  USER_LOGOUT,
-  USER_REGISTER_REQUEST,
-  USER_REGISTER_SUCCESS,
-  USER_REGISTER_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
+  ADD_FAVORITE_SUCCESS,
+  ADD_FAVORITE_FAIL,
+  ADD_FAVORITE_REQUEST,
+  REMOVE_FAVORITE_SUCCESS,
+  REMOVE_FAVORITE_FAIL,
+  REMOVE_FAVORITE_REQUEST,
 } from "../constants/userConstants";
-import setAuthToken from "../utils/setAuthToken";
 
-export const login = (email, password) => async (dispatch) => {
-
-  if (localStorage.profile.accessToken) {
-    setAuthToken(localStorage.token);
-
-  }
-  
-  try {
-    dispatch({
-      type: USER_LOGIN_REQUEST,
-    });
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-
-      },
-    };
-
-    const { data } = await axios.post(
-      "/users/login",
-      { email, password },
-      config
-    );
-
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: data,
-    });
-
-    localStorage.setItem("profile", JSON.stringify(data));
-  } catch (error) {
-    dispatch({
-      type: USER_LOGIN_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
-
-export const logout = () => (dispatch) => {
-  localStorage.removeItem("profile");
-  dispatch({ type: USER_LOGOUT });
-};
-
-//register
-export const register = (username, email, password) => async (dispatch) => {
-  try {
-    dispatch({
-      type: USER_REGISTER_REQUEST,
-    });
-
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    const { data } = await axios.post(
-      "/users/register",
-      { username, email, password },
-      config
-    );
-
-    dispatch({
-      type: USER_REGISTER_SUCCESS,
-      payload: data,
-    });
-
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: data,
-    });
-
-    localStorage.setItem("profile", JSON.stringify(data));
-  } catch (error) {
-    dispatch({
-      type: USER_REGISTER_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
-
-//decrypt the access token and insert this int othe userDetails state 
+//decrypt the access token and insert this int othe userDetails state
 export const getUserDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -119,7 +29,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-
     const { data } = await axios.get(`/users/profile`, config);
 
     dispatch({
@@ -135,6 +44,88 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
           : error.message,
     });
   }
+};
 
+//favorites
+export const addFavorite = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ADD_FAVORITE_REQUEST,
+    });
 
-}
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    
+
+    // const { data } = await axios.post(`, config);
+    const { data } = await axios({
+      method: "post",
+      url: `/favorites/${id}`,
+      headers: config.headers,
+    });
+    dispatch({
+      type: ADD_FAVORITE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ADD_FAVORITE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    console.log("add favorite request fail", error);
+  }
+};
+
+export const removeFavorite = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: REMOVE_FAVORITE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    console.log("remove favorite action accessed");
+
+    // const { data } = await axios.delete(`/api/favorites/${id}`, config);
+
+    const { data } = await axios({
+      method: "delete",
+      url: `/favorites/${id}`,
+      headers: config.headers,
+    });
+
+    dispatch({
+      type: REMOVE_FAVORITE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: REMOVE_FAVORITE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    console.log("remove favorite request fail", error);
+  }
+};
+

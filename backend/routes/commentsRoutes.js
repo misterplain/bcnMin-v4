@@ -1,17 +1,17 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import Comment from "../models/commentModel.js";
-import { protect } from "../middleware/authMiddleware.js";
+const commentsController = require("../controllers/commentsController");
+const verifyJWT = require("../middleware/verifyJWT");
 
+router.route("/").get(commentsController.getAllComments);
 
-import {
-  getComments,
-  addComment,
-  deleteComment,
-} from "../controllers/commentController.js";
+//protected routes requiring authorization
+router.use(verifyJWT);
+router
+  .route("/")
+  .post(commentsController.createNewComment)
+  .patch(commentsController.updateComment)
+  .delete(commentsController.deleteComment);
 
-router.get("/", getComments);
-router.post("/:id", protect, addComment);
-router.delete("/:id", protect, deleteComment);
+module.exports = router;
 
-export default router

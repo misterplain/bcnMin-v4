@@ -1,22 +1,18 @@
-import mongoose from "mongoose";
-
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//users will be able to post/edit/delete comments
 const commentSchema = new Schema(
-  {
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+    {
+      username: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+      comment: {
+        type: String,
+        required: true,
+      },
     },
-    comment: {
-      type: String,
-      required: true,
-    },
-  },
-  { timestamps: true }
-);
+    { timestamps: true }
+  );
 
-const Comment = mongoose.model("Comment", commentSchema);
-
-export default Comment;
+module.exports = mongoose.model("Comment", commentSchema);

@@ -1,0 +1,22 @@
+20221029	18:27:19	a7b5e748-3492-4361-a458-161ce8bee146	ReferenceError: user is not defined	POST	/users	undefined
+20221029	18:28:31	660ff149-2106-4783-a272-b8c9977b5033	ReferenceError: user is not defined	POST	/users	undefined
+20221029	18:39:04	0af1932f-0bf7-4a52-b9a6-2bf34f535f6c	SyntaxError: Unexpected string in JSON at position 30	POST	/users	undefined
+20221029	18:43:15	6b9bfb39-2b50-4df5-bc2c-85a052f4c612	SyntaxError: Unexpected token } in JSON at position 124	PATCH	/users	undefined
+20221029	22:08:48	ae21ef89-09f5-4859-bbfb-bd2f7914c079	Error: Not allowed by CORS	POST	/users	http://127.0.0.1:5000
+20221029	22:32:11	4adf662a-2ce8-411e-b882-f750716bba70	TypeError: user.matchPassword is not a function	POST	/users/login	http://127.0.0.1:5000
+20221029	22:34:10	3617d63c-70e9-40d4-bf34-681899c92b7d	TypeError: user.matchPassword is not a function	POST	/users/login	http://127.0.0.1:5000
+20221029	22:35:44	713c994b-fef2-4830-9520-1c642b25fb2c	TypeError: user.matchPassword is not a function	POST	/users/login	http://127.0.0.1:5000
+20221029	22:37:32	c0c6cff5-e521-42f3-8b3c-653d4a8073e6	TypeError: user.matchPassword is not a function	POST	/users/login	http://127.0.0.1:5000
+20221029	22:43:47	4807e5c8-46b4-407e-860a-fb6618629c53	ReferenceError: bcrypt is not defined	POST	/users/login	http://127.0.0.1:5000/
+20221029	22:44:55	33fc9ea4-e7e3-41a2-b2b5-0b02b3bfd7a7	ReferenceError: bcrypt is not defined	POST	/users/login	http://127.0.0.1:5000/
+20221029	22:47:46	c20116e6-9634-4b2c-a7e0-2e3f3bf248f8	ReferenceError: bcrypt is not defined	POST	/users/login	http://127.0.0.1:5000/
+20221029	22:53:46	c05a2867-205e-41c1-98ea-a5b0325668ca	ReferenceError: bcrypt is not defined	POST	/users/login	http://127.0.0.1:5000/
+20221030	11:23:08	4ccf29de-1a02-40fd-aae8-58823f2b7431	ReferenceError: user is not defined	POST	/users/register	http://127.0.0.1:5000/
+20221030	11:23:24	72383413-0b00-411f-ba71-aed1dcdaf3f4	ReferenceError: user is not defined	POST	/users/register	http://127.0.0.1:5000/
+20221030	11:25:43	f5fce431-9256-4e8a-94a3-5bdfa6f50962	ReferenceError: user is not defined	POST	/users/register	http://127.0.0.1:5000/
+20221030	11:26:04	7403a3b1-7471-468a-8aaf-18935847906b	ReferenceError: foundUser is not defined	POST	/users/register	http://127.0.0.1:5000/
+20221030	14:26:58	447c5187-a675-4004-af26-0ed1a3fc7e99	ReferenceError: foundUser is not defined	POST	/register	undefined
+20221030	15:24:43	3c282b94-7c7e-437d-882a-15d8d1b69378	Error: Not allowed by CORS	GET	/refresh	http://localhost:3000
+20221030	15:24:44	3b8da525-bee3-4994-a7eb-2c8e96f46e18	Error: Not allowed by CORS	GET	/refresh	http://localhost:3000
+20221030	15:24:45	7339197a-8311-48a6-8d63-ed1beccad75b	Error: Not allowed by CORS	GET	/refresh	http://localhost:3000
+20221030	15:26:08	ac054edd-882b-4d76-8f46-6199f0484bf6	Error: Not allowed by CORS	POST	/users/login	http://127.0.0.1:5000/

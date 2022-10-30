@@ -1,9 +1,8 @@
-import asyncHandler from "express-async-handler";
-import Favorite from "../models/favoriteModel.js";
-import Blog from "../models/blogModel.js";
-import User from "../models/userModel.js";
+const asyncHandler = require("express-async-handler");
+const Blog = require("../models/blogModel");
+const User = require("../models/userModel");
 
-export const fetchFavorites = asyncHandler(async (req, res) => {
+const getAllFavorites = asyncHandler(async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
     res.json(user.favorites);
@@ -13,12 +12,11 @@ export const fetchFavorites = asyncHandler(async (req, res) => {
   }
 });
 
-export const addFavorite = asyncHandler(async (req, res) => {
+const addFavorite = asyncHandler(async (req, res) => {
   console.log("add favorite controller accessed");
   try {
     const user = await User.findById(req.user._id);
     // user.populate("favorites");
-    console.log(user);
     const blog = await Blog.findById(req.params.blogId);
     if (user.favorites.includes(blog._id)) {
       res.status(400).send({
@@ -38,7 +36,7 @@ export const addFavorite = asyncHandler(async (req, res) => {
   }
 });
 
-export const deleteFavorite = asyncHandler(async (req, res) => {
+const deleteFavorite = asyncHandler(async (req, res) => {
   console.log("delete favorite controller accessed");
   try {
     const user = await User.findById(req.user._id);
@@ -61,3 +59,9 @@ export const deleteFavorite = asyncHandler(async (req, res) => {
     res.status(500).send({ error: "unexpected error occured" });
   }
 });
+
+module.exports = {
+  getAllFavorites,
+  addFavorite,
+  deleteFavorite,
+};
