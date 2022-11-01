@@ -6,10 +6,11 @@ const verifyJWT = require("../middleware/verifyJWT");
 
 router.route("/").get(usersController.getAllUsers);
 
-//protected routes requiring authorization 
-// router.use(verifyJWT);
+//protected routes requiring authorization
+router.use(verifyJWT);
 router
-  .route("/")
+  .route("/profile")
+  .get(usersController.getUserDetails)
   .patch(usersController.updateUser)
   .delete(usersController.deleteUser);
 

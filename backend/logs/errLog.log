@@ -20,3 +20,13 @@
 20221030	15:24:44	3b8da525-bee3-4994-a7eb-2c8e96f46e18	Error: Not allowed by CORS	GET	/refresh	http://localhost:3000
 20221030	15:24:45	7339197a-8311-48a6-8d63-ed1beccad75b	Error: Not allowed by CORS	GET	/refresh	http://localhost:3000
 20221030	15:26:08	ac054edd-882b-4d76-8f46-6199f0484bf6	Error: Not allowed by CORS	POST	/users/login	http://127.0.0.1:5000/
+20221101	19:14:51	7f4c6a78-7192-439d-85f9-2ced02bcec9e	ReferenceError: user is not defined	GET	/users	undefined
+20221101	19:47:56	1f7cb53f-195b-4905-a1ad-a17df76c8114	Error: Not allowed by CORS	POST	/auth	http://127.0.0.1:5000/
+20221101	19:49:12	fa82389c-cf06-4b28-a731-83120e3170a3	Error: Not allowed by CORS	POST	/auth	http://127.0.0.1:5000/
+20221101	19:52:46	e4fb61cf-d14b-4cc6-96f5-376f33249f5a	Error: Not allowed by CORS	POST	/auth	http://127.0.0.1:5000/
+20221101	19:54:26	3def1666-16de-49fd-b0eb-1d8c9b1a3c9d	Error: Not allowed by CORS	POST	/auth	http://127.0.0.1:5000/
+20221101	19:57:12	1067fbb4-333f-42b1-b5e7-950938bcbafa	Error: Not allowed by CORS	POST	/auth	http://127.0.0.1:5000/
+20221101	19:57:13	9b4fe5d6-26f2-4a2c-bf9d-f60cb28ac133	Error: Not allowed by CORS	POST	/auth	http://127.0.0.1:5000/
+20221101	20:00:18	1299dc13-8ab2-4916-9d9b-a76f265d48b0	Error: Not allowed by CORS	POST	/auth	http://127.0.0.1:5000/
+20221101	20:02:06	70272bae-2ae8-42f0-b655-dfbb48665dfd	Error: Not allowed by CORS	POST	/auth	http://127.0.0.1:5000/
+20221101	20:06:59	f282112c-7cbf-42c5-9abb-f3c0116a084e	Error: Not allowed by CORS	OPTIONS	/auth	http://localhost:3000

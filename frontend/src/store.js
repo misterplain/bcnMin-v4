@@ -14,13 +14,15 @@ const reducer = combineReducers({
 });
 
 //userInfo stored in local storage
-const userInfoFromStorage = localStorage.getItem("profile")
-  ? JSON.parse(localStorage.getItem("profile"))
-  : null;
+// const userInfoFromStorage = localStorage.getItem("profile")
+//   ? JSON.parse(localStorage.getItem("profile"))
+//   : null;
 
-const initialState = {
-  userLogin: { authData: userInfoFromStorage },
-};
+// const initialState = {
+//   userLogin: { authData: userInfoFromStorage },
+// };
+
+const initialState = {}
 
 const middleware = [thunk];
 

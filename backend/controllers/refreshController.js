@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 // @route GET /users/refresh
 // @access Public - because access token has expired
 const refresh = (req, res) => {
+  console.log(req.cookies)
   const cookies = req.cookies;
 
   if (!cookies?.jwt) return res.status(401).json({ message: "Unauthorized" });

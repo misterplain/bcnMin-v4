@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
@@ -10,6 +9,7 @@ import {
   REMOVE_FAVORITE_FAIL,
   REMOVE_FAVORITE_REQUEST,
 } from "../constants/userConstants";
+import axios from "../api/axios";
 
 //decrypt the access token and insert this int othe userDetails state
 export const getUserDetails = (id) => async (dispatch, getState) => {
@@ -18,23 +18,23 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       type: USER_DETAILS_REQUEST,
     });
 
-    const {
-      userLogin: { authData },
-    } = getState();
+    // const {
+    //   userLogin: { authData },} = getState();
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${authData.accessToken}`,
+        Authorization: `Bearer ${id}`,
       },
     };
 
-    const { data } = await axios.get(`/users/profile`, config);
+    const data = await axios.get(`/users/profile`, config);
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data,
     });
+
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAIL,
@@ -63,7 +63,6 @@ export const addFavorite = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    
 
     // const { data } = await axios.post(`, config);
     const { data } = await axios({
@@ -128,4 +127,3 @@ export const removeFavorite = (id) => async (dispatch, getState) => {
     console.log("remove favorite request fail", error);
   }
 };
-

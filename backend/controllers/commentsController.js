@@ -11,9 +11,8 @@ const getAllComments = async (req, res) => {
   // If no comemnts
   if (!comments?.length) {
     return res.status(400).json({ message: "No comments found" });
-
-    res.json(comments);
   }
+  res.json(comments);
 };
 
 // @desc Create new coimment

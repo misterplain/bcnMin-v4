@@ -19,14 +19,17 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, authData } = userLogin;
+  // const userLogin = useSelector((state) => state.userLogin);
+  // const { loading, error, authData } = userLogin;
 
-  useEffect(() => {
-    if (authData) {
-      navigate("/");
-    }
-  }, [navigate, authData]);
+  // let error = null
+  // let loading = null
+
+  // useEffect(() => {
+  //   if (authData) {
+  //     navigate("/");
+  //   }
+  // }, [navigate, authData]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -36,8 +39,8 @@ const LoginScreen = () => {
   return (
     <FormContainer>
       <h1>Sign In</h1>
-      {error && <Message variant='danger'>{error}</Message>}
-      {loading && <Loader />}
+      {/* {error && <Message variant='danger'>{error}</Message>}
+      {loading && <Loader />} */}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='email'>
           <Form.Label>Email Address</Form.Label>
