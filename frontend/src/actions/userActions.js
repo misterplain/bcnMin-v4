@@ -34,7 +34,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       type: USER_DETAILS_SUCCESS,
       payload: data,
     });
-
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAIL,
@@ -53,14 +52,13 @@ export const addFavorite = (id) => async (dispatch, getState) => {
       type: ADD_FAVORITE_REQUEST,
     });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+    const authToken = localStorage.getItem("profile");
+    console.log(authToken);
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Bearer ${authToken}`,
       },
     };
 
@@ -92,14 +90,13 @@ export const removeFavorite = (id) => async (dispatch, getState) => {
       type: REMOVE_FAVORITE_REQUEST,
     });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+    const authToken = localStorage.getItem("profile");
+    console.log(authToken);
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Bearer ${authToken}`,
       },
     };
     console.log("remove favorite action accessed");

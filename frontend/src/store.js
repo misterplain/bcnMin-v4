@@ -5,6 +5,7 @@ import { authReducer } from "./reducers/authReducers";
 import { userReducer } from "./reducers/userReducers";
 import { blogReducer } from "./reducers/blogReducers";
 import { commentsReducer } from "./reducers/commentsReducers";
+import logger from "redux-logger";
 
 const reducer = combineReducers({
   userLogin: authReducer,
@@ -24,7 +25,7 @@ const reducer = combineReducers({
 
 const initialState = {}
 
-const middleware = [thunk];
+const middleware = [thunk, logger];
 
 const store = createStore(
   reducer,

@@ -9,22 +9,50 @@ import { fetchBlogPosts } from "../actions/blogActions";
 import { addFavorite, removeFavorite } from "../actions/userActions";
 import { getUserDetails } from "../actions/userActions";
 
+const FavoriteButton = ( {id} ) => {
+  const dispatch = useDispatch();
+  const token = localStorage.getItem("profile");
+  const userData = useSelector((state) => state.userDetails.userData);
+  const { favorites } = userData;
+  console.log(favorites);
+
+  const isFavorite = favorites.includes(id);
+  console.log(isFavorite);
+
+  const handleFavorite = () => {
+    if (isFavorite) {
+      dispatch(removeFavorite(id));
+    } else {
+      dispatch(addFavorite(id));
+    }
+    dispatch(getUserDetails(token));
+  };
+
+  return (
+    <Button
+      variant={isFavorite ? 'outline-danger' : 'outline-success'}
+      onClick={handleFavorite}
+      style={{ margin: "5px" }}
+    >
+      {isFavorite ? "Remove Favorite" : "Add Favorite"}
+    </Button>
+  );
+};
+
 const InformScreen = () => {
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin);
-
-  console.log(userLogin);
-  const { userInfo } = userLogin;
-
-  const blogPosts = useSelector((state) => state.blogPosts);
-  const { loading, error, posts } = blogPosts;
+  const token = localStorage.getItem("profile");
 
   useEffect(() => {
     dispatch(fetchBlogPosts());
-
-    dispatch(getUserDetails(localStorage.getItem("profile")));
+    dispatch(getUserDetails(token));
   }, []);
+
+  const userData = useSelector((state) => state.userDetails.userData);
+
+  const blogPosts = useSelector((state) => state.blogPosts);
+  const { loading, error, posts } = blogPosts;
 
   return (
     <Container fluid>
@@ -43,7 +71,6 @@ const InformScreen = () => {
                 md={5}
                 lg={3}
                 className='justify-content-center'
-                key={post._id}
               >
                 <Card
                   style={{
@@ -53,6 +80,7 @@ const InformScreen = () => {
                     margin: "3px",
                   }}
                   className='text-center'
+                  key={post._id}
                 >
                   <Card.Img variant='top' src={post.img} />
                   <Card.Body>
@@ -66,7 +94,22 @@ const InformScreen = () => {
                     >
                       Learn More
                     </Button>
-                    {/* {userInfo && userInfo.favorites.includes(post._id) ? (
+                    {/* {userData?.favorites &&
+                      !loading &&
+                      userData.favorites.includes(post._id)(
+                        <Button
+                          variant='outline-danger'
+                          onClick={() => {
+                            console.log("remove favorite clicked");
+                            dispatch(removeFavorite(post._id));
+                          }}
+                          style={{ margin: "5px" }}
+                        >
+                          Delete Favorite
+                        </Button>
+                      )}
+                    {userData?.favorites &&
+                      !loading && !userData.favorites.includes(post._id) !== -1 && (
                       <Button
                         variant='outline-danger'
                         onClick={() => {
@@ -75,25 +118,17 @@ const InformScreen = () => {
                         }}
                         style={{ margin: "5px" }}
                       >
-                        Delete Favorite
-                      </Button>
-                    ) : (
-                      <Button
-                        variant='outline-success'
-                        onClick={() => {
-                          console.log("add favorite clicked");
-                          dispatch(addFavorite(post._id));
-                        }}
-                        style={{ margin: "5px" }}
-                      >
-                        Add to Favorites
+                        Add Favorite
                       </Button>
                     )} */}
+                    {userData && !userData.loading && (
+                      <FavoriteButton id={post._id} />
+                    )}
                   </Card.Body>
-                </Card>{" "}
+                </Card>
               </Col>
             );
-          })}{" "}
+          })}
       </Row>
     </Container>
   );

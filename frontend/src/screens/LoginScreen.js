@@ -31,7 +31,6 @@ const LoginScreen = () => {
     }
   }, [navigate, authData]);
 
-  console.log(userLogin)
 
   const submitHandler = (e) => {
     e.preventDefault();
