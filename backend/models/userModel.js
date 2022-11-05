@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
     ],
     default: [],
   },
+  isDeleted:{
+    type: Boolean,
+    default: false
+  }
 });
 
 userSchema.methods.match = async function (enteredPassword) {

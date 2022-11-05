@@ -13,18 +13,17 @@ const InformScreen = () => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
+
+  console.log(userLogin);
   const { userInfo } = userLogin;
 
   const blogPosts = useSelector((state) => state.blogPosts);
   const { loading, error, posts } = blogPosts;
 
-  // let userInfo = true;
-  // let loading = false;
-  // let error = false;
-
   useEffect(() => {
     dispatch(fetchBlogPosts());
-    dispatch(getUserDetails());
+
+    dispatch(getUserDetails(localStorage.getItem("profile")));
   }, []);
 
   return (

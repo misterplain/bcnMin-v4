@@ -18,28 +18,10 @@ const getAllUsers = asyncHandler(async (req, res) => {
 const getUserDetails = asyncHandler(async (req, res) => {
   console.log("getUserDetails accessed");
   //make sure cookies exist
-  const cookies = req.cookies;
-  console.log(cookies, "cookies");
-  if (!cookies?.jwt) return res.status(401).json({ message: "Unauthorized" });
+ 
 
-  //assign token to cookies jwt and decode
-  const Token = cookies.jwt;
-  jwt.verify(Token, process.env.ACCESS_TOKEN_SECRET, async (err, decoded) => {
-    const token = jwt_decode(Token);
-    console.log(token);
-    const userEmail = token.email;
-    console.log(userEmail);
-    // if (err) return res.status(403).json({ message: "Forbidden" });
+    res.json(req.user);
 
-    const foundUser = await User.findOne({
-      email: userEmail,
-    }).exec();
-    console.log(foundUser, "found user");
-    // if (!foundUser) return res.status(401).json({ message: "No user found" });
-    if (!foundUser) return console.log(" no user found");
-
-    res.json(foundUser);
-  });
 });
 
 // @desc update a user

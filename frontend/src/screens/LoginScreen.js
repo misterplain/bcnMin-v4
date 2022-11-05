@@ -19,17 +19,19 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // const userLogin = useSelector((state) => state.userLogin);
-  // const { loading, error, authData } = userLogin;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, authData } = userLogin;
 
   // let error = null
   // let loading = null
 
-  // useEffect(() => {
-  //   if (authData) {
-  //     navigate("/");
-  //   }
-  // }, [navigate, authData]);
+  useEffect(() => {
+    if (authData) {
+      navigate("/");
+    }
+  }, [navigate, authData]);
+
+  console.log(userLogin)
 
   const submitHandler = (e) => {
     e.preventDefault();

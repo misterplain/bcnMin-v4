@@ -28,9 +28,8 @@ const authUser = asyncHandler(async (req, res) => {
 
   const accessToken = jwt.sign(
     {
-      UserInfo: {
-        email: foundUser.email,
-      },
+      id: foundUser._id,
+      email: foundUser.email,
     },
     process.env.ACCESS_TOKEN_SECRET,
     { expiresIn: "15m" }
@@ -54,4 +53,4 @@ const authUser = asyncHandler(async (req, res) => {
   res.json({ accessToken });
 });
 
-module.exports = {authUser};
+module.exports = { authUser };

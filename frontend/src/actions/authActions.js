@@ -16,6 +16,8 @@ export const login = (email, password) => async (dispatch) => {
       type: USER_LOGIN_REQUEST,
     });
 
+
+
     const data = await axios.post("/auth", { email, password });
 
     dispatch({
@@ -23,7 +25,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
 
-    console.log(data.data.accessToken);
+    // console.log(data.data.accessToken);
     dispatch(getUserDetails(data.data.accessToken));
   } catch (error) {
     dispatch({

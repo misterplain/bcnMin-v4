@@ -17,9 +17,15 @@ import RescueScreen from "./screens/RescueScreen";
 import CollabScreen from "./screens/CollabScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import UsersScreen from "./screens/UsersScreen";
-
+import { useSelector, useDispatch } from "react-redux";
+import { getUserDetails } from "./actions/userActions";
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.userLogin);
+  console.log(user);
+
+  console.log("user", user);
   return (
     <Router>
       <Header />

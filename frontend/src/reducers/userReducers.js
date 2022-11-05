@@ -18,7 +18,7 @@ export const userReducer = (state = { userData: null }, action) => {
     case USER_DETAILS_SUCCESS:
       return {
         ...state,
-        userDetails: action.data,
+        userData: action.payload.data,
         loading: false,
         errors: null,
       };

@@ -14,6 +14,7 @@ export const authReducer = (state = { authData: null }, action) => {
       return { loading: true };
 
     case USER_LOGIN_SUCCESS:
+      localStorage.setItem("profile",action.payload.data.accessToken);
       return { loading: false, authData: action.payload.data.accessToken, errors: null };
 
     case USER_LOGIN_FAIL:
