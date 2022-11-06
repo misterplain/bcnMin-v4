@@ -23,9 +23,7 @@ import { getUserDetails } from "./actions/userActions";
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userLogin);
-  console.log(user);
 
-  console.log("user", user);
   return (
     <Router>
       <Header />

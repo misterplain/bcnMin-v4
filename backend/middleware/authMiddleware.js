@@ -9,7 +9,7 @@ const protect = asyncHandler(async (req, res, next) => {
 
   if (token) {
     token = token.slice(token.indexOf(" ") + 1);
-    console.log(token);
+
 
     try {
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);

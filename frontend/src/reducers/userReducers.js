@@ -9,8 +9,9 @@ import {
   REMOVE_FAVORITE_SUCCESS,
   REMOVE_FAVORITE_REQUEST,
 } from "../constants/userConstants";
+import { useSelector } from "react";
 
-export const userReducer = (state = { userData: null }, action) => {
+export const userReducer = (state={} , action) => {
   switch (action.type) {
     //user details request
     case USER_DETAILS_REQUEST:
@@ -30,30 +31,55 @@ export const userReducer = (state = { userData: null }, action) => {
       return { loading: true };
 
     case ADD_FAVORITE_SUCCESS:
+      console.log(action.payload.id, "action payload");
+      console.log("add favorite reducer accessed");
       let cloneState = { ...state };
-      cloneState.userData.favorites = [
-        ...cloneState.userData.favorites,
-        action.payload.blogId,
-      ];
-      return cloneState;
+      console.log(cloneState, "clone state");
+      // cloneState.userData.favorites = [
+      //   ...cloneState.userData.favorites,
+      //   action.payload.id,
+      // ];
+      // return cloneState;
+    // return {
+    //   loading: false,
+    //   errors: null,
+    //   userData: {
+    //     ...state.userData,
+    //     favorites: [...state.userData.favorites, action.payload.id],
+    //   },
+    // };
 
     case ADD_FAVORITE_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, error: action.payload.message };
 
     case REMOVE_FAVORITE_REQUEST:
       return { loading: true };
 
     case REMOVE_FAVORITE_SUCCESS: {
+      console.log(action.payload.id);
+      console.log("remove favorite reducer accessed");
       let cloneState = { ...state };
-      cloneState.userData.favorites = cloneState.userData.favorites?.filter(
-        (value) => value !== action.payload.blogId
-      );
-
+      console.log(cloneState, "clone state");
+      // cloneState.userDetails.userData.favorites =
+      //   cloneState.userDetails.userData.favorites.filter(
+      //     (favorite) => favorite !== action.payload.id
+      //   );
       return cloneState;
+
+      // return {
+      //   loading: false,
+      //   errors: null,
+      //   userData: {
+      //     ...state.userData,
+      //     favorites: state.userData.favorites.filter(
+      //       (favorite) => favorite !== action.payload.id
+      //     ),
+      //   },
+      // };
     }
 
     case REMOVE_FAVORITE_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, error: action.payload.message };
 
     default:
       return state;

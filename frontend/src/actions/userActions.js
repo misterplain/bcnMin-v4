@@ -48,12 +48,12 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 //favorites
 export const addFavorite = (id) => async (dispatch, getState) => {
   try {
-    dispatch({
-      type: ADD_FAVORITE_REQUEST,
-    });
+    // dispatch({
+    //   type: ADD_FAVORITE_REQUEST,
+    // });
 
     const authToken = localStorage.getItem("profile");
-    console.log(authToken);
+
 
     const config = {
       headers: {
@@ -68,6 +68,7 @@ export const addFavorite = (id) => async (dispatch, getState) => {
       url: `/favorites/${id}`,
       headers: config.headers,
     });
+    console.log(data.id)
     dispatch({
       type: ADD_FAVORITE_SUCCESS,
       payload: data,
@@ -86,9 +87,9 @@ export const addFavorite = (id) => async (dispatch, getState) => {
 
 export const removeFavorite = (id) => async (dispatch, getState) => {
   try {
-    dispatch({
-      type: REMOVE_FAVORITE_REQUEST,
-    });
+    // dispatch({
+    //   type: REMOVE_FAVORITE_REQUEST,
+    // });
 
     const authToken = localStorage.getItem("profile");
     console.log(authToken);
@@ -109,9 +110,11 @@ export const removeFavorite = (id) => async (dispatch, getState) => {
       headers: config.headers,
     });
 
+    console.log(data)
+
     dispatch({
       type: REMOVE_FAVORITE_SUCCESS,
-      payload: data,
+      payload: data.id,
     });
   } catch (error) {
     dispatch({

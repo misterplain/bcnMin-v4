@@ -9,29 +9,25 @@ import { fetchBlogPosts } from "../actions/blogActions";
 import { addFavorite, removeFavorite } from "../actions/userActions";
 import { getUserDetails } from "../actions/userActions";
 
-const FavoriteButton = ( {id} ) => {
+const FavoriteButton = ({ id }) => {
   const dispatch = useDispatch();
   const token = localStorage.getItem("profile");
   const userData = useSelector((state) => state.userDetails.userData);
   const { favorites } = userData;
-  console.log(favorites);
-
   const isFavorite = favorites.includes(id);
-  console.log(isFavorite);
 
-  const handleFavorite = () => {
-    if (isFavorite) {
-      dispatch(removeFavorite(id));
-    } else {
-      dispatch(addFavorite(id));
-    }
-    dispatch(getUserDetails(token));
-  };
+  // const addFavorite = (id) => {
+  //   favorites = [...favorites, id];
+  // }
 
   return (
     <Button
-      variant={isFavorite ? 'outline-danger' : 'outline-success'}
-      onClick={handleFavorite}
+      variant={isFavorite ? "outline-danger" : "outline-success"}
+      onClick={
+        isFavorite
+          ? () => dispatch(removeFavorite(id))
+          : () => dispatch(addFavorite(id))
+      }
       style={{ margin: "5px" }}
     >
       {isFavorite ? "Remove Favorite" : "Add Favorite"}
@@ -46,10 +42,12 @@ const InformScreen = () => {
 
   useEffect(() => {
     dispatch(fetchBlogPosts());
-    dispatch(getUserDetails(token));
+    // dispatch(getUserDetails(token));
   }, []);
 
+
   const userData = useSelector((state) => state.userDetails.userData);
+  const authData = useSelector((state) => state.userLogin.authData);
 
   const blogPosts = useSelector((state) => state.blogPosts);
   const { loading, error, posts } = blogPosts;
@@ -60,6 +58,7 @@ const InformScreen = () => {
         <Col sm={12} className='page-title mb-3'>
           local news and conservation info
         </Col>
+        <Button onClick={()=>console.log(userData)}>get user details </Button>
         {loading && <Loader />}
         {error && <Message variant='danger'>{error}</Message>}
         {posts &&
@@ -70,7 +69,7 @@ const InformScreen = () => {
                 sm={{ span: 5, offset: 0 }}
                 md={5}
                 lg={3}
-                className='justify-content-center'
+                className='justify-content-center' key={post._id}
               >
                 <Card
                   style={{
@@ -122,7 +121,7 @@ const InformScreen = () => {
                       </Button>
                     )} */}
                     {userData && !userData.loading && (
-                      <FavoriteButton id={post._id} />
+                      <FavoriteButton id={post._id} key={post._id} />
                     )}
                   </Card.Body>
                 </Card>
