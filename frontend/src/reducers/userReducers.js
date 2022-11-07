@@ -2,6 +2,7 @@ import {
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
+  USER_DETAILS_RESET,
   ADD_FAVORITE_REQUEST,
   ADD_FAVORITE_SUCCESS,
   ADD_FAVORITE_FAIL,
@@ -11,7 +12,7 @@ import {
 } from "../constants/userConstants";
 import { useSelector } from "react";
 
-export const userReducer = (state={} , action) => {
+export const userReducer = (state = {}, action) => {
   switch (action.type) {
     //user details request
     case USER_DETAILS_REQUEST:
@@ -26,6 +27,12 @@ export const userReducer = (state={} , action) => {
     case USER_DETAILS_FAIL:
       return { loading: false, error: action.payload };
 
+    //remove user details
+    case USER_DETAILS_RESET:
+      return {
+        userData: null,
+      };
+
     //favorites
     case ADD_FAVORITE_REQUEST:
       return { loading: true };
@@ -35,11 +42,11 @@ export const userReducer = (state={} , action) => {
       console.log("add favorite reducer accessed");
       let cloneState = { ...state };
       console.log(cloneState, "clone state");
-      // cloneState.userData.favorites = [
-      //   ...cloneState.userData.favorites,
-      //   action.payload.id,
-      // ];
-      // return cloneState;
+    // cloneState.userData.favorites = [
+    //   ...cloneState.userData.favorites,
+    //   action.payload.id,
+    // ];
+    // return cloneState;
     // return {
     //   loading: false,
     //   errors: null,

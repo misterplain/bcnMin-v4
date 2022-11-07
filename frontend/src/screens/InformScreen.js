@@ -16,10 +16,6 @@ const FavoriteButton = ({ id }) => {
   const { favorites } = userData;
   const isFavorite = favorites.includes(id);
 
-  // const addFavorite = (id) => {
-  //   favorites = [...favorites, id];
-  // }
-
   return (
     <Button
       variant={isFavorite ? "outline-danger" : "outline-success"}
@@ -38,16 +34,15 @@ const FavoriteButton = ({ id }) => {
 const InformScreen = () => {
   const dispatch = useDispatch();
 
-  const token = localStorage.getItem("profile");
-
+  const token = useSelector((state) => state.userLogin.authData);
+  const userData = useSelector((state) => state.userDetails.userData);
+  
   useEffect(() => {
     dispatch(fetchBlogPosts());
-    // dispatch(getUserDetails(token));
+    if (token) {
+      dispatch(getUserDetails(token));
+    }
   }, []);
-
-
-  const userData = useSelector((state) => state.userDetails.userData);
-  const authData = useSelector((state) => state.userLogin.authData);
 
   const blogPosts = useSelector((state) => state.blogPosts);
   const { loading, error, posts } = blogPosts;
@@ -58,7 +53,6 @@ const InformScreen = () => {
         <Col sm={12} className='page-title mb-3'>
           local news and conservation info
         </Col>
-        <Button onClick={()=>console.log(userData)}>get user details </Button>
         {loading && <Loader />}
         {error && <Message variant='danger'>{error}</Message>}
         {posts &&
@@ -69,7 +63,8 @@ const InformScreen = () => {
                 sm={{ span: 5, offset: 0 }}
                 md={5}
                 lg={3}
-                className='justify-content-center' key={post._id}
+                className='justify-content-center'
+                key={post._id}
               >
                 <Card
                   style={{

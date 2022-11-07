@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Moment from "react-moment";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { fetchComments } from "../actions/commentsActions";
+import { getUserDetails } from "../actions/userActions";
+import { addComment } from "../actions/commentsActions";
 
 const ConnectScreen = () => {
   const [comment, setComment] = useState("");
@@ -12,26 +14,32 @@ const ConnectScreen = () => {
   const commentsList = useSelector((state) => state.comments);
   const { loading, error, comments } = commentsList;
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const token = useSelector((state) => state.userLogin.authData);
 
   useEffect(() => {
     dispatch(fetchComments());
-  }, [dispatch]);
+    if (token) {
+      dispatch(getUserDetails(token));
+    }
+  }, []);
+
+  const userInfo = useSelector((state) => state.userDetails.userData);
 
   const postComment = async (e) => {
     e.preventDefault();
+    console.log("post comment");
+    dispatch(addComment(token, comment));
 
-    const newComment = {
-      comment: comment,
-      user: userInfo.name,
-    };
-    await axios
-      .post(`http://localhost:5000/api/comments`, newComment)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-    dispatch(fetchComments());
-    setComment("");
+    // const newComment = {
+    //   comment: comment,
+    //   user: userInfo.name,
+    // };
+    // await axios
+    //   .post(`http://localhost:5000/api/comments`, newComment)
+    //   .then((res) => console.log(res.data))
+    //   .catch((err) => console.log(err));
+    // dispatch(fetchComments());
+    // setComment("");
   };
 
   return (
@@ -44,11 +52,7 @@ const ConnectScreen = () => {
       <Row className='justify-content-center mb-4'>
         <Col sm={12} md={10} lg={8}>
           {userInfo ? (
-            <Form
-              onSubmit={(e) => postComment(e)}
-              style={{ width: "95%" }}
-              className='text-center'
-            >
+            <Form style={{ width: "95%" }} className='text-center'>
               <Form.Group controlId='comment'>
                 <Form.Control
                   as='textarea'
@@ -56,9 +60,13 @@ const ConnectScreen = () => {
                   rows={3}
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-              <Button variant='outline-success' className='mt-3'>
+                ></Form.Control>{" "}
+              </Form.Group>{" "}
+              <Button
+                onClick={postComment}
+                variant='outline-success'
+                className='mt-3'
+              >
                 Post Comment
               </Button>
             </Form>
@@ -70,25 +78,33 @@ const ConnectScreen = () => {
       <Row className='justify-content-center'>
         <Col sm={12} md={10} lg={8}>
           {comments &&
-            comments.map((comment) => {
+            comments?.map((comment) => {
               return (
-                <Col key={comment._id} className="mb-2">
+                <Col key={comment._id} className='mb-2'>
                   <Card style={{ width: "100%" }}>
                     <Card.Body>
-                      <Card.Title>{comment.user.username} says:</Card.Title>
+                      <Card.Title>{comment.username} says:</Card.Title>
                       <Card.Text>
                         <h2>{comment.comment}</h2>
                       </Card.Text>{" "}
                       <Card.Subtitle className='mb-2 text-muted'>
-                        <h6>Posted on: 
+                        <h6>
+                          Posted on:
                           <Moment format='MM/DD/YYYY'>
                             {comment.createdAt}
                           </Moment>
                         </h6>
-
                       </Card.Subtitle>
-                      {/* <Card.Link href='#'>Edit</Card.Link>
-                      <Card.Link href='#'>Delete</Card.Link> */}
+                      {userInfo?._id === comment.createdBy ? (
+                        <>
+                          <Button variant='outline-success'>
+                            Edit Comment
+                          </Button>
+                          <Button variant='outline-danger'>
+                            Delete Comment
+                          </Button>
+                        </>
+                      ) : null}
                     </Card.Body>
                   </Card>
                 </Col>

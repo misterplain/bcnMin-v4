@@ -19,7 +19,10 @@ const getAllComments = async (req, res) => {
 // @route POST /comments
 // @access Private
 const createNewComment = async (req, res) => {
-  const { id, username, comment } = req.body;
+  const { comment } = req.body;
+  console.log(comment);
+  const { id, username } = req.user;
+  console.log(id, username);
 
   // Confirm data
   if (!comment) {
@@ -27,11 +30,12 @@ const createNewComment = async (req, res) => {
   }
 
   // Create and store the new user
-  const commentText = await Comment.create({ id, username, comment });
+  const newComment = await Comment.create({ username, comment, createdBy: id });
+  console.log(newComment)
 
-  if (commentText) {
+  if (newComment) {
     // Created
-    return res.status(201).json({ message: "New comment created" });
+    return res.status(201).json({newComment});
   } else {
     return res.status(400).json({ message: "Invalid note data received" });
   }

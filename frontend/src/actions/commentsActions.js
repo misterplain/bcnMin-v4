@@ -40,25 +40,21 @@ export const fetchComments = () => async (dispatch) => {
   }
 };
 
-export const addComment = (id, comment) => async (dispatch, getState) => {
+export const addComment = (token, comment) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ADD_COMMENT_REQUEST,
     });
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
-
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Bearer ${token}`,
       },
     };
 
     const { data } = await axios.post(
-      `/comments/${id}`,
+      `/comments`,
       { comment },
       config
     );

@@ -7,6 +7,7 @@ import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
 } from "../constants/authConstants";
+import { USER_DETAILS_RESET } from "../constants/userConstants";
 import axios from "../api/axios";
 import { getUserDetails } from "./userActions";
 
@@ -15,8 +16,6 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({
       type: USER_LOGIN_REQUEST,
     });
-
-
 
     const data = await axios.post("/auth", { email, password });
 
@@ -38,6 +37,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   localStorage.removeItem("profile");
   dispatch({ type: USER_LOGOUT });
+  dispatch({ type: USER_DETAILS_RESET });
 };
 
 //register
@@ -47,10 +47,14 @@ export const register = (username, email, password) => async (dispatch) => {
       type: USER_REGISTER_REQUEST,
     });
 
+    const data = await axios.post("/register", { username, email, password });
+
     dispatch({
       type: USER_REGISTER_SUCCESS,
-      payload: null,
+      payload: data,
     });
+    console.log(data.data.accessToken);
+    dispatch(getUserDetails(data.data.accessToken));
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,

@@ -14,8 +14,12 @@ export const authReducer = (state = { authData: null }, action) => {
       return { loading: true };
 
     case USER_LOGIN_SUCCESS:
-      localStorage.setItem("profile",action.payload.data.accessToken);
-      return { loading: false, authData: action.payload.data.accessToken, errors: null };
+      localStorage.setItem("profile", action.payload.data.accessToken);
+      return {
+        loading: false,
+        authData: action.payload.data.accessToken,
+        errors: null,
+      };
 
     case USER_LOGIN_FAIL:
       return { loading: false, error: action.payload };
@@ -32,8 +36,12 @@ export const authReducer = (state = { authData: null }, action) => {
       return { loading: true };
 
     case USER_REGISTER_SUCCESS:
-      localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
-      return { ...state, authData: action.data, loading: false, errors: null };
+      localStorage.setItem("profile", action.payload.data.accessToken);
+      return {
+        authData: action.payload.data.accessToken,
+        loading: false,
+        errors: null,
+      };
 
     case USER_REGISTER_FAIL:
       return { loading: false, error: action.payload };

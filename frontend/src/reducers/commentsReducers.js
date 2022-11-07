@@ -25,7 +25,22 @@ export const commentsReducer = (state = { comments: [] }, action) => {
       return { loading: true };
 
     case ADD_COMMENT_SUCCESS:
-      return { loading: false, success: true, comments: action.payload };
+      const newComment = action.payload.newComment;
+      console.log(newComment);
+      //add new comment to state
+      // state.comments = [...state.comments, newComment];
+      // return { loading: false, comments: state.comments };
+      // return { loading: false, comments: action.payload.newComment};
+      // return  {comments: [newComment,  newComment] };
+      // return [...state, newComment];
+      // return {...state, comments: [...state.comments, newComment]};
+      // return { comments: [...comments, {newComment}] };
+      return {
+        loading: false,
+        error: null,
+        comments: [...state.comments, newComment],
+      };
+      console.log(state);
 
     case ADD_COMMENT_FAIL:
       return { loading: false, error: action.payload };

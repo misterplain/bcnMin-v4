@@ -54,7 +54,6 @@ export const addFavorite = (id) => async (dispatch, getState) => {
 
     const authToken = localStorage.getItem("profile");
 
-
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +67,7 @@ export const addFavorite = (id) => async (dispatch, getState) => {
       url: `/favorites/${id}`,
       headers: config.headers,
     });
-    console.log(data.id)
+    console.log(data.id);
     dispatch({
       type: ADD_FAVORITE_SUCCESS,
       payload: data,
@@ -110,7 +109,7 @@ export const removeFavorite = (id) => async (dispatch, getState) => {
       headers: config.headers,
     });
 
-    console.log(data)
+    console.log(data);
 
     dispatch({
       type: REMOVE_FAVORITE_SUCCESS,
