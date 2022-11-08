@@ -39,14 +39,15 @@ export const userReducer = (state = {}, action) => {
 
     case ADD_FAVORITE_SUCCESS:
       console.log(action.payload.id, "action payload");
-      console.log("add favorite reducer accessed");
+      let newFavorite = action.payload.id;
+      console.log(newFavorite);
       let cloneState = { ...state };
       console.log(cloneState, "clone state");
-    // cloneState.userData.favorites = [
-    //   ...cloneState.userData.favorites,
-    //   action.payload.id,
-    // ];
-    // return cloneState;
+      cloneState.userData.favorites = [
+        ...cloneState.userData.favorites,
+        newFavorite,
+      ];
+      return cloneState;
     // return {
     //   loading: false,
     //   errors: null,

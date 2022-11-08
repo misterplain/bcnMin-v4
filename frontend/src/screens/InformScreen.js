@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Card, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Message from "../components/Message";
@@ -9,43 +9,19 @@ import { fetchBlogPosts } from "../actions/blogActions";
 import { addFavorite, removeFavorite } from "../actions/userActions";
 import { getUserDetails } from "../actions/userActions";
 
-const FavoriteButton = ({ id }) => {
-  const dispatch = useDispatch();
-  const token = localStorage.getItem("profile");
-  const userData = useSelector((state) => state.userDetails.userData);
-  const { favorites } = userData;
-  const isFavorite = favorites.includes(id);
-
-  return (
-    <Button
-      variant={isFavorite ? "outline-danger" : "outline-success"}
-      onClick={
-        isFavorite
-          ? () => dispatch(removeFavorite(id))
-          : () => dispatch(addFavorite(id))
-      }
-      style={{ margin: "5px" }}
-    >
-      {isFavorite ? "Remove Favorite" : "Add Favorite"}
-    </Button>
-  );
-};
-
 const InformScreen = () => {
   const dispatch = useDispatch();
-
   const token = useSelector((state) => state.userLogin.authData);
   const userData = useSelector((state) => state.userDetails.userData);
-  
+  const blogPosts = useSelector((state) => state.blogPosts);
+  const { loading, error, posts } = blogPosts;
+
   useEffect(() => {
     dispatch(fetchBlogPosts());
     if (token) {
       dispatch(getUserDetails(token));
     }
-  }, []);
-
-  const blogPosts = useSelector((state) => state.blogPosts);
-  const { loading, error, posts } = blogPosts;
+  }, [dispatch]);
 
   return (
     <Container fluid>
@@ -88,35 +64,24 @@ const InformScreen = () => {
                     >
                       Learn More
                     </Button>
-                    {/* {userData?.favorites &&
-                      !loading &&
-                      userData.favorites.includes(post._id)(
-                        <Button
-                          variant='outline-danger'
-                          onClick={() => {
-                            console.log("remove favorite clicked");
-                            dispatch(removeFavorite(post._id));
-                          }}
-                          style={{ margin: "5px" }}
-                        >
-                          Delete Favorite
-                        </Button>
-                      )}
-                    {userData?.favorites &&
-                      !loading && !userData.favorites.includes(post._id) !== -1 && (
+                    {userData && (
                       <Button
-                        variant='outline-danger'
-                        onClick={() => {
-                          console.log("remove favorite clicked");
-                          dispatch(removeFavorite(post._id));
-                        }}
+                        variant={
+                          userData.favorites?.includes(post._id)
+                            ? "outline-danger"
+                            : "outline-success"
+                        }
+                        onClick={
+                          userData.favorites?.includes(post._id)
+                            ? () => dispatch(removeFavorite(post._id))
+                            : () => dispatch(addFavorite(post._id))
+                        }
                         style={{ margin: "5px" }}
                       >
-                        Add Favorite
+                        {userData.favorites?.includes(post._id)
+                          ? "Remove Favorite"
+                          : "Add Favorite"}
                       </Button>
-                    )} */}
-                    {userData && !userData.loading && (
-                      <FavoriteButton id={post._id} key={post._id} />
                     )}
                   </Card.Body>
                 </Card>

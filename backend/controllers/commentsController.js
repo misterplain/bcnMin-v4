@@ -45,10 +45,13 @@ const createNewComment = async (req, res) => {
 // @route PATCH /notes
 // @access Private
 const updateComment = async (req, res) => {
-  const { id, username, comment } = req.body;
+  const { id } = req.params;
+  const { comment } = req.body;
+  console.log(id);
+  console.log(comment);
 
   // Confirm data
-  if (!id || !username || !comment) {
+  if (!comment) {
     return res.status(400).json({ message: "All fields are required" });
   }
 

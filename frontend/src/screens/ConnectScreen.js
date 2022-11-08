@@ -5,10 +5,15 @@ import Moment from "react-moment";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { fetchComments } from "../actions/commentsActions";
 import { getUserDetails } from "../actions/userActions";
-import { addComment, deleteComment, editComment } from "../actions/commentsActions";
+import {
+  addComment,
+  deleteComment,
+  editComment,
+} from "../actions/commentsActions";
 
 const ConnectScreen = () => {
   const [comment, setComment] = useState("");
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
 
   const commentsList = useSelector((state) => state.comments);
@@ -29,17 +34,6 @@ const ConnectScreen = () => {
     e.preventDefault();
     console.log("post comment");
     dispatch(addComment(token, comment));
-
-    // const newComment = {
-    //   comment: comment,
-    //   user: userInfo.name,
-    // };
-    // await axios
-    //   .post(`http://localhost:5000/api/comments`, newComment)
-    //   .then((res) => console.log(res.data))
-    //   .catch((err) => console.log(err));
-    // dispatch(fetchComments());
-    // setComment("");
   };
 
   return (
@@ -84,9 +78,32 @@ const ConnectScreen = () => {
                   <Card style={{ width: "100%" }}>
                     <Card.Body>
                       <Card.Title>{comment.username} says:</Card.Title>
-                      <Card.Text>
-                        <h2>{comment.comment}</h2>
-                      </Card.Text>{" "}
+                      {edit ? (
+                        <Form>
+                          <Form.Group
+                            className='mb-3'
+                            controlId='updateComment'
+                          >
+                            <Form.Control
+                              type='text'
+                              placeholder={`${comment.comment}`}
+                            />
+                          </Form.Group>
+                          <Button
+                            variant='primary'
+                            type='submit'
+                            onClick={() =>
+                              dispatch(editComment(token, comment._id))
+                            }
+                          >
+                            Send edit
+                          </Button>
+                        </Form>
+                      ) : (
+                        <Card.Text>
+                          <h2>{comment.comment}</h2>
+                        </Card.Text>
+                      )}
                       <Card.Subtitle className='mb-2 text-muted'>
                         <h6>
                           Posted on:
@@ -97,10 +114,18 @@ const ConnectScreen = () => {
                       </Card.Subtitle>
                       {userInfo?._id === comment.createdBy ? (
                         <>
-                          <Button variant='outline-success'>
+                          <Button
+                            variant='outline-success'
+                            onClick={() => setEdit(true)}
+                          >
                             Edit Comment
                           </Button>
-                          <Button onClick={()=>dispatch(deleteComment(token, comment._id))}variant='outline-danger'>
+                          <Button
+                            onClick={() =>
+                              dispatch(deleteComment(token, comment._id))
+                            }
+                            variant='outline-danger'
+                          >
                             Delete Comment
                           </Button>
                         </>

@@ -23,33 +23,35 @@ export const commentsReducer = (state = { comments: [] }, action) => {
 
     case ADD_COMMENT_SUCCESS:
       const newComment = action.payload.newComment;
-      console.log(newComment);
-      //add new comment to state
-      // state.comments = [...state.comments, newComment];
-      // return { loading: false, comments: state.comments };
-      // return { loading: false, comments: action.payload.newComment};
-      // return  {comments: [newComment,  newComment] };
-      // return [...state, newComment];
-      // return {...state, comments: [...state.comments, newComment]};
-      // return { comments: [...comments, {newComment}] };
-      return {
-        loading: false,
-        error: null,
-        comments: [...state.comments, newComment],
-      };
-      console.log(state);
+      let newAddState = { ...state };
+
+      {
+        newAddState.comments
+          ? (newAddState.comments = [newComment, ...newAddState.comments])
+          : (newAddState.comments = [newComment]);
+      }
+      // newAddState.comments = [newComment, ...newAddState.comments];
+      return newAddState;
 
     case ADD_COMMENT_FAIL:
       return { loading: false, error: action.payload };
 
     case DELETE_COMMENT_SUCCESS:
-      const commentId = action.payload.id;
-      console.log(action.payload.id);
-      return {
-        loading: false,
-        error: null,
-        comments: state.comments.filter((comment) => comment._id !== commentId),
-      };
+      const commentId = action.payload.data.id;
+      let newDeleteState = { ...state };
+      console.log(commentId);
+      console.log(newDeleteState);
+      newDeleteState.comments = newDeleteState.comments.filter(
+        (comment) => comment._id !== commentId
+      );
+
+      console.log(newDeleteState);
+      return newDeleteState;
+    // return {
+    //   loading: false,
+    //   error: null,
+    //   comments: state.comments.filter((comment) => comment._id !== commentId),
+    // };
 
     case DELETE_COMMENT_FAIL:
       return { loading: false, error: action.payload };

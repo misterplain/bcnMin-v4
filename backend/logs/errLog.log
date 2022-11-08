@@ -136,3 +136,12 @@
 20221108	08:04:42	d3c85081-8d56-448a-a489-57f3815c6f68	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20221108	08:04:49	9c0907c3-cce7-4f1a-a955-e819c34ea49c	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20221108	08:04:57	0860a869-59d0-4a35-aaba-dfe849455cf4	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	18:01:32	20963ca9-dc5c-4ea1-a76f-8f7f2fb440d4	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	18:02:12	7267cf2d-e172-4f39-9ada-65bb0b53aa11	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	18:34:08	7b2d5f01-ed0b-4aae-b5e1-bdcae8ddb757	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	19:08:45	aa2a636b-efcd-4487-bace-8b5f1f8ef765	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	19:29:54	87f0603f-3a3f-4a9a-90a8-c5412fe4042b	Error: Not authorized, token failed	DELETE	/favorites/62a7310ae2ecf60b09da58b9	http://localhost:3000
+20221108	19:59:14	b54af865-fee8-4d2b-b594-3e67c602dcd8	Error: No token, authorization denied	PATCH	/comments/636aa622f788d19b594def7c	undefined
+20221108	20:00:36	7ed87b48-be48-4563-9367-4e574e24f817	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	20:01:04	e766e242-ac70-4fea-90f7-4adc7f55bd13	Error: No token, authorization denied	PUT	/comments/636aa668f788d19b594def81	http://127.0.0.1:5000/
+20221108	20:01:09	12bfa9f6-597c-4d01-bd79-96f92d67712a	Error: No token, authorization denied	PUT	/comments/636aa67bf788d19b594def85	http://127.0.0.1:5000/
