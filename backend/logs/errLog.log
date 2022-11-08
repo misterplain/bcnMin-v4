@@ -133,3 +133,6 @@
 20221107	21:17:32	547d29bc-f4be-41a8-95b5-8b17d9185e01	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20221107	22:13:56	9b328405-a70b-4283-9e36-2472cd65da6b	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20221107	22:31:29	3b72827f-4134-4158-92dc-ab7ae023988c	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	08:04:42	d3c85081-8d56-448a-a489-57f3815c6f68	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	08:04:49	9c0907c3-cce7-4f1a-a955-e819c34ea49c	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	08:04:57	0860a869-59d0-4a35-aaba-dfe849455cf4	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000

@@ -6,9 +6,11 @@ import {
   ADD_COMMENT_FAIL,
   ADD_COMMENT_REQUEST,
   ADD_COMMENT_SUCCESS,
-  REMOVE_COMMENT_FAIL,
-  REMOVE_COMMENT_REQUEST,
-  REMOVE_COMMENT_SUCCESS,
+  DELETE_COMMENT_FAIL,
+  DELETE_COMMENT_REQUEST,
+  DELETE_COMMENT_SUCCESS,
+  EDIT_COMMENT_FAIL,
+  EDIT_COMMENT_SUCCESS,
 } from "../constants/commentsConstants";
 
 export const fetchComments = () => async (dispatch) => {
@@ -42,10 +44,6 @@ export const fetchComments = () => async (dispatch) => {
 
 export const addComment = (token, comment) => async (dispatch, getState) => {
   try {
-    dispatch({
-      type: ADD_COMMENT_REQUEST,
-    });
-
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -74,31 +72,25 @@ export const addComment = (token, comment) => async (dispatch, getState) => {
   }
 };
 
-export const removeComment = (id) => async (dispatch, getState) => {
+export const deleteComment = (token, id) => async (dispatch, getState) => {
   try {
-    dispatch({
-      type: REMOVE_COMMENT_REQUEST,
-    });
-
-    const {
-      userLogin: { userInfo },
-    } = getState();
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Bearer ${token}`,
       },
     };
 
-    await axios.delete(`/comments/${id}`, config);
+   const data =  await axios.delete(`/comments/${id}`, config);
 
     dispatch({
-      type: REMOVE_COMMENT_SUCCESS,
+      type: DELETE_COMMENT_SUCCESS,
+      payload: data,
     });
   } catch (error) {
     dispatch({
-      type: REMOVE_COMMENT_FAIL,
+      type: DELETE_COMMENT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

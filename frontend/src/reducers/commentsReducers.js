@@ -5,9 +5,9 @@ import {
   ADD_COMMENT_FAIL,
   ADD_COMMENT_REQUEST,
   ADD_COMMENT_SUCCESS,
-  REMOVE_COMMENT_FAIL,
-  REMOVE_COMMENT_REQUEST,
-  REMOVE_COMMENT_SUCCESS,
+  DELETE_COMMENT_FAIL,
+  DELETE_COMMENT_REQUEST,
+  DELETE_COMMENT_SUCCESS,
 } from "../constants/commentsConstants";
 
 export const commentsReducer = (state = { comments: [] }, action) => {
@@ -20,9 +20,6 @@ export const commentsReducer = (state = { comments: [] }, action) => {
 
     case GET_COMMENTS_FAIL:
       return { loading: false, error: action.payload };
-
-    case ADD_COMMENT_REQUEST:
-      return { loading: true };
 
     case ADD_COMMENT_SUCCESS:
       const newComment = action.payload.newComment;
@@ -45,13 +42,16 @@ export const commentsReducer = (state = { comments: [] }, action) => {
     case ADD_COMMENT_FAIL:
       return { loading: false, error: action.payload };
 
-    case REMOVE_COMMENT_REQUEST:
-      return { loading: true };
+    case DELETE_COMMENT_SUCCESS:
+      const commentId = action.payload.id;
+      console.log(action.payload.id);
+      return {
+        loading: false,
+        error: null,
+        comments: state.comments.filter((comment) => comment._id !== commentId),
+      };
 
-    case REMOVE_COMMENT_SUCCESS:
-      return { loading: false, success: true, comments: action.payload };
-
-    case REMOVE_COMMENT_FAIL:
+    case DELETE_COMMENT_FAIL:
       return { loading: false, error: action.payload };
 
     default:

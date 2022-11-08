@@ -5,7 +5,7 @@ import Moment from "react-moment";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { fetchComments } from "../actions/commentsActions";
 import { getUserDetails } from "../actions/userActions";
-import { addComment } from "../actions/commentsActions";
+import { addComment, deleteComment, editComment } from "../actions/commentsActions";
 
 const ConnectScreen = () => {
   const [comment, setComment] = useState("");
@@ -100,7 +100,7 @@ const ConnectScreen = () => {
                           <Button variant='outline-success'>
                             Edit Comment
                           </Button>
-                          <Button variant='outline-danger'>
+                          <Button onClick={()=>dispatch(deleteComment(token, comment._id))}variant='outline-danger'>
                             Delete Comment
                           </Button>
                         </>

@@ -4,17 +4,16 @@ const commentsController = require("../controllers/commentsController");
 // const verifyJWT = require("../middleware/verifyJWT");
 const { protect } = require("../middleware/authMiddleware");
 
-router
-  .route("/")
-  .get(commentsController.getAllComments)
-  .delete(commentsController.deleteComment);
+router.route("/").get(commentsController.getAllComments);
 
 //protected routes requiring authorization
 // router.use(verifyJWT);
 router.use(protect);
+router.route("/").post(commentsController.createNewComment);
+
 router
-  .route("/")
-  .post(commentsController.createNewComment)
+  .route("/:id")
+  .delete(commentsController.deleteComment)
   .patch(commentsController.updateComment);
 
 module.exports = router;

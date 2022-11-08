@@ -31,11 +31,11 @@ const createNewComment = async (req, res) => {
 
   // Create and store the new user
   const newComment = await Comment.create({ username, comment, createdBy: id });
-  console.log(newComment)
+  console.log(newComment);
 
   if (newComment) {
     // Created
-    return res.status(201).json({newComment});
+    return res.status(201).json({ newComment });
   } else {
     return res.status(400).json({ message: "Invalid note data received" });
   }
@@ -70,7 +70,10 @@ const updateComment = async (req, res) => {
 // @route DELETE /comments
 // @access Private
 const deleteComment = async (req, res) => {
-  const { id } = req.body;
+  console.log(req.params);
+  // console.log(CommentId)
+  // console.log(id);
+  const { id } = req.params;
 
   // Confirm data
   if (!id) {
@@ -84,11 +87,11 @@ const deleteComment = async (req, res) => {
     return res.status(400).json({ message: "Note not found" });
   }
 
-  const result = await comment.deleteOne();
+  const deletedComment = await comment.deleteOne();
 
-  const reply = `Comment '${result.comment}' with ID ${result._id} deleted`;
-
-  res.json(reply);
+  const reply = `Comment '${deletedComment.comment}' with ID ${deletedComment._id} deleted`;
+  console.log(reply);
+  res.json({ id: deletedComment._id, message: reply });
 };
 
 module.exports = {
