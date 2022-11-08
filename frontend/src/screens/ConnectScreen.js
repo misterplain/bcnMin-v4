@@ -11,14 +11,83 @@ import {
   editComment,
 } from "../actions/commentsActions";
 
+const BlogPost = ({ comment }) => {
+  const token = useSelector((state) => state.userLogin.authData);
+  const dispatch = useDispatch();
+  const [edit, setEdit] = useState(false);
+  const [editCommentText, setEditCommentText] = useState("");
+  const userInfo = useSelector((state) => state.userDetails.userData);
+
+  return (
+    <Col key={comment._id} className='mb-2'>
+      <Card style={{ width: "100%" }}>
+        <Card.Body>
+          <Card.Title>{comment.username} says:</Card.Title>
+          {edit ? (
+            <Form style={{ margin: "10px" }}>
+              <Form.Group className='mb-3' controlId='updateComment'>
+                <Form.Control
+                  type='text'
+                  value={editCommentText}
+                  onChange={(e) => setEditCommentText(e.target.value)}
+                  placeholder={`${comment.comment}`}
+                />
+              </Form.Group>
+              <Button
+                variant='outline-success'
+                type='submit'
+                onClick={() => {
+                  dispatch(
+                    editComment({
+                      token: token,
+                      id:comment._id,
+                      comment: editCommentText,
+                    })
+                  );
+                  setEdit(false);
+                }}
+              >
+                Send edit
+              </Button>
+              <Button variant='outline-danger' onClick={() => setEdit(false)}>
+                Exit editor
+              </Button>
+            </Form>
+          ) : (
+            <Card.Text>
+              <h2>{comment.comment}</h2>
+            </Card.Text>
+          )}
+          <Card.Subtitle className='mb-2 text-muted'>
+            <h6>
+              Posted on:
+              <Moment format='MM/DD/YYYY'>{comment.createdAt}</Moment>
+            </h6>
+          </Card.Subtitle>
+          {userInfo?._id === comment.createdBy ? (
+            <>
+              <Button variant='outline-success' onClick={() => setEdit(true)}>
+                Edit Comment
+              </Button>
+              <Button
+                onClick={() => dispatch(deleteComment(token, comment._id))}
+                variant='outline-danger'
+              >
+                Delete Comment
+              </Button>
+            </>
+          ) : null}
+        </Card.Body>
+      </Card>
+    </Col>
+  );
+};
+
 const ConnectScreen = () => {
   const [comment, setComment] = useState("");
-  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
-
   const commentsList = useSelector((state) => state.comments);
   const { loading, error, comments } = commentsList;
-
   const token = useSelector((state) => state.userLogin.authData);
 
   useEffect(() => {
@@ -73,67 +142,7 @@ const ConnectScreen = () => {
         <Col sm={12} md={10} lg={8}>
           {comments &&
             comments?.map((comment) => {
-              return (
-                <Col key={comment._id} className='mb-2'>
-                  <Card style={{ width: "100%" }}>
-                    <Card.Body>
-                      <Card.Title>{comment.username} says:</Card.Title>
-                      {edit ? (
-                        <Form>
-                          <Form.Group
-                            className='mb-3'
-                            controlId='updateComment'
-                          >
-                            <Form.Control
-                              type='text'
-                              placeholder={`${comment.comment}`}
-                            />
-                          </Form.Group>
-                          <Button
-                            variant='primary'
-                            type='submit'
-                            onClick={() =>
-                              dispatch(editComment(token, comment._id))
-                            }
-                          >
-                            Send edit
-                          </Button>
-                        </Form>
-                      ) : (
-                        <Card.Text>
-                          <h2>{comment.comment}</h2>
-                        </Card.Text>
-                      )}
-                      <Card.Subtitle className='mb-2 text-muted'>
-                        <h6>
-                          Posted on:
-                          <Moment format='MM/DD/YYYY'>
-                            {comment.createdAt}
-                          </Moment>
-                        </h6>
-                      </Card.Subtitle>
-                      {userInfo?._id === comment.createdBy ? (
-                        <>
-                          <Button
-                            variant='outline-success'
-                            onClick={() => setEdit(true)}
-                          >
-                            Edit Comment
-                          </Button>
-                          <Button
-                            onClick={() =>
-                              dispatch(deleteComment(token, comment._id))
-                            }
-                            variant='outline-danger'
-                          >
-                            Delete Comment
-                          </Button>
-                        </>
-                      ) : null}
-                    </Card.Body>
-                  </Card>
-                </Col>
-              );
+              return <BlogPost comment={comment} key={comment._id} />;
             })}
         </Col>
       </Row>

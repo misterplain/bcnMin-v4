@@ -68,31 +68,39 @@ export const addComment = (token, comment) => async (dispatch, getState) => {
   }
 };
 
-export const editComment = (token, id) => async (dispatch) => {
-  try {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    };
+export const editComment =
+  ({ token, id, comment }) =>
+  async (dispatch) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
 
-    const { data } = await axios.put(`/comments/${id}`, config);
+      const { data } = await axios.patch(
+        `/comments/${id}`,
+        { comment },
+        config
+      );
 
-    dispatch({
-      type: EDIT_COMMENT_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: EDIT_COMMENT_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+      console.log(data)
+
+      dispatch({
+        type: EDIT_COMMENT_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: EDIT_COMMENT_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const deleteComment = (token, id) => async (dispatch, getState) => {
   try {

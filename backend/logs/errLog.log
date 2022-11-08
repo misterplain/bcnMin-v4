@@ -145,3 +145,39 @@
 20221108	20:00:36	7ed87b48-be48-4563-9367-4e574e24f817	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20221108	20:01:04	e766e242-ac70-4fea-90f7-4adc7f55bd13	Error: No token, authorization denied	PUT	/comments/636aa668f788d19b594def81	http://127.0.0.1:5000/
 20221108	20:01:09	12bfa9f6-597c-4d01-bd79-96f92d67712a	Error: No token, authorization denied	PUT	/comments/636aa67bf788d19b594def85	http://127.0.0.1:5000/
+20221108	22:15:50	26e6ee13-d6b5-4c13-9cee-392c93898b61	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	22:17:43	fa9775a7-32e4-4e43-b842-d0b1a1389447	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	22:18:12	20b37425-8188-4c3c-8365-06f8278c367e	Error: No token, authorization denied	PUT	/comments/636aa67bf788d19b594def85	http://127.0.0.1:5000/
+20221108	22:20:52	edb1fd0f-9bfc-4287-a33c-679acdbd35e4	Error: No token, authorization denied	PUT	/comments/636aa67bf788d19b594def85	http://127.0.0.1:5000/
+20221108	22:23:15	473cc7bc-383a-439d-8a7f-be6d15bb68e4	Error: No token, authorization denied	PUT	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:24:29	acd93843-1f44-4599-a535-19a1298b1021	Error: No token, authorization denied	PUT	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:27:48	5fd31c09-4aa4-4244-82ae-34acf59f80c0	Error: No token, authorization denied	PUT	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:28:33	3029547a-b3cf-4a46-b367-627621e423ec	Error: No token, authorization denied	PUT	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:29:10	a1e11d69-dbd3-4d51-853a-01786c7109ae	Error: No token, authorization denied	PUT	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:47:32	188705eb-ce89-49b2-9bd2-ab1217780d83	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/9-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
+20221108	22:50:24	2e956f31-7bee-4f5f-93d2-5fdb58500643	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:54:35	3abd572c-a681-49cb-861b-c552c6260830	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:55:51	e571b541-3090-4216-87bc-976f5ff8fc6e	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:56:07	cc427a04-c162-49ad-8206-ab2b59aeb91c	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:56:26	6d53db73-6083-42d8-ac7f-ebb93f8f5985	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	22:56:50	60c925c9-e89e-4fd4-9614-cd00ecaa746b	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:57:10	0c9a0e41-44a5-4724-9f6f-bc86f8802df8	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:58:53	1a8adb4d-ea07-4cd5-bac8-4fcfd7a6162d	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	22:59:48	2d417035-ba7e-490c-bda9-038abef5df37	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:03:20	57591498-8e78-4906-882e-f22b0f011358	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:03:31	51fc24ea-bdb1-4df0-a789-06f1f80b89d4	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:04:59	31874012-2f09-48e1-804d-3e6b43f7b213	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:07:14	c2f4571f-2032-4815-a84e-b1f2f4795149	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:07:43	26fccf2d-569c-4502-8d0d-fec06d95bb66	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:08:01	5f171622-b32f-4897-8c23-1d0d4f052b98	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:08:21	c2130b79-c019-4dcb-bebe-5aee5b7f4037	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:10:16	de3f0aee-d8f6-4484-82bd-57a26e1d1361	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:13:04	447bf678-0f05-4b1a-a269-8469e5e88ce0	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:14:48	2c2d6868-a2ec-4345-8a89-415060aaf61b	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:16:29	7dbfe194-77f2-407a-a1db-d9f3fa31f80a	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:17:00	8a167524-8dad-4668-bf97-03f6ca44bf4f	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:17:13	09e030f0-9fe8-49f4-b1a9-4aea57f32319	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:17:49	a1e1ef5a-0ab9-4bd7-b7b2-637cbbdfac73	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:19:56	1e010b63-0abc-4e2a-81cc-8fbe22d16571	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
+20221108	23:20:26	c2b2c9ba-3129-456c-826e-ddc4013f6f93	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221108	23:36:13	67075ce5-46c8-4998-9435-b871b6f44f99	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000

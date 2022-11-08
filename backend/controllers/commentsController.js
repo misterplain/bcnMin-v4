@@ -45,10 +45,11 @@ const createNewComment = async (req, res) => {
 // @route PATCH /notes
 // @access Private
 const updateComment = async (req, res) => {
+  // console.log("update comment controller accessed");
   const { id } = req.params;
   const { comment } = req.body;
-  console.log(id);
-  console.log(comment);
+  console.log(req.body);
+  // console.log(id);
 
   // Confirm data
   if (!comment) {
@@ -66,7 +67,7 @@ const updateComment = async (req, res) => {
 
   const updatedComment = await commentToUpdate.save();
 
-  res.json(`'${updatedComment._id}' updated`);
+  res.json({ updatedComment });
 };
 
 // @desc Delete a comment

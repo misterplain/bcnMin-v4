@@ -8,6 +8,8 @@ import {
   DELETE_COMMENT_FAIL,
   DELETE_COMMENT_REQUEST,
   DELETE_COMMENT_SUCCESS,
+  EDIT_COMMENT_FAIL,
+  EDIT_COMMENT_SUCCESS,
 } from "../constants/commentsConstants";
 
 export const commentsReducer = (state = { comments: [] }, action) => {
@@ -55,6 +57,19 @@ export const commentsReducer = (state = { comments: [] }, action) => {
 
     case DELETE_COMMENT_FAIL:
       return { loading: false, error: action.payload };
+    case EDIT_COMMENT_SUCCESS:
+      const editedCommentId = action.payload.updatedComment._id;
+      console.log(editedCommentId);
+      let newEditState = { ...state };
+      const editedComment = action.payload.updatedComment.comment;
+      console.log(editedComment);
+      let commentToEdit = newEditState.comments.find(
+        (comment) => comment._id === editedCommentId
+      );
+      console.log(commentToEdit);
+      commentToEdit.comment = editedComment;
+      console.log(newEditState);
+      return newEditState;
 
     default:
       return state;

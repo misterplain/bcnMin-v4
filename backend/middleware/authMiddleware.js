@@ -4,12 +4,12 @@ const User = require("../models/userModel");
 
 const protect = asyncHandler(async (req, res, next) => {
   let token = req.get("Authorization");
+  console.log('protect middleware accessed');
   // axios.defaults.headers.common["x-auth-token"] = token;
   // let token = req.body.headers.Authorization;
 
   if (token) {
     token = token.slice(token.indexOf(" ") + 1);
-
 
     try {
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
