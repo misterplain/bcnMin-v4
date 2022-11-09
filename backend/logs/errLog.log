@@ -181,3 +181,4 @@
 20221108	23:19:56	1e010b63-0abc-4e2a-81cc-8fbe22d16571	SyntaxError: Unexpected token " in JSON at position 0	PATCH	/comments/636ac8a73718e087d05bb141	http://127.0.0.1:5000/
 20221108	23:20:26	c2b2c9ba-3129-456c-826e-ddc4013f6f93	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20221108	23:36:13	67075ce5-46c8-4998-9435-b871b6f44f99	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221109	08:42:00	e583c2b2-dd59-451d-9d82-b76dd1409296	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000

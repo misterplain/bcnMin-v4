@@ -64,14 +64,14 @@ export const userReducer = (state = {}, action) => {
       return { loading: true };
 
     case REMOVE_FAVORITE_SUCCESS: {
-      console.log(action.payload.id);
+      let removedFavoriteId = action.payload;
+      console.log(action.payload);
       console.log("remove favorite reducer accessed");
       let cloneState = { ...state };
       console.log(cloneState, "clone state");
-      // cloneState.userDetails.userData.favorites =
-      //   cloneState.userDetails.userData.favorites.filter(
-      //     (favorite) => favorite !== action.payload.id
-      //   );
+      cloneState.userData.favorites = cloneState.userData.favorites.filter(
+        (favorite) => favorite !== removedFavoriteId
+      );
       return cloneState;
 
       // return {

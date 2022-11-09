@@ -9,7 +9,43 @@ import { fetchBlogPosts } from "../actions/blogActions";
 import { addFavorite, removeFavorite } from "../actions/userActions";
 import { getUserDetails } from "../actions/userActions";
 
+const FavoriteButton = ({ post }) => {
+  const dispatch = useDispatch();
+  const [isFavorite, setIsFavorite] = useState(false);
+  const token = useSelector((state) => state.userLogin.authData);
+  const userData = useSelector((state) => state.userDetails.userData);
+
+  useEffect(() => {
+    if (userData) {
+      if (userData.favorites.includes(post._id)) {
+        setIsFavorite(true);
+      }
+    }
+  }, [setIsFavorite, userData, post]);
+
+  return (
+    <Button
+      variant={isFavorite ? "outline-danger" : "outline-success"}
+      onClick={
+        isFavorite
+          ? () => {
+              dispatch(removeFavorite(post._id));
+              setIsFavorite(false);
+            }
+          : () => {
+              dispatch(addFavorite(post._id));
+              setIsFavorite(true);
+            }
+      }
+      style={{ margin: "5px" }}
+    >
+      {isFavorite ? "Remove Favorite" : "Add Favorite"}
+    </Button>
+  );
+};
+
 const InformScreen = () => {
+  const [isFavorite, setIsFavorite] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector((state) => state.userLogin.authData);
   const userData = useSelector((state) => state.userDetails.userData);
@@ -64,7 +100,8 @@ const InformScreen = () => {
                     >
                       Learn More
                     </Button>
-                    {userData && (
+                    {userData && <FavoriteButton post={post} />}
+                    {/* {userData && (
                       <Button
                         variant={
                           userData.favorites?.includes(post._id)
@@ -82,7 +119,7 @@ const InformScreen = () => {
                           ? "Remove Favorite"
                           : "Add Favorite"}
                       </Button>
-                    )}
+                    )} */}
                   </Card.Body>
                 </Card>
               </Col>
