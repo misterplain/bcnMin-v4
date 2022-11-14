@@ -38,24 +38,13 @@ export const userReducer = (state = {}, action) => {
       return { loading: true };
 
     case ADD_FAVORITE_SUCCESS:
-      console.log(action.payload.id, "action payload");
       let newFavorite = action.payload.id;
-      console.log(newFavorite);
       let cloneState = { ...state };
-      console.log(cloneState, "clone state");
       cloneState.userData.favorites = [
         ...cloneState.userData.favorites,
         newFavorite,
       ];
       return cloneState;
-    // return {
-    //   loading: false,
-    //   errors: null,
-    //   userData: {
-    //     ...state.userData,
-    //     favorites: [...state.userData.favorites, action.payload.id],
-    //   },
-    // };
 
     case ADD_FAVORITE_FAIL:
       return { loading: false, error: action.payload.message };
@@ -65,25 +54,11 @@ export const userReducer = (state = {}, action) => {
 
     case REMOVE_FAVORITE_SUCCESS: {
       let removedFavoriteId = action.payload;
-      console.log(action.payload);
-      console.log("remove favorite reducer accessed");
       let cloneState = { ...state };
-      console.log(cloneState, "clone state");
       cloneState.userData.favorites = cloneState.userData.favorites.filter(
         (favorite) => favorite !== removedFavoriteId
       );
       return cloneState;
-
-      // return {
-      //   loading: false,
-      //   errors: null,
-      //   userData: {
-      //     ...state.userData,
-      //     favorites: state.userData.favorites.filter(
-      //       (favorite) => favorite !== action.payload.id
-      //     ),
-      //   },
-      // };
     }
 
     case REMOVE_FAVORITE_FAIL:

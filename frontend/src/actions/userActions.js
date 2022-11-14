@@ -8,7 +8,6 @@ import {
   REMOVE_FAVORITE_SUCCESS,
   REMOVE_FAVORITE_FAIL,
   REMOVE_FAVORITE_REQUEST,
-  
 } from "../constants/userConstants";
 import axios from "../api/axios";
 
@@ -49,10 +48,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 //favorites
 export const addFavorite = (id) => async (dispatch, getState) => {
   try {
-    // dispatch({
-    //   type: ADD_FAVORITE_REQUEST,
-    // });
-
     const authToken = localStorage.getItem("profile");
 
     const config = {
@@ -62,7 +57,6 @@ export const addFavorite = (id) => async (dispatch, getState) => {
       },
     };
 
-    // const { data } = await axios.post(`, config);
     const { data } = await axios({
       method: "post",
       url: `/favorites/${id}`,
@@ -87,12 +81,7 @@ export const addFavorite = (id) => async (dispatch, getState) => {
 
 export const removeFavorite = (id) => async (dispatch, getState) => {
   try {
-    // dispatch({
-    //   type: REMOVE_FAVORITE_REQUEST,
-    // });
-
     const authToken = localStorage.getItem("profile");
-    console.log(authToken);
 
     const config = {
       headers: {
@@ -102,15 +91,11 @@ export const removeFavorite = (id) => async (dispatch, getState) => {
     };
     console.log("remove favorite action accessed");
 
-    // const { data } = await axios.delete(`/api/favorites/${id}`, config);
-
     const { data } = await axios({
       method: "delete",
       url: `/favorites/${id}`,
       headers: config.headers,
     });
-
-    console.log(data);
 
     dispatch({
       type: REMOVE_FAVORITE_SUCCESS,
