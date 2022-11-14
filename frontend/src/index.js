@@ -1,15 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './bootstrap.min.css';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./bootstrap.min.css";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 //redux store
 import { Provider } from "react-redux";
-import store from "./store"
-// import {store} from "./app/store";
+import store from "./store";
+//disable react devtools
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+if (process.env.NODE_ENV === "production") {
+  disableReactDevTools();
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <App />
