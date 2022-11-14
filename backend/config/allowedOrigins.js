@@ -1,5 +1,6 @@
 const allowedOrigins = [
-    'https://bcnminimalist.onrender.com/'
+    'https://bcnminimalist.onrender.com/',
+    "*"
     
 ]
 
