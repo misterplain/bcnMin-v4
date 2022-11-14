@@ -25,6 +25,7 @@ const app = express();
 
 console.log(process.env.NODE_ENV);
 console.log('test')
+console.log('test2')
 
 //Connect to Mongo DB
 connectDB();
