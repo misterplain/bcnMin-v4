@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "../api/axios";
 import {
   BLOG_POST_FAIL,
   BLOG_POST_REQUEST,

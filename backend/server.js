@@ -34,8 +34,8 @@ connectDB();
 app.use(logger);
 
 //cross origin resource sharing
-app.use(cors(corsOptions));
-// app.use(cors("*"));
+// app.use(cors(corsOptions));
+app.use(cors("*"));
 
 // built-in middleware to handle urlencoded form data
 app.use(express.urlencoded({ extended: false }));
