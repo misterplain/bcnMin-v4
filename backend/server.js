@@ -24,6 +24,7 @@ const commentsRoutes = require("./routes/commentsRoutes");
 const app = express();
 
 console.log(process.env.NODE_ENV);
+console.log('test')
 
 //Connect to Mongo DB
 connectDB();
