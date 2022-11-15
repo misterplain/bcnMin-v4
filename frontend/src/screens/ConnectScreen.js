@@ -11,7 +11,7 @@ import {
   editComment,
 } from "../actions/commentsActions";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, key }) => {
   const token = useSelector((state) => state.userLogin.authData);
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);

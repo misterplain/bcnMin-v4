@@ -9295,3 +9295,7 @@
 20221109	22:34:06	510f83fe-2277-45ab-b3bb-025cf6fc9005	POST	/auth	http://localhost:3000
 20221115	08:46:57	8ba2a5ec-8caa-43db-b1bf-8e0c1aab0f31	GET	/comments	undefined
 20221115	08:46:59	e26e6847-b273-4b21-8588-1c9b513054be	POST	/comments	http://127.0.0.1:5000/
+20221115	08:54:03	3136ef2b-8415-4190-ac41-94ae6721f9db	GET	/comments	undefined
+20221115	08:54:50	94b46b31-dcce-40ea-b708-7004591ed50b	GET	/comments	undefined
+20221115	08:54:52	34e26ee8-6ffd-4f4b-8035-aa38d6acdb19	POST	/comments	http://127.0.0.1:5000/
+20221115	08:54:55	6f908706-93f0-4d18-9851-cb4e081be4e4	POST	/comments	http://127.0.0.1:5000/
