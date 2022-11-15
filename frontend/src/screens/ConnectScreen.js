@@ -11,7 +11,7 @@ import {
   editComment,
 } from "../actions/commentsActions";
 
-const BlogPost = ({ comment }) => {
+const Comment = ({ comment }) => {
   const token = useSelector((state) => state.userLogin.authData);
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
@@ -19,7 +19,7 @@ const BlogPost = ({ comment }) => {
   const userInfo = useSelector((state) => state.userDetails.userData);
 
   return (
-    <Col key={comment._id} className='mb-2'>
+    <Col key={key} className='mb-2'>
       <Card style={{ width: "100%" }}>
         <Card.Body>
           <Card.Title>{comment.username} says:</Card.Title>
@@ -142,7 +142,7 @@ const ConnectScreen = () => {
         <Col sm={12} md={10} lg={8}>
           {comments &&
             comments?.map((comment) => {
-              return <BlogPost comment={comment} key={comment._id} />;
+              return <Comment comment={comment} key={comment.id} />;
             })}
         </Col>
       </Row>

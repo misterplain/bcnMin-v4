@@ -9293,3 +9293,5 @@
 20221109	22:33:59	25a1a862-9e5c-4258-a4f0-6d5e754c9369	GET	/blogs	undefined
 20221109	22:34:06	12a02f53-ae48-40cc-bf56-07b106fef2c0	OPTIONS	/auth	http://localhost:3000
 20221109	22:34:06	510f83fe-2277-45ab-b3bb-025cf6fc9005	POST	/auth	http://localhost:3000
+20221115	08:46:57	8ba2a5ec-8caa-43db-b1bf-8e0c1aab0f31	GET	/comments	undefined
+20221115	08:46:59	e26e6847-b273-4b21-8588-1c9b513054be	POST	/comments	http://127.0.0.1:5000/
