@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axios";
 import {
   GET_COMMENTS_FAIL,
   GET_COMMENTS_REQUEST,
