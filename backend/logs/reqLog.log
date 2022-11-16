@@ -9299,3 +9299,5 @@
 20221115	08:54:50	94b46b31-dcce-40ea-b708-7004591ed50b	GET	/comments	undefined
 20221115	08:54:52	34e26ee8-6ffd-4f4b-8035-aa38d6acdb19	POST	/comments	http://127.0.0.1:5000/
 20221115	08:54:55	6f908706-93f0-4d18-9851-cb4e081be4e4	POST	/comments	http://127.0.0.1:5000/
+20221116	08:07:43	e3de9269-e43b-4e07-a938-d52c91610c8b	GET	/users	undefined
+20221116	08:10:14	f1e371ed-3513-49e3-aeea-43dc75af024e	GET	/users	undefined
