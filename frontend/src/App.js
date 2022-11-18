@@ -39,7 +39,7 @@ function App() {
             <Route path='/rescue' element={<RescueScreen />} />
             <Route path='/collab' element={<CollabScreen />} />
             <Route path='/favorites' element={<FavoritesScreen />} />
-            <Route path='/users' element={<UsersScreen />} />
+            {/* <Route path='/users' element={<UsersScreen />} /> */}
           </Routes>
         </Container>
       </main>
