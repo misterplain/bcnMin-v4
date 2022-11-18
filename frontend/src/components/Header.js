@@ -160,6 +160,34 @@ const Header = () => {
                 <Nav.Link as={Link} to='/collab' onClick={() => setOpen(false)}>
                   Collab
                 </Nav.Link>
+                {authData ? (
+                  <>
+                    <Nav.Link
+                      as={Link}
+                      to='/favorites'
+                      onClick={() => setOpen(false)}
+                    >
+                      Favorites
+                    </Nav.Link>{" "}
+                    <Nav.Link
+                      as={Link}
+                      to='/logout'
+                      onClick={logoutAndRedirect}
+                    >
+                      Logout
+                    </Nav.Link>{" "}
+                  </>
+                ) : (
+                  <>
+                    <Nav.Link
+                      as={Link}
+                      to='/login'
+                      onClick={() => setOpen(false)}
+                    >
+                      Login
+                    </Nav.Link>
+                  </>
+                )}
                 {/* <NavDropdown
                   title='Dropdown'
                   id={`offcanvasNavbarDropdown-expand-sm`}

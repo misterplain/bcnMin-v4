@@ -9333,3 +9333,17 @@
 20221118	14:38:49	50f7b62f-c101-4aae-ab21-ce4d6e2eea6b	GET	/comments	http://localhost:3000
 20221118	14:40:13	fc3cdd5e-31ce-4fa6-ba11-33139c1f11a8	GET	/comments	http://localhost:3000
 20221118	14:40:22	260aff50-3c44-4467-87a9-8498379ea282	GET	/blogs	http://localhost:3000
+20221118	14:45:12	090e230a-78e5-486b-b8b4-0b3d9e7c8403	OPTIONS	/auth	http://localhost:3000
+20221118	14:45:12	a3025681-6a76-4f0b-a5bd-41bdc0972df6	POST	/auth	http://localhost:3000
+20221118	14:45:12	8e255f71-c267-4dac-9ae6-dfc084d10fc8	OPTIONS	/users/profile	http://localhost:3000
+20221118	14:45:12	7b7c91f5-6dbf-4c8a-8a2e-b25f47e8515d	GET	/users/profile	http://localhost:3000
+20221118	14:45:12	f3c1649c-9281-4b11-a219-334b3aa04103	GET	/blogs	http://localhost:3000
+20221118	14:45:12	2480cddf-7663-4b38-a74f-c85f4163e479	GET	/users/profile	http://localhost:3000
+20221118	14:45:19	967ab819-9334-4fc1-8429-378dc941d13c	GET	/blogs	http://localhost:3000
+20221118	14:45:27	ce3ba378-3135-4acb-adbf-4c21f26f4d7f	OPTIONS	/auth	http://localhost:3000
+20221118	14:45:27	7302624e-5692-434a-a151-926aaeafbe4a	POST	/auth	http://localhost:3000
+20221118	14:45:27	6b84b523-a17c-4c31-a0cd-5913315b4b4f	OPTIONS	/users/profile	http://localhost:3000
+20221118	14:45:27	6ab652d0-1cf1-402e-84c7-06595715c200	GET	/users/profile	http://localhost:3000
+20221118	14:45:27	0c1ec998-670a-4206-8783-69b5eb34fd3d	GET	/blogs	http://localhost:3000
+20221118	14:45:27	5ff21e79-2c00-4d12-b4e8-0418cabdbeb4	GET	/users/profile	http://localhost:3000
+20221118	14:45:44	76e4c81e-fc3f-4aa5-bf60-daa3aba1a371	GET	/blogs	http://localhost:3000
