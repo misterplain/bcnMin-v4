@@ -3,8 +3,8 @@
 ##### Misc
 
 1. [ ] Add footer /  social media links 
-2. [ ] Navbar - when open, profile icon with dropdown menu, when closed, profile icon sits next to navbar toggler
-3. [ ] Remove users page
+2. [ ] Navbar - x button on offcanvas closes canvas, link styling
+3. [x] Remove users page
 
 
 ###### Sign in / register page

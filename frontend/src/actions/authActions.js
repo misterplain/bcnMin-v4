@@ -18,18 +18,19 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     const data = await axios.post("/auth", { email, password });
+    console.log(data)
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
     });
 
-    // console.log(data.data.accessToken);
     dispatch(getUserDetails(data.data.accessToken));
   } catch (error) {
+    console.log(error.response.data.message);
     dispatch({
       type: USER_LOGIN_FAIL,
-      payload: null,
+      payload: error.response.data.message,
     });
   }
 };

@@ -16,7 +16,7 @@ const authUser = asyncHandler(async (req, res) => {
   const foundUser = await User.findOne({ email }).exec();
 
   if (!foundUser) {
-    return res.status(401).json({ message: "Unauthorized can't find user" });
+    return res.status(401).json({ message: "Login failed, please check your credentials" });
   }
 
   const match = await bcrypt.compare(password, foundUser.password);
@@ -24,7 +24,7 @@ const authUser = asyncHandler(async (req, res) => {
   if (!match)
     return res
       .status(401)
-      .json({ message: "Unauthorized passwords not a match" });
+      .json({ message: "Login failed, please check your credentials" });
 
   const accessToken = jwt.sign(
     {
