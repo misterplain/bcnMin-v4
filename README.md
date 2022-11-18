@@ -3,20 +3,21 @@
 ##### Misc
 
 1. [ ] Add footer /  social media links 
-2. [ ] Navbar - x button on offcanvas closes canvas, link styling
+2. [x] Navbar - x button on offcanvas closes canvas, link styling
+3. [ ] Navbar - links in header now opening offcanvas
 3. [x] Remove users page
 
 
 ###### Sign in / register page
 
-1. [ ] Remove labels, udpate button 
+1. [x] Remove labels, udpate button 
 2. [ ] Add "remember me" checkbox
 3. [ ] Add "forgot password" link
-4. [ ] Headings centered
-5. [ ] Display errors - username/password incorrect
-6. [ ] Display errors - username/password required
-7. [ ] Display errors - register, user data not sufficient
-8. [ ] Display errors - register, user already exists
+4. [x] Headings centered
+5. [x] Display errors - username/password incorrect
+6. [x] Display errors - username/password required
+7. [x] Display errors - register, user data not sufficient
+8. [x] Display errors - register, user already exists
 
 ###### Inform Page
 

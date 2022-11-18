@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 // @access Private
 const registerUser = asyncHandler(async (req, res) => {
   const { username, password, email } = req.body;
+  console.log(req.body);
   if (!username || !password || !email) {
     return res.status(400).json({ message: "Please fill in all fields" });
   }

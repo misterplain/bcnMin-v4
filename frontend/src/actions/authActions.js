@@ -59,7 +59,7 @@ export const register = (username, email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
-      payload: null,
+      payload: error.response.data.message,
     });
   }
 };

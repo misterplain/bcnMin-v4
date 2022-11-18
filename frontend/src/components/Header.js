@@ -21,13 +21,16 @@ const Header = () => {
   const logoutAndRedirect = () => {
     dispatch(logout());
     navigate("/login");
-    setOpen(false);
+    setShow(false);
   };
 
   const userLogin = useSelector((state) => state.userLogin);
   const { authData } = userLogin;
 
-  const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => show && setShow(false);
+  const toggleShow = () => setShow((s) => !s);
 
   return (
     <header>
@@ -37,14 +40,15 @@ const Header = () => {
           <Navbar.Toggle
             aria-controls={`offcanvasNavbar-expand-sm`}
             onClick={() => {
-              open ? setOpen(false) : setOpen(true);
+              show ? setShow(false) : setShow(true);
             }}
           />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-sm`}
             aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
             placement='end'
-            show={open}
+            show={show}
+            onClick={toggleShow}
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
@@ -52,24 +56,24 @@ const Header = () => {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className='justify-content-end flex-grow-1 pe-3'>
-                <Nav.Link as={Link} to='/' onClick={() => setOpen(false)}>
+              <Nav className='justify-content-end flex-grow-1 pe-3' collapseOnSelect>
+                <Nav.Link as={Link} to='/' onSelect={handleClose}>
                   Inform
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to='/connect'
-                  onClick={() => setOpen(false)}
+                  onSelect={() => setShow(false)}
                 >
                   Connect
                 </Nav.Link>
-                <Nav.Link as={Link} to='/tech' onClick={() => setOpen(false)}>
+                <Nav.Link as={Link} to='/tech' onSelect={handleClose}>
                   Tech
                 </Nav.Link>
-                <Nav.Link as={Link} to='/rescue' onClick={() => setOpen(false)}>
+                <Nav.Link as={Link} to='/rescue' onSelect={() => setShow(false)}>
                   Rescue
                 </Nav.Link>
-                <Nav.Link as={Link} to='/collab' onClick={() => setOpen(false)}>
+                <Nav.Link as={Link} to='/collab' onSelect={() => setShow(false)}>
                   Collab
                 </Nav.Link>
                 {authData ? (
@@ -77,14 +81,16 @@ const Header = () => {
                     <Nav.Link
                       as={Link}
                       to='/favorites'
-                      onClick={() => setOpen(false)}
+                      onSelect={() => setShow(false)}
+                      style={{color: 'purple'}}
                     >
                       Favorites
                     </Nav.Link>{" "}
                     <Nav.Link
                       as={Link}
                       to='/logout'
-                      onClick={logoutAndRedirect}
+                      onSelect={logoutAndRedirect}
+                      style={{color: 'purple'}}
                     >
                       Logout
                     </Nav.Link>{" "}
@@ -94,7 +100,8 @@ const Header = () => {
                     <Nav.Link
                       as={Link}
                       to='/login'
-                      onClick={() => setOpen(false)}
+                      onSelect={() => setShow(false)}
+                      style={{color: 'purple'}}
                     >
                       Login
                     </Nav.Link>

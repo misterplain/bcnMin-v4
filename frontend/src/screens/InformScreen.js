@@ -9,6 +9,7 @@ import { fetchBlogPosts } from "../actions/blogActions";
 import { addFavorite, removeFavorite } from "../actions/userActions";
 import { getUserDetails } from "../actions/userActions";
 
+
 const FavoriteButton = ({ post }) => {
   const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState(false);
@@ -22,6 +23,7 @@ const FavoriteButton = ({ post }) => {
       }
     }
   }, [setIsFavorite, userData, post]);
+
 
   return (
     <Button
