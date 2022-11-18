@@ -22,7 +22,7 @@ export const authReducer = (state = { authData: null }, action) => {
       };
 
     case USER_LOGIN_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, loginError: action.payload };
 
     case USER_LOGOUT:
       localStorage.removeItem("profile");
@@ -44,7 +44,7 @@ export const authReducer = (state = { authData: null }, action) => {
       };
 
     case USER_REGISTER_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, registerError: action.payload };
 
     default:
       return state;

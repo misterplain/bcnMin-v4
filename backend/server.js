@@ -18,14 +18,13 @@ const registerRoutes = require("./routes/registerRoutes");
 const refreshRoutes = require("./routes/refreshRoutes");
 const logoutRoutes = require("./routes/logoutRoutes");
 const blogsRoutes = require("./routes/blogsRoutes");
+const collabRoutes = require("./routes/collabRoutes");
 const favoritesRoutes = require("./routes/favoritesRoutes");
 const commentsRoutes = require("./routes/commentsRoutes");
 
 const app = express();
 
 console.log(process.env.NODE_ENV);
-console.log('test')
-console.log('test2')
 
 //Connect to Mongo DB
 connectDB();
@@ -56,6 +55,7 @@ app.use("/register", registerRoutes);
 app.use("/refresh", refreshRoutes);
 app.use("/logout", logoutRoutes);
 app.use("/blogs", blogsRoutes);
+app.use("/collab", collabRoutes)
 app.use("/favorites", favoritesRoutes);
 app.use("/comments", commentsRoutes);
 

@@ -48,7 +48,6 @@ const Header = () => {
             aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
             placement='end'
             show={show}
-            onClick={toggleShow}
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
@@ -56,24 +55,23 @@ const Header = () => {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className='justify-content-end flex-grow-1 pe-3' collapseOnSelect>
-                <Nav.Link as={Link} to='/' onSelect={handleClose}>
+              <Nav
+                className='justify-content-end flex-grow-1 pe-3'
+                collapseOnSelect
+              >
+                <Nav.Link as={Link} to='/'>
                   Inform
                 </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to='/connect'
-                  onSelect={() => setShow(false)}
-                >
+                <Nav.Link as={Link} to='/connect'>
                   Connect
                 </Nav.Link>
-                <Nav.Link as={Link} to='/tech' onSelect={handleClose}>
+                <Nav.Link as={Link} to='/tech'>
                   Tech
                 </Nav.Link>
-                <Nav.Link as={Link} to='/rescue' onSelect={() => setShow(false)}>
+                <Nav.Link as={Link} to='/rescue'>
                   Rescue
                 </Nav.Link>
-                <Nav.Link as={Link} to='/collab' onSelect={() => setShow(false)}>
+                <Nav.Link as={Link} to='/collab'>
                   Collab
                 </Nav.Link>
                 {authData ? (
@@ -81,16 +79,15 @@ const Header = () => {
                     <Nav.Link
                       as={Link}
                       to='/favorites'
-                      onSelect={() => setShow(false)}
-                      style={{color: 'purple'}}
+                      style={{ color: "purple" }}
                     >
                       Favorites
                     </Nav.Link>{" "}
                     <Nav.Link
                       as={Link}
                       to='/logout'
-                      onSelect={logoutAndRedirect}
-                      style={{color: 'purple'}}
+                      onClick={logoutAndRedirect}
+                      style={{ color: "purple" }}
                     >
                       Logout
                     </Nav.Link>{" "}
@@ -101,7 +98,7 @@ const Header = () => {
                       as={Link}
                       to='/login'
                       onSelect={() => setShow(false)}
-                      style={{color: 'purple'}}
+                      style={{ color: "purple" }}
                     >
                       Login
                     </Nav.Link>

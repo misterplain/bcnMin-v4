@@ -21,7 +21,7 @@ const RegisterScreen = ({ match, history }) => {
   const location = useLocation();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, authData } = userLogin;
+  const { loading, registerError, authData } = userLogin;
 
   const registerSchema = Yup.object({
     username: Yup.string().required("Please provide a username"),
@@ -59,7 +59,7 @@ const RegisterScreen = ({ match, history }) => {
           </Col>
           <Col xs={10}>
             <FormContainer>
-              {error && <Message variant='danger'>{error}</Message>}
+              {registerError && <Message variant='danger'>{registerError}</Message>}
               <Formik
                 initialValues={{
                   username: "",

@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { COLLAB } from "../shared/collab";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "../api/axios";
+//form validation
+import * as Yup from "yup";
+import { Formik } from "formik";
 
 const collab = COLLAB;
 
-const validationSchema = Yup.object({
+const collabSchema = Yup.object({
   name: Yup.string()
     .min(3, "Your name should have more than 3 characters")
     .required("Required"),
-  phoneNum: Yup.string()
-    .min(
-      9,
-      "Phone number should have more than 3 characters, please include country code"
-    )
-    .required("Required"),
+  phoneNum: Yup.string().min(
+    9,
+    "Phone number should have more than 9 characters, please include country code"
+  ),
   email: Yup.string().min(3, "Too short").required("Required"),
   message: Yup.string()
     .min(2, "You can do better than that")
@@ -24,98 +24,123 @@ const validationSchema = Yup.object({
 });
 
 const CollabScreen = () => {
-  const [contact, setContact] = useState("");
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      phoneNum: "",
-      email: "",
-      message: "",
-    },
-    validationSchema,
-    onSubmit: (values, { resetForm }) => {
-      setContact({
-        name: values.name,
-        phoneNum: values.phoneNum,
-        email: values.email,
-        message: values.message,
-      });
-      console.log(values);
-      resetForm();
-    },
-  });
   return (
     <Container className='justify-content-center text-center'>
       <Row>
-        <Col sm={12} className='page-title mb-3'>
+        <Col sm={12} className='page-title mb-2'>
           Collab
         </Col>
       </Row>
       <Row className='justify-content-center mb-3'>
         <Col xs={10} sm={10} md={8} lg={8}>
-          {" "}
-          <Form
-            onSubmit={formik.handleSubmit}
-            style={{ padding: "40px", border: "2px solid green" }}
-          >
-            <Form.Group className='mb-3' controlId='name'>
-              <Form.Control
-                type='text'
-                placeholder='name'
-                value={formik.values.name}
-                onChange={formik.handleChange}
-                style={{ width: "93%" }}
-              />
-              {formik.errors.name && formik.touched.name ? (
-                <div className='form-error-text'>{formik.errors.name}</div>
-              ) : null}
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='phoneNum'>
-              <Form.Control
-                type='text'
-                placeholder='phoneNum'
-                value={formik.values.phoneNum}
-                onChange={formik.handleChange}
-                style={{ width: "93%" }}
-              />
-              {formik.errors.phoneNum && formik.touched.phoneNum ? (
-                <div className='form-error-text'>{formik.errors.phoneNum}</div>
-              ) : null}
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='email'>
-              <Form.Control
-                type='text'
-                placeholder='email'
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                style={{ width: "93%" }}
-              />
-              {formik.errors.email && formik.touched.email ? (
-                <div className='form-error-text'>{formik.errors.email}</div>
-              ) : null}
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='message'>
-              <Form.Control
-                as='textarea'
-                rows={4}
-                placeholder='message'
-                value={formik.values.message}
-                onChange={formik.handleChange}
-                style={{ width: "93%" }}
-              />{" "}
-              {formik.errors.message && formik.touched.message ? (
-                <div className='form-error-text'>{formik.errors.message}</div>
-              ) : null}
-            </Form.Group>
+          <Formik
+            initialValues={{ name: "", phoneNum: "", email: "", message: "" }}
+            validationSchema={collabSchema}
+            onSubmit={async (values, { resetForm }) => {
+              try {
+                let data = {
+                  name: values.name,
+                  phoneNum: values.phoneNum,
+                  email: values.email,
+                  message: values.message,
+                };
+                // setBool(true);
+                const res = await axios.post("/collab", data);
+                if (
+                  data.name.length === 0 ||
+                  data.phoneNum.length === 0 ||
+                  data.email.length === 0
+                ) {
+                  console.log(res.data.message);
+                  // setBool(false);
+                } else if (res.status === 200) {
+                  console.log(res.data.message); 
+                  // setBool(false);
+                }
+              } catch (error) {
+                console.log(error);
+              }
 
-            <Button variant='primary' type='submit'>
-              Send
-            </Button>
-          </Form>
+              resetForm();
+            }}
+          >
+            {({
+              handleSubmit,
+              handleChange,
+              handleBlue,
+              values,
+              isValid,
+              errors,
+              touched,
+            }) => (
+              <Form
+                onSubmit={handleSubmit}
+                style={{ padding: "20px", border: "2px solid green" }}
+              >
+                <Form.Group hasValidation className='mb-3' controlId='name'>
+                  <Form.Control
+                    type='text'
+                    placeholder='Name'
+                    value={values.name}
+                    onChange={handleChange}
+                    style={{ width: "90%" }}
+                    isInvalid={touched.name && !!errors.name}
+                  />
+                  <Form.Control.Feedback type='invalid'>
+                    {errors.name}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group hasValidation className='mb-3' controlId='phoneNum'>
+                  <Form.Control
+                    type='text'
+                    placeholder='Phone Number (optional)'
+                    value={values.phoneNum}
+                    onChange={handleChange}
+                    isInvalid={touched.phoneNum && !!errors.phoneNum}
+                    style={{ width: "90%" }}
+                  />
+                  <Form.Control.Feedback type='invalid'>
+                    {errors.phoneNum}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group hasValidation className='mb-3' controlId='email'>
+                  <Form.Control
+                    type='text'
+                    placeholder='Email'
+                    value={values.email}
+                    onChange={handleChange}
+                    isInvalid={touched.email && !!errors.email}
+                    style={{ width: "90%" }}
+                  />
+                  <Form.Control.Feedback type='invalid'>
+                    {errors.email}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group hasValidation className='mb-3' controlId='message'>
+                  <Form.Control
+                    as='textarea'
+                    rows={5}
+                    placeholder='Message'
+                    value={values.message}
+                    onChange={handleChange}
+                    isInvalid={touched.message && !!errors.message}
+                    style={{ width: "93%" }}
+                  />{" "}
+                  <Form.Control.Feedback type='invalid'>
+                    {errors.message}
+                  </Form.Control.Feedback>
+                </Form.Group>
+
+                <Button variant='primary' type='submit'>
+                  Send
+                </Button>
+              </Form>
+            )}
+          </Formik>
         </Col>
       </Row>
       <Row className='justify-content-center'>
-        <Col xs={12} className="page-title mt-3 mb-3">
+        <Col xs={12} className='page-title mt-3 mb-3'>
           a big thank you to all of our collaborators
         </Col>
         {collab.map((collab) => (
@@ -123,12 +148,10 @@ const CollabScreen = () => {
             <a
               href={collab.src}
               target='__blank'
-              style={{ textDecoration: "none", color: 'black' }}
+              style={{ textDecoration: "none", color: "black" }}
             >
               <Card style={{ margin: "5px" }} className='tech-card'>
-                <Card.Body>
-                  {collab.name}
-                </Card.Body>
+                <Card.Body>{collab.name}</Card.Body>
               </Card>
             </a>
           </Col>

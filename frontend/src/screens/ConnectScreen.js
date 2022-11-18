@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Moment from "react-moment";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
@@ -27,20 +27,22 @@ const Comment = ({ comment }) => {
             <Form style={{ margin: "10px" }}>
               <Form.Group className='mb-3' controlId='updateComment'>
                 <Form.Control
-                  type='text'
+                  type='textarea'
+                  rows={3}
                   value={editCommentText}
                   onChange={(e) => setEditCommentText(e.target.value)}
                   placeholder={`${comment.comment}`}
+                  style={{ width: "95%" }}
                 />
               </Form.Group>
               <Button
                 variant='outline-success'
-                type='submit'
+                type='submit' size="sm" className="mr-2"
                 onClick={() => {
                   dispatch(
                     editComment({
                       token: token,
-                      id:comment._id,
+                      id: comment._id,
                       comment: editCommentText,
                     })
                   );
@@ -49,7 +51,7 @@ const Comment = ({ comment }) => {
               >
                 Send edit
               </Button>
-              <Button variant='outline-danger' onClick={() => setEdit(false)}>
+              <Button variant='outline-danger' size="sm" className="ms-2" onClick={() => setEdit(false)}>
                 Exit editor
               </Button>
             </Form>
@@ -106,16 +108,25 @@ const ConnectScreen = () => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid className='justify-content-center'>
       <Row>
         <Col xs={12} className='page-title mb-3'>
           chat with your community
         </Col>
       </Row>
-      <Row className='justify-content-center mb-4'>
-        <Col sm={12} md={10} lg={8}>
-          {userInfo ? (
-            <Form style={{ width: "95%" }} className='text-center'>
+      {!userInfo && (
+        <Row className='justify-content-center'>
+          <Col xs={12} sm={12} md={10} lg={8} className='text-center'>
+            <Link to='/login'>
+              <Button variant='outline-success'>log in to chat</Button>{" "}
+            </Link>
+          </Col>
+        </Row>
+      )}
+      {userInfo && (
+        <Row className='justify-content-center'>
+          <Col xs={12} sm={12} md={10} lg={8} className='text-center'>
+            <Form style={{ width: "100%" }} className='text-center'>
               <Form.Group controlId='comment'>
                 <Form.Control
                   as='textarea'
@@ -132,17 +143,16 @@ const ConnectScreen = () => {
               >
                 Post Comment
               </Button>
-            </Form>
-          ) : (
-            <h1>Log in to post something to the message board</h1>
-          )}
-        </Col>
-      </Row>
+            </Form>{" "}
+          </Col>
+        </Row>
+      )}
+
       <Row className='justify-content-center'>
         <Col sm={12} md={10} lg={8}>
           {comments &&
             comments?.map((comment) => {
-              return <Comment comment={comment}/>;
+              return <Comment comment={comment} />;
             })}
         </Col>
       </Row>

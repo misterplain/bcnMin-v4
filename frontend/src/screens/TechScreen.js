@@ -49,6 +49,10 @@ const TechScreen = () => {
     },
   });
 
+  function numberWithCommas(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   //modal state
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -140,13 +144,16 @@ const TechScreen = () => {
             <Modal.Title>Your water footprint</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {" "}
-            Your weekly water footprint is {answer.toFixed(1)} gallons, which is {answerMonth.toFixed(1)} gallons over
-            the course of a month and {answerYear.toFixed(1)} gallons over the course of a year
+            {`Your weekly water footprint is ${numberWithCommas(
+              answer
+            )} gallons, which is ${numberWithCommas(answerMonth)} gallons over
+            the course of a month and ${numberWithCommas(
+              answerYear
+            )} gallons over the course of a year`}
           </Modal.Body>
           <Modal.Footer>
             <Button variant='outline-success' onClick={handleClose}>
-              try again 
+              try again
             </Button>
           </Modal.Footer>
         </Modal>

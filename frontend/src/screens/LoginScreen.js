@@ -29,7 +29,7 @@ const LoginScreen = () => {
   const location = useLocation();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, authData } = userLogin;
+  const { loading, loginError, authData } = userLogin;
 
   useEffect(() => {
     if (authData) {
@@ -64,7 +64,7 @@ const LoginScreen = () => {
 
           <Col xs={10}>
             <FormContainer>
-              {error && <Message variant='danger'>{error}</Message>}
+              {loginError && <Message variant='danger'>{loginError}</Message>}
               <Formik
                 initialValues={{ email: "", password: "" }}
                 validationSchema={loginSchema}
