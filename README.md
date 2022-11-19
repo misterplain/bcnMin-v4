@@ -18,6 +18,7 @@
 6. [x] Display errors - username/password required
 7. [x] Display errors - register, user data not sufficient
 8. [x] Display errors - register, user already exists
+9. [ ] Figure out refresh token so when user logs in, they stay logged in if access key stored in local memory
 
 ###### Inform Page
 
@@ -33,9 +34,13 @@
 
 ###### Tech Page
 
-1. [ ] Format water footprint number with commas => 1,000
+1. [x] Format water footprint number with commas => 1,000
 
 ###### Collab Page
 
-1. [ ] Form placeholders
+1. [x] Form placeholders
 2. [ ] Modal confirming request sent 
+
+###### Favorites Page
+
+1. [ ] Why is state not pulling userDetails?

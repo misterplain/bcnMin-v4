@@ -14,8 +14,9 @@ const getAllFavorites = asyncHandler(async (req, res) => {
 
 const addFavorite = asyncHandler(async (req, res) => {
   console.log("add favorite controller accessed");
-  console.log(req.user.favorites);
-  console.log(req.params.blogId);
+  console.log(req.user.favorites, 'req.user.favorites');
+  // console.log(req.params.blogId);
+  console.log(req.params, 'req params')
 
   try {
     const favorites = req.user.favorites;
