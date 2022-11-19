@@ -114,7 +114,6 @@ const Header = () => {
                     <Nav.Link
                       as={Link}
                       to='/login'
-                      onClick={() => (this.expand = "")}
                       style={{ color: "purple" }}
                     >
                       Login
