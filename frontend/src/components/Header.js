@@ -30,10 +30,11 @@ const Header = () => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
+//   const handleClose = () => setShow(false);
 
   return (
     <header>
-      <Navbar key='sm' bg='light' expand='md' className='mb-3' collapseOnSelect>
+      {/* <Navbar key='sm' bg='light' expand='md' className='mb-3' collapseOnSelect>
         <Container fluid>
           <Navbar.Brand href='#'>bcnMinimalista</Navbar.Brand>
           <Navbar.Toggle
@@ -44,6 +45,9 @@ const Header = () => {
             id={`offcanvasNavbar-expand-sm`}
             aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
             placement='end'
+            // expand={()=>setShow(true)}
+            // onHide={handleClose}
+
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
@@ -53,9 +57,9 @@ const Header = () => {
             <Offcanvas.Body>
               <Nav
                 className='justify-content-end flex-grow-1 pe-3'
-                collapseOnSelect
+                
               >
-                <Nav.Link as={Link} to='/'>
+                <Nav.Link as={Link} to='/' onClick={()=>setShow(false)}>
                   Inform
                 </Nav.Link>
                 <Nav.Link as={Link} to='/connect'>
@@ -101,8 +105,8 @@ const Header = () => {
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
-      </Navbar>
-      {/* <Navbar bg='light' expand={"sm"} className='mb-3' collapseOnSelect>
+      </Navbar> */}
+      <Navbar bg='light' expand={"sm"} className='mb-3' collapseOnSelect>
         <Container fluid>
           <Navbar.Brand href='#'>Navbar Offcanvas</Navbar.Brand>
           <Navbar.Toggle
@@ -121,35 +125,54 @@ const Header = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className='justify-content-end flex-grow-1 pe-3'>
-                <Nav.Link href='#action1'>Home</Nav.Link>
-                <Nav.Link href='#action2'>Link</Nav.Link>
-                <NavDropdown
-                  title='Dropdown'
-                  id={`offcanvasNavbarDropdown-expand-sm`}
-                >
-                  <NavDropdown.Item href='#action3'>Action</NavDropdown.Item>
-                  <NavDropdown.Item href='#action4'>
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href='#action5'>
-                    Something else here
-                  </NavDropdown.Item>
-                </NavDropdown>
+              <Nav.Link href='/'>
+                  Inform
+                </Nav.Link>
+                <Nav.Link href='/connect'>
+                  Connect
+                </Nav.Link>
+                <Nav.Link  href='/tech'>
+                  Tech
+                </Nav.Link>
+                <Nav.Link href='/rescue'>
+                  Rescue
+                </Nav.Link>
+                <Nav.Link href='/collab'>
+                  Collab
+                </Nav.Link>
+                {authData ? (
+                  <>
+                    <Nav.Link
+           
+                      href='/favorites'
+                      style={{ color: "purple" }}
+                    >
+                      Favorites
+                    </Nav.Link>{" "}
+                    <Nav.Link
+                  
+                      href='/logout'
+                      onClick={() => {
+                        logoutAndRedirect();
+                      }}
+                      style={{ color: "purple" }}
+                    >
+                      Logout
+                    </Nav.Link>{" "}
+                  </>
+                ) : (
+                  <>
+                    <Nav.Link href='/login' style={{ color: "purple" }}>
+                      Login
+                    </Nav.Link>
+                  </>
+                )}
+
               </Nav>
-              <Form className='d-flex'>
-                <Form.Control
-                  type='search'
-                  placeholder='Search'
-                  className='me-2'
-                  aria-label='Search'
-                />
-                <Button variant='outline-success'>Search</Button>
-              </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
-      </Navbar> */}
+      </Navbar>
       <section>
         <Outlet></Outlet>
       </section>

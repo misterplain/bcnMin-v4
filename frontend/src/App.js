@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -23,6 +23,14 @@ import { getUserDetails } from "./actions/userActions";
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userLogin);
+
+//check local storage for profile, run use effect to get refresh token
+  // useEffect(() => {
+  //   let token = localStorage.getItem("profile");
+  //   if (token) {
+  //     dispatch(getUserDetails());
+  //   }
+  // })
 
   return (
     <Router>

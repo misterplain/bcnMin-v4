@@ -18,7 +18,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     const data = await axios.post("/auth", { email, password });
-    console.log(data)
+    console.log(data);
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
@@ -59,6 +59,28 @@ export const register = (username, email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const refresh = () => async (dispatch) => {
+  try {
+    const token = localStorage.getItem("profile");
+
+    const data = await axios.post("/refresh", { token });
+
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: data,
+    });
+
+    dispatch(getUserDetails(data.data.accessToken));
+  } catch (error) {
+    console.log(error);
+    console.log(error.response.data.message);
+    dispatch({
+      type: USER_LOGIN_FAIL,
       payload: error.response.data.message,
     });
   }
