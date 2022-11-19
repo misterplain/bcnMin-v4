@@ -30,7 +30,7 @@ const Header = () => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
-//   const handleClose = () => setShow(false);
+  //   const handleClose = () => setShow(false);
 
   return (
     <header>
@@ -108,7 +108,7 @@ const Header = () => {
       </Navbar> */}
       <Navbar bg='light' expand={"sm"} className='mb-3' collapseOnSelect>
         <Container fluid>
-          <Navbar.Brand href='#'>Navbar Offcanvas</Navbar.Brand>
+          <Navbar.Brand href='#'>bcnMinimalista</Navbar.Brand>
           <Navbar.Toggle
             aria-controls={`offcanvasNavbar-expand-sm`}
             onSelect={handleShow}
@@ -120,54 +120,51 @@ const Header = () => {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
-                Offcanvas
+                bcnMinimalista
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className='justify-content-end flex-grow-1 pe-3'>
-              <Nav.Link href='/'>
-                  Inform
+                <Nav.Link href='/'>
+                  <Link to='/'>Inform</Link>
                 </Nav.Link>
                 <Nav.Link href='/connect'>
-                  Connect
+                  <Link to='/connect'>Connect</Link>
                 </Nav.Link>
-                <Nav.Link  href='/tech'>
-                  Tech
+                <Nav.Link href='/tech'>
+                  {" "}
+                  <Link to='/tech'>Tech</Link>
                 </Nav.Link>
                 <Nav.Link href='/rescue'>
-                  Rescue
+                  {" "}
+                  <Link to='/rescue'>Rescue</Link>
                 </Nav.Link>
                 <Nav.Link href='/collab'>
-                  Collab
+                  {" "}
+                  <Link to='/collab'>Collab</Link>
                 </Nav.Link>
                 {authData ? (
                   <>
-                    <Nav.Link
-           
-                      href='/favorites'
-                      style={{ color: "purple" }}
-                    >
-                      Favorites
+                    <Nav.Link href='/favorites' style={{ color: "purple" }}>
+                      <Link to='/favorites'>Favorites</Link>
                     </Nav.Link>{" "}
                     <Nav.Link
-                  
                       href='/logout'
                       onClick={() => {
                         logoutAndRedirect();
                       }}
                       style={{ color: "purple" }}
                     >
-                      Logout
+                      <Link to='/logout'>Logout</Link>
                     </Nav.Link>{" "}
                   </>
                 ) : (
                   <>
                     <Nav.Link href='/login' style={{ color: "purple" }}>
-                      Login
+                      <Link to='/login'>Login</Link>
                     </Nav.Link>
                   </>
                 )}
-
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

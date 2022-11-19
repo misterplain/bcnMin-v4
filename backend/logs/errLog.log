@@ -297,3 +297,5 @@
 20221119	17:06:41	24b70759-7367-413e-b202-f0a596aaf0e8	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20221119	17:06:58	94974554-feed-4182-8266-215a16995281	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20221119	17:07:03	88fb9e31-c289-4bcd-82b3-eb508678d7d4	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20221119	17:57:00	e8f54ba8-a117-495d-9fff-0e3cd9da825f	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
+20221119	17:57:00	8f9e9ded-4d82-4437-b9a3-ff8d855909cb	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined

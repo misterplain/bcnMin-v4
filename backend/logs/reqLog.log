@@ -10730,3 +10730,15 @@
 20221119	17:40:09	b754eae4-ed4d-4355-a384-41605982fc61	GET	/users/profile	http://localhost:3000
 20221119	17:40:09	91126cd6-755f-4f64-a5d5-94550254a155	GET	/blogs	http://localhost:3000
 20221119	17:40:09	eb494ce4-7915-405f-8274-c8b1c1e5b67d	GET	/users/profile	http://localhost:3000
+20221119	17:57:00	d53ac13f-dfbd-4d49-9f3d-cac70c2639ec	GET	/babel/parser/lib/index.js	undefined
+20221119	17:57:00	042040cd-5bfa-4081-83e3-186a87c2fa57	GET	/babel/core/lib/parser/index.js	undefined
+20221119	17:57:00	6e3f6ed7-7d91-4c8f-a344-078326713c39	GET	/babel/core/lib/transformation/normalize-file.js	undefined
+20221119	17:57:00	19c28312-5364-4479-8f48-dc98beb7ab50	GET	/babel/core/lib/transformation/index.js	undefined
+20221119	17:57:00	6331c2e8-6b28-4ca0-87bb-48fcaf9188cf	GET	/babel/core/lib/transform.js	undefined
+20221119	17:57:00	6ba6b8d3-ea13-4a79-9dff-9b3af2bc8609	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
+20221119	17:57:00	200b7e93-533a-4393-8f42-5891717b4452	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
+20221119	17:57:00	cf0cece9-1693-4cd4-8f0b-0ddd2925d3da	GET	/babel/parser/lib/index.js	undefined
+20221119	17:57:00	89bc516c-4d1c-401b-9417-47094d5d6b41	GET	/babel/core/lib/transform.js	undefined
+20221119	17:57:00	3b6b8be1-6353-4ee5-952c-cea81b47529d	GET	/babel/core/lib/parser/index.js	undefined
+20221119	17:57:00	86639a68-a9c1-4315-95b2-8b88322e38fb	GET	/babel/core/lib/transformation/normalize-file.js	undefined
+20221119	17:57:00	4a05e9ad-e8eb-4045-995d-bdb7680a47dc	GET	/babel/core/lib/transformation/index.js	undefined
