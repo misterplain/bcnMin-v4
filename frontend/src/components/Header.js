@@ -31,7 +31,6 @@ const Header = () => {
 
   const handleShow = () => setShow(true);
 
-
   return (
     <header>
       <Navbar key='sm' bg='light' expand='md' className='mb-3' collapseOnSelect>
@@ -56,35 +55,19 @@ const Header = () => {
                 className='justify-content-end flex-grow-1 pe-3'
                 collapseOnSelect
               >
-                <Nav.Link as={Link} to='/' onClick={() => (this.expand = "")}>
+                <Nav.Link as={Link} to='/'>
                   Inform
                 </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to='/connect'
-                  onClick={() => (this.expand = "")}
-                >
+                <Nav.Link as={Link} to='/connect'>
                   Connect
                 </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to='/tech'
-                  onClick={() => (this.expand = "")}
-                >
+                <Nav.Link as={Link} to='/tech'>
                   Tech
                 </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to='/rescue'
-                  onClick={() => (this.expand = "")}
-                >
+                <Nav.Link as={Link} to='/rescue'>
                   Rescue
                 </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to='/collab'
-                  onClick={() => (this.expand = "")}
-                >
+                <Nav.Link as={Link} to='/collab'>
                   Collab
                 </Nav.Link>
                 {authData ? (
@@ -92,7 +75,6 @@ const Header = () => {
                     <Nav.Link
                       as={Link}
                       to='/favorites'
-                      onClick={() => (this.expand = "")}
                       style={{ color: "purple" }}
                     >
                       Favorites
@@ -101,7 +83,6 @@ const Header = () => {
                       as={Link}
                       to='/logout'
                       onClick={() => {
-                        this.expand = "";
                         logoutAndRedirect();
                       }}
                       style={{ color: "purple" }}
@@ -111,11 +92,7 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Nav.Link
-                      as={Link}
-                      to='/login'
-                      style={{ color: "purple" }}
-                    >
+                    <Nav.Link as={Link} to='/login' style={{ color: "purple" }}>
                       Login
                     </Nav.Link>
                   </>

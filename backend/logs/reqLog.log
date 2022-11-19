@@ -10186,3 +10186,12 @@
 20221119	14:16:19	644c2792-5252-4b68-a5f3-89c20c8b8295	OPTIONS	/users/profile	http://localhost:3000
 20221119	14:16:19	2e31cb08-7e07-4cb9-8398-72d7deee689c	GET	/comments	http://localhost:3000
 20221119	14:16:19	175e86fc-4e60-46ab-968c-d1fcca6c73d3	GET	/users/profile	http://localhost:3000
+20221119	14:37:45	ba7ee576-6179-4b9e-9f8a-8e1856f8db63	OPTIONS	/users/profile	http://localhost:3000
+20221119	14:37:45	93fb5304-1cb7-4aef-85a8-75cb00d27c72	GET	/blogs	http://localhost:3000
+20221119	14:37:45	e4e569e7-1f76-4dcc-a947-433e67646026	GET	/users/profile	http://localhost:3000
+20221119	14:37:46	d7a3fede-b52c-4a58-83ad-180e9b18fd25	GET	/users/profile	http://localhost:3000
+20221119	14:37:46	14eb5349-0bef-4335-837b-47ff82299608	GET	/comments	http://localhost:3000
+20221119	14:37:49	b652fe47-8f9e-4c86-97df-544f3657d3f7	GET	/blogs	http://localhost:3000
+20221119	14:38:07	62c4544c-e25b-43eb-bfad-db2e80f7b0d4	GET	/comments	http://localhost:3000
+20221119	14:38:25	53d3f8dc-b79a-46c6-9c8c-132de7fcccc5	OPTIONS	/collab	http://localhost:3000
+20221119	14:38:25	bcfd9702-f050-4d0f-927a-3e92b6f720b7	POST	/collab	http://localhost:3000
