@@ -125,29 +125,18 @@ const Header = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className='justify-content-end flex-grow-1 pe-3'>
-                <Nav.Link href='/'>
-                  <Link to='/'>Inform</Link>
-                </Nav.Link>
-                <Nav.Link href='/connect'>
-                  <Link to='/connect'>Connect</Link>
-                </Nav.Link>
-                <Nav.Link href='/tech'>
-                  {" "}
-                  <Link to='/tech'>Tech</Link>
-                </Nav.Link>
-                <Nav.Link href='/rescue'>
-                  {" "}
-                  <Link to='/rescue'>Rescue</Link>
-                </Nav.Link>
+                <Nav.Link href='/'>Inform</Nav.Link>
+                <Nav.Link href='/connect'>Connect</Nav.Link>
+                <Nav.Link href='/tech'>Tech</Nav.Link>
+                <Nav.Link href='/rescue'>Rescue</Nav.Link>
                 <Nav.Link href='/collab'>
-                  {" "}
-                  <Link to='/collab'>Collab</Link>
+                 Collab
                 </Nav.Link>
                 {authData ? (
                   <>
                     <Nav.Link href='/favorites' style={{ color: "purple" }}>
-                      <Link to='/favorites'>Favorites</Link>
-                    </Nav.Link>{" "}
+                      Favorites
+                    </Nav.Link>
                     <Nav.Link
                       href='/logout'
                       onClick={() => {
@@ -155,13 +144,13 @@ const Header = () => {
                       }}
                       style={{ color: "purple" }}
                     >
-                      <Link to='/logout'>Logout</Link>
+                     Logout
                     </Nav.Link>{" "}
                   </>
                 ) : (
                   <>
                     <Nav.Link href='/login' style={{ color: "purple" }}>
-                      <Link to='/login'>Login</Link>
+                      Login
                     </Nav.Link>
                   </>
                 )}
