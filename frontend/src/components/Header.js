@@ -125,50 +125,34 @@ const Header = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className='justify-content-end flex-grow-1 pe-3'>
-                <Nav.Link
-                  href='/'
-                  onClick={() => navigate("/", { replace: true })}
-                >
-                  Inform
-                </Nav.Link>
-                <Nav.Link href='/connect' as={Link}>
-                  Connect
-                </Nav.Link>
-                <Nav.Link href='/tech'>
-                  <Link to='/tech'>Tech</Link>
-                </Nav.Link>
-                <Nav.Link
-                  href='/rescue'
-                  onClick={() => navigate("/rescue", { replace: true })}
-                >
-                  Rescue
-                </Nav.Link>
-                <Link to='/collab'>
-                  <Nav.Link
-                    href='/collab'
-                  >
-                    Collab
-                  </Nav.Link>
+                <Link to='/' style={{ textDecoration: "none" }}>
+                  <Nav.Link href='/'>Inform</Nav.Link>
+                </Link>
+                <Link to='/connect' style={{ textDecoration: "none" }}>
+                  <Nav.Link href='/connect'>Connect</Nav.Link>
+                </Link>
+                <Link to='/tech' style={{ textDecoration: "none" }}>
+                  <Nav.Link href='/tech'>Tech</Nav.Link>
+                </Link>
+                <Link to='/rescue' style={{ textDecoration: "none" }}>
+                  <Nav.Link href='/rescue'>Rescue</Nav.Link>
+                </Link>
+                <Link to='/collab' style={{ textDecoration: "none" }}>
+                  <Nav.Link href='/collab'>Collab</Nav.Link>
                 </Link>
                 {authData ? (
                   <>
-                    <Nav.Link
-                      href='/favorites'
-                      onClick={() => navigate("/favorites", { replace: true })}
-                      style={{ color: "purple" }}
-                    >
-                      Favorites
-                    </Nav.Link>
-                    <Nav.Link
-                      href='/logout'
-                      onClick={() => {
-                        logoutAndRedirect();
-                        navigate("/logout", { replace: true });
-                      }}
-                      style={{ color: "purple" }}
-                    >
-                      Logout
-                    </Nav.Link>{" "}
+                    <Link to='/favorites' style={{ textDecoration: "none" }}>
+                      <Nav.Link href='/favorites'>Collab</Nav.Link>
+                    </Link>
+                    <Link to='/collab' style={{ textDecoration: "none" }}>
+                      <Nav.Link
+                        href='/collab'
+                        onClick={() => logoutAndRedirect()}
+                      >
+                        Collab
+                      </Nav.Link>
+                    </Link>
                   </>
                 ) : (
                   <>
