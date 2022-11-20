@@ -48,10 +48,9 @@ const FavoritesScreen = () => {
   filterFavorites();
 
   return (
-    <>
-      <div>FavoritesScreen</div>
+    <div id='favorites'>
+      FavoritesScreen{" "}
       {/* filter function to only show blog posts that are within the user favorites */}
-
       {/* {favorites.map((post) => (
         <Col key={post._id} sm={12} md={6} lg={4} xl={3}>
           <Card className='my-3 p-3 rounded'>
@@ -71,7 +70,7 @@ const FavoritesScreen = () => {
           </Card>
         </Col>
       ))} */}
-    </>
+    </div>
   );
 };
 

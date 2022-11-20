@@ -19,7 +19,7 @@ const Comment = ({ comment }) => {
   const userInfo = useSelector((state) => state.userDetails.userData);
 
   return (
-    <Col key={comment.id} className='mb-2'>
+    <Col key={comment.id} className='mb-2' id="connect">
       <Card style={{ width: "100%" }}>
         <Card.Body>
           <Card.Title>{comment.username} says:</Card.Title>

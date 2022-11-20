@@ -51,8 +51,8 @@ const RegisterScreen = ({ match, history }) => {
   //   }
   // };
   return (
-    <>
-      <Container fluid>
+    
+      <Container fluid id="register">
         <Row className='justify-content-center'>
           <Col xs={12}>
             <h2 class='text-center'>Sign Up</h2>
@@ -164,7 +164,7 @@ const RegisterScreen = ({ match, history }) => {
           </Col>
         </Row>{" "}
       </Container>
-    </>
+  
     // <FormContainer>
     //   <h1>Sign Up</h1>
     //   {message && <Message variant='danger'>{message}</Message>}

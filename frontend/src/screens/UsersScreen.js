@@ -35,7 +35,7 @@ const Users = () => {
   }, []);
 
   return (
-    <article>
+    <article id="users">
       <h2>Users List</h2>
       {users?.length ? (
         <ul>

@@ -62,7 +62,7 @@ const TechScreen = () => {
   let answerYear = answer * 52;
 
   return (
-    <Container className='justify-content-center text-center'>
+    <Container className='justify-content-center text-center' id="tech">
       <Row className='justify-content-center mb-3'>
         <Col sm={12} className='page-title'>
           tech

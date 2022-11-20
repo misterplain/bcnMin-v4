@@ -55,87 +55,87 @@ const LoginScreen = () => {
   // });
 
   return (
-    <>
-      <Container fluid>
-        <Row className='justify-content-center'>
-          <Col xs={12}>
-            <h2 class='text-center'>Sign In</h2>
-          </Col>
+    <Container fluid id="login">
+      <Row className='justify-content-center'>
+        <Col xs={12}>
+          <h2 class='text-center'>Sign In</h2>
+        </Col>
 
-          <Col xs={10}>
-            <FormContainer>
-              {loginError && <Message variant='danger'>{loginError}</Message>}
-              <Formik
-                initialValues={{ email: "", password: "" }}
-                validationSchema={loginSchema}
-                onSubmit={(values) => dispatch(login(values.email, values.password))}
-              >
-                {({
-                  handleSubmit,
-                  handleChange,
-                  handleBlue,
-                  values,
-                  isValid,
-                  errors,
-                  touched,
-                }) => (
-                  <Form noValidate onSubmit={handleSubmit}>
-                    <Form.Group hasValidation controlId='email'>
-                      {/* <Form.Label>Email Address</Form.Label> */}
-                      <Form.Control
-                        type='email'
-                        placeholder='Enter email'
-                        value={values.email}
-                        onChange={handleChange}
-                        isInvalid={touched.email && !!errors.email}
-                        style={{ width: "90%", margin: "auto" }}
-                      ></Form.Control>
-                      <Form.Control.Feedback type='invalid'>
-                        {errors.email}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                    {/* {errors.email && touched.email ? <div>{errors.email}</div> : null} */}
-                    <Form.Group
-                      hasValidation
-                      controlId='password'
-                      className='mt-2'
-                    >
-                      {/* <Form.Label>Password</Form.Label> */}
-                      <Form.Control
-                        type='password'
-                        placeholder='Enter password'
-                        value={values.password}
-                        onChange={handleChange}
-                        isInvalid={touched.password && !!errors.password}
-                        style={{ width: "90%", margin: "auto" }}
-                      ></Form.Control>
-                      <Form.Control.Feedback type='invalid'>
-                        {errors.password}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                    <div className='d-grid gap-2 mt-3'>
-                      <Button type='submit' variant='outline-success'>
-                        Sign In
-                      </Button>
-                    </div>
-                  </Form>
-                )}
-              </Formik>
-            </FormContainer>
-          </Col>
-        </Row>
-        <Row className='py-3'>
-          <Col xs={12} className='text-center'>
-            New Customer?{" "}
-            <Link to='/register'>
-              <Button variant='outline-dark' size='sm'>
-                Register
-              </Button>
-            </Link>
-          </Col>
-        </Row>{" "}
-      </Container>
-    </>
+        <Col xs={10}>
+          <FormContainer>
+            {loginError && <Message variant='danger'>{loginError}</Message>}
+            <Formik
+              initialValues={{ email: "", password: "" }}
+              validationSchema={loginSchema}
+              onSubmit={(values) =>
+                dispatch(login(values.email, values.password))
+              }
+            >
+              {({
+                handleSubmit,
+                handleChange,
+                handleBlue,
+                values,
+                isValid,
+                errors,
+                touched,
+              }) => (
+                <Form noValidate onSubmit={handleSubmit}>
+                  <Form.Group hasValidation controlId='email'>
+                    {/* <Form.Label>Email Address</Form.Label> */}
+                    <Form.Control
+                      type='email'
+                      placeholder='Enter email'
+                      value={values.email}
+                      onChange={handleChange}
+                      isInvalid={touched.email && !!errors.email}
+                      style={{ width: "90%", margin: "auto" }}
+                    ></Form.Control>
+                    <Form.Control.Feedback type='invalid'>
+                      {errors.email}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  {/* {errors.email && touched.email ? <div>{errors.email}</div> : null} */}
+                  <Form.Group
+                    hasValidation
+                    controlId='password'
+                    className='mt-2'
+                  >
+                    {/* <Form.Label>Password</Form.Label> */}
+                    <Form.Control
+                      type='password'
+                      placeholder='Enter password'
+                      value={values.password}
+                      onChange={handleChange}
+                      isInvalid={touched.password && !!errors.password}
+                      style={{ width: "90%", margin: "auto" }}
+                    ></Form.Control>
+                    <Form.Control.Feedback type='invalid'>
+                      {errors.password}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  <div className='d-grid gap-2 mt-3'>
+                    <Button type='submit' variant='outline-success'>
+                      Sign In
+                    </Button>
+                  </div>
+                </Form>
+              )}
+            </Formik>
+          </FormContainer>
+        </Col>
+      </Row>
+      <Row className='py-3'>
+        <Col xs={12} className='text-center'>
+          New Customer?{" "}
+          <Link to='/register'>
+            <Button variant='outline-dark' size='sm'>
+              Register
+            </Button>
+          </Link>
+        </Col>
+      </Row>{" "}
+    </Container>
   );
 };
 

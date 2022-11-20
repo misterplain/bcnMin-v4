@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { COLLAB } from "../shared/collab";
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Card, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "../api/axios";
 //form validation
@@ -24,6 +24,7 @@ const collabSchema = Yup.object({
 });
 
 const CollabScreen = () => {
+  const [showModal, setShowModal] = useState(false)
   return (
     <Container className='justify-content-center text-center'>
       <Row>

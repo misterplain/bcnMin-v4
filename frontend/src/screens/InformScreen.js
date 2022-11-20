@@ -60,7 +60,7 @@ const InformScreen = () => {
   }, [dispatch]);
 
   return (
-    <Container fluid>
+    <Container fluid id="inform">
       <Row className='justify-content-center'>
         <Col sm={12} className='page-title mb-3'>
           local news and conservation info

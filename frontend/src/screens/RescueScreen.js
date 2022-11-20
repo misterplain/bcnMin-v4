@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const ResueScreen = () => {
   return (
-    <Container>
+    <Container id="rescue">
       <Row>
         <Col sm={12} className="page-title mb-3">adopt, don't shop</Col>
       </Row>
