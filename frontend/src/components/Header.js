@@ -131,25 +131,39 @@ const Header = () => {
                 >
                   Inform
                 </Nav.Link>
-                <Nav.Link
-                  href='/connect'
-                  onClick={() => navigate("/connect", { replace: true })}
-                >
+                <Nav.Link href='/connect' as={Link}>
                   Connect
                 </Nav.Link>
-                <Nav.Link href='/tech' onClick={() => navigate("/tech", { replace: true })}>Tech</Nav.Link>
-                <Nav.Link href='/rescue' onClick={() => navigate("/rescue", { replace: true })}>Rescue</Nav.Link>
-                <Nav.Link href='/collab' onClick={() => navigate("/collab", { replace: true })}>Collab</Nav.Link>
+                <Nav.Link href='/tech'>
+                  <Link to='/tech'>Tech</Link>
+                </Nav.Link>
+                <Nav.Link
+                  href='/rescue'
+                  onClick={() => navigate("/rescue", { replace: true })}
+                >
+                  Rescue
+                </Nav.Link>
+                <Link to='/collab'>
+                  <Nav.Link
+                    href='/collab'
+                  >
+                    Collab
+                  </Nav.Link>
+                </Link>
                 {authData ? (
                   <>
-                    <Nav.Link href='/favorites'  onClick={() => navigate("/favorites", { replace: true })} style={{ color: "purple" }}>
+                    <Nav.Link
+                      href='/favorites'
+                      onClick={() => navigate("/favorites", { replace: true })}
+                      style={{ color: "purple" }}
+                    >
                       Favorites
                     </Nav.Link>
                     <Nav.Link
                       href='/logout'
                       onClick={() => {
                         logoutAndRedirect();
-                        navigate("/logout", { replace: true })
+                        navigate("/logout", { replace: true });
                       }}
                       style={{ color: "purple" }}
                     >
@@ -158,7 +172,11 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Nav.Link href='/login' onClick={() => navigate("/login", { replace: true })} style={{ color: "purple" }}>
+                    <Nav.Link
+                      href='/login'
+                      onClick={() => navigate("/login", { replace: true })}
+                      style={{ color: "purple" }}
+                    >
                       Login
                     </Nav.Link>
                   </>
