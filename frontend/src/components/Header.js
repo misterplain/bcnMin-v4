@@ -125,31 +125,40 @@ const Header = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className='justify-content-end flex-grow-1 pe-3'>
-                <Nav.Link href='/'>Inform</Nav.Link>
-                <Nav.Link href='/connect'>Connect</Nav.Link>
-                <Nav.Link href='/tech'>Tech</Nav.Link>
-                <Nav.Link href='/rescue'>Rescue</Nav.Link>
-                <Nav.Link href='/collab'>
-                 Collab
+                <Nav.Link
+                  href='/'
+                  onClick={() => navigate("/", { replace: true })}
+                >
+                  Inform
                 </Nav.Link>
+                <Nav.Link
+                  href='/connect'
+                  onClick={() => navigate("/connect", { replace: true })}
+                >
+                  Connect
+                </Nav.Link>
+                <Nav.Link href='/tech' onClick={() => navigate("/tech", { replace: true })}>Tech</Nav.Link>
+                <Nav.Link href='/rescue' onClick={() => navigate("/rescue", { replace: true })}>Rescue</Nav.Link>
+                <Nav.Link href='/collab' onClick={() => navigate("/collab", { replace: true })}>Collab</Nav.Link>
                 {authData ? (
                   <>
-                    <Nav.Link href='/favorites' style={{ color: "purple" }}>
+                    <Nav.Link href='/favorites'  onClick={() => navigate("/favorites", { replace: true })} style={{ color: "purple" }}>
                       Favorites
                     </Nav.Link>
                     <Nav.Link
                       href='/logout'
                       onClick={() => {
                         logoutAndRedirect();
+                        navigate("/logout", { replace: true })
                       }}
                       style={{ color: "purple" }}
                     >
-                     Logout
+                      Logout
                     </Nav.Link>{" "}
                   </>
                 ) : (
                   <>
-                    <Nav.Link href='/login' style={{ color: "purple" }}>
+                    <Nav.Link href='/login' onClick={() => navigate("/login", { replace: true })} style={{ color: "purple" }}>
                       Login
                     </Nav.Link>
                   </>
