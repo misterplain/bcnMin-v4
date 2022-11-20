@@ -3,6 +3,7 @@ import { Row, Col, Card, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogPosts } from "../actions/blogActions";
@@ -27,71 +28,62 @@ const FavoritesScreen = () => {
   console.log(filteredPosts);
 
   return (
-    <div id='favorites'>
-      FavoritesScreen{" "}
-      {filteredPosts &&
-        filteredPosts.map((post) => {
-          return (
-            <Col
-              xs={{ span: 10, offset: 0 }}
-              sm={{ span: 5, offset: 0 }}
-              md={5}
-              lg={3}
-              className='justify-content-center'
-              key={post._id}
-            >
-              <Card
-                style={{
-                  width: "100%",
-                  border: "2px solid green",
-                  padding: "1px",
-                  margin: "3px",
-                }}
-                className='text-center'
+    <Container fluid id='favorites'>
+      <Row className='justify-content-center'>
+        <Col xs={12} className='page-title mb-3'>
+          my favorites
+        </Col>
+
+        {filteredPosts &&
+          filteredPosts.map((post) => {
+            return (
+              <Col
+                xs={{ span: 10, offset: 0 }}
+                sm={{ span: 5, offset: 0 }}
+                md={5}
+                lg={3}
+                className='justify-content-center'
                 key={post._id}
               >
-                <Card.Img variant='top' src={post.img} />
-                <Card.Body>
-                  <Card.Title>{post.title}</Card.Title>
-                  <Card.Text>{post.caption}</Card.Text>
-                  <Button
-                    variant='outline-primary'
-                    href={post.src}
-                    target='__blank'
-                    style={{ margin: "5px" }}
-                  >
-                    Learn More
-                  </Button>
-                  {/* {userData && <FavoriteButton post={post} />} */}
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        })}
-    </div>
+                <Card
+                  style={{
+                    width: "100%",
+                    border: "2px solid green",
+                    padding: "1px",
+                    margin: "3px",
+                  }}
+                  className='text-center'
+                  key={post._id}
+                >
+                  <Card.Img variant='top' src={post.img} />
+                  <Card.Body>
+                    <Card.Title>{post.title}</Card.Title>
+                    <Card.Text>{post.caption}</Card.Text>
+                    <Button
+                      variant='outline-primary'
+                      href={post.src}
+                      target='__blank'
+                      style={{ margin: "5px" }}
+                    >
+                      Learn More
+                    </Button>
+                    <Button
+                      variant='outline-light'
+                      onClick={() => dispatch(removeFavorite(post._id))}
+                      style={{ margin: "5px" }}
+                    >
+                      <BsHeartFill
+                        style={{ color: "green", fontSize: "1.5rem" }}
+                      />
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+      </Row>
+    </Container>
   );
 };
 
 export default FavoritesScreen;
-
-{
-  /* <Col key={post._id} sm={12} md={6} lg={4} xl={3}>
-<Card className='my-3 p-3 rounded'>
-  <Link to={`/blog/${post._id}`}>
-    <Card.Img src={post.img} variant='top' />
-  </Link>
-  <Card.Body>
-    <Link to={`/blog/${post._id}`}>
-      <Card.Title as='div'>
-        <strong>{post.title}</strong>
-      </Card.Title>
-    </Link>
-    <Card.Text as='div'>
-      <div className='my-3'>
-        {post.caption}
-      </div>
-    </Card.Text>
-  </Card.Body>
-</Card>
-</Col> */
-}

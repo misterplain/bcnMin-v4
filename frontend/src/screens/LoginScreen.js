@@ -15,7 +15,7 @@ const loginSchema = Yup.object({
   email: Yup.string()
     .email("Please enter a valid email")
     .required("Field required")
-    .min(10, "Email must be at least 5 characters"),
+    .min(5, "Email must be at least 5 characters"),
   password: Yup.string()
     .min(6)
     .required("Please provide a password of at least 6 characters"),
@@ -55,7 +55,7 @@ const LoginScreen = () => {
   // });
 
   return (
-    <Container fluid id="login">
+    <Container fluid id='login'>
       <Row className='justify-content-center'>
         <Col xs={12}>
           <h2 class='text-center'>Sign In</h2>

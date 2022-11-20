@@ -3,6 +3,7 @@ import { Row, Col, Card, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogPosts } from "../actions/blogActions";
@@ -25,7 +26,7 @@ const FavoriteButton = ({ post }) => {
 
   return (
     <Button
-      variant={isFavorite ? "outline-danger" : "outline-success"}
+      variant='outline-light'
       onClick={
         isFavorite
           ? () => {
@@ -39,7 +40,11 @@ const FavoriteButton = ({ post }) => {
       }
       style={{ margin: "5px" }}
     >
-      {isFavorite ? "Remove Favorite" : "Add Favorite"}
+      {isFavorite ? (
+        <BsHeartFill style={{ color: "green", fontSize: "1.5rem" }} />
+      ) : (
+        <BsHeart style={{ color: "green", fontSize: "1.5rem" }} />
+      )}
     </Button>
   );
 };
@@ -60,7 +65,7 @@ const InformScreen = () => {
   }, [dispatch]);
 
   return (
-    <Container fluid id="inform">
+    <Container fluid id='inform'>
       <Row className='justify-content-center'>
         <Col sm={12} className='page-title mb-3'>
           local news and conservation info
@@ -101,25 +106,6 @@ const InformScreen = () => {
                       Learn More
                     </Button>
                     {userData && <FavoriteButton post={post} />}
-                    {/* {userData && (
-                      <Button
-                        variant={
-                          userData.favorites?.includes(post._id)
-                            ? "outline-danger"
-                            : "outline-success"
-                        }
-                        onClick={
-                          userData.favorites?.includes(post._id)
-                            ? () => dispatch(removeFavorite(post._id))
-                            : () => dispatch(addFavorite(post._id))
-                        }
-                        style={{ margin: "5px" }}
-                      >
-                        {userData.favorites?.includes(post._id)
-                          ? "Remove Favorite"
-                          : "Add Favorite"}
-                      </Button>
-                    )} */}
                   </Card.Body>
                 </Card>
               </Col>
@@ -131,3 +117,4 @@ const InformScreen = () => {
 };
 
 export default InformScreen;
+

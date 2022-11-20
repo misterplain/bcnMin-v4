@@ -1,13 +1,14 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate, Outlet
+  Navigate,
+  Outlet,
 } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import InformScreen from "./screens/InformScreen";
@@ -24,7 +25,7 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userLogin);
 
-//check local storage for profile, run use effect to get refresh token
+  //check local storage for profile, run use effect to get refresh token
   // useEffect(() => {
   //   let token = localStorage.getItem("profile");
   //   if (token) {
@@ -54,7 +55,7 @@ function App() {
       <section>
         <Outlet></Outlet>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

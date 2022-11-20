@@ -299,3 +299,9 @@
 20221119	17:07:03	88fb9e31-c289-4bcd-82b3-eb508678d7d4	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20221119	17:57:00	e8f54ba8-a117-495d-9fff-0e3cd9da825f	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
 20221119	17:57:00	8f9e9ded-4d82-4437-b9a3-ff8d855909cb	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
+20221120	18:28:02	3ff620dd-0ea1-4f01-a95c-c85ede44c0f1	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
+20221120	18:29:13	f27daadc-f958-4657-b7be-3cb44e40ef03	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
+20221120	18:35:56	29d7ffd4-fa66-4465-af51-3939334486be	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/babel-plugin-macros/dist/index.js	undefined
+20221120	18:35:56	b2520521-bafb-40ed-9ec3-16eed251dd7a	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
+20221120	18:46:28	2319e099-d5b8-4087-ab1a-09a1eb74dded	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/babel-plugin-macros/dist/index.js	undefined
+20221120	18:46:29	85f70ce0-545a-428c-9d85-42307664ed82	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
