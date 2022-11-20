@@ -63,6 +63,7 @@ const CollabScreen = () => {
               }
 
               resetForm();
+              setShowModal(true)
             }}
           >
             {({
@@ -158,6 +159,19 @@ const CollabScreen = () => {
           </Col>
         ))}
       </Row>
+      <Modal
+        size="sm"
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        aria-labelledby="example-modal-sizes-title-sm"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-sm">
+            Sent successfully
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Thank you!</Modal.Body>
+      </Modal>
     </Container>
   );
 };

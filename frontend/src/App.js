@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
+  Navigate, Outlet
 } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Header from "./components/Header";
@@ -51,6 +51,9 @@ function App() {
           </Routes>
         </Container>
       </main>
+      <section>
+        <Outlet></Outlet>
+      </section>
       <Footer />
     </Router>
   );
