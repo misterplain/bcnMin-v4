@@ -39,7 +39,7 @@
 ###### Collab Page
 
 1. [x] Form placeholders
-2. [ ] Modal confirming request sent 
+2. [x] Modal confirming request sent 
 
 ###### Favorites Page
 

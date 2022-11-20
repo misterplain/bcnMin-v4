@@ -126,44 +126,44 @@ const Header = () => {
             <Offcanvas.Body>
               <Nav className='justify-content-end flex-grow-1 pe-3'>
                 <Link to='/' style={{ textDecoration: "none" }}>
-                  <Nav.Link href='/'>Inform</Nav.Link>
+                  <Nav.Link href='/' style={{color: 'green'}}>Inform</Nav.Link>
                 </Link>
                 <Link to='/connect' style={{ textDecoration: "none" }}>
-                  <Nav.Link href='/connect'>Connect</Nav.Link>
+                  <Nav.Link href='/connect' style={{color: 'green'}}>Connect</Nav.Link>
                 </Link>
                 <Link to='/tech' style={{ textDecoration: "none" }}>
-                  <Nav.Link href='/tech'>Tech</Nav.Link>
+                  <Nav.Link href='/tech' style={{color: 'green'}}>Tech</Nav.Link>
                 </Link>
                 <Link to='/rescue' style={{ textDecoration: "none" }}>
-                  <Nav.Link href='/rescue'>Rescue</Nav.Link>
+                  <Nav.Link href='/rescue' style={{color: 'green'}}>Rescue</Nav.Link>
                 </Link>
                 <Link to='/collab' style={{ textDecoration: "none" }}>
-                  <Nav.Link href='/collab'>Collab</Nav.Link>
+                  <Nav.Link href='/collab' style={{color: 'green'}}>Collab</Nav.Link>
                 </Link>
                 {authData ? (
                   <>
                     <Link to='/favorites' style={{ textDecoration: "none" }}>
-                      <Nav.Link href='/favorites'>Collab</Nav.Link>
+                      <Nav.Link href='/favorites' style={{color: 'purple'}}>Favorites</Nav.Link>
                     </Link>
-                    <Link to='/collab' style={{ textDecoration: "none" }}>
+                    <Link to='/logout' style={{ textDecoration: "none" }}>
                       <Nav.Link
-                        href='/collab'
+                        href='/logout'
                         onClick={() => logoutAndRedirect()}
+                        style={{color: 'purple'}}
                       >
-                        Collab
+                        Logout
                       </Nav.Link>
                     </Link>
                   </>
                 ) : (
-                  <>
+                  <Link to='/login' style={{ textDecoration: "none" }}>
                     <Nav.Link
                       href='/login'
-                      onClick={() => navigate("/login", { replace: true })}
                       style={{ color: "purple" }}
                     >
                       Login
                     </Nav.Link>
-                  </>
+                  </Link>
                 )}
               </Nav>
             </Offcanvas.Body>
