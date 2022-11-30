@@ -4,7 +4,7 @@
 
 1. [ ] Add footer /  social media links 
 2. [x] Navbar - x button on offcanvas closes canvas, link styling
-3. [ ] Navbar - links in header now opening offcanvas
+3. [x] Navbar - links in header now opening offcanvas
 3. [x] Remove users page
 
 
@@ -23,12 +23,12 @@
 ###### Inform Page
 
 1. [ ] Add more blog posts
-2. [ ] Add Remove favorite button = heart icon
+2. [x] Add Remove favorite button = heart icon
 3. [ ] Create upvote/downvote functionality, front to back
 
 ###### Connect Page
 
-1. [ ] "Log in to post" styling, smaller, links to login page
+1. [x] "Log in to post" styling, smaller, links to login page
 2. [ ] Edit Comment and Delete Comment => pencil and X icon in top right corner
 3. [ ] Editing comment, send edit is a checkmark, exit editor is an X
 
@@ -43,4 +43,4 @@
 
 ###### Favorites Page
 
-1. [ ] Why is state not pulling userDetails?
+1. [x] Why is state not pulling userDetails?

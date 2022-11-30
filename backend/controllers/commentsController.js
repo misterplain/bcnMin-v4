@@ -22,7 +22,8 @@ const createNewComment = async (req, res) => {
   const { comment } = req.body;
   console.log(comment);
   const { id, username } = req.user;
-  console.log(id, username);
+  // console.log(id, username);
+  console.log(req.user)
 
   // Confirm data
   if (!comment) {

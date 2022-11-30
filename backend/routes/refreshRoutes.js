@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const refreshController = require("../controllers/refreshController");
-const verifyJWT = require("../middleware/verifyJWT");
+// const { protect } = require("../middleware/authMiddleware");
 
-router.use(verifyJWT);
+// router.use(protect);
 router.route("/").get(refreshController.refresh);
 
 module.exports = router;

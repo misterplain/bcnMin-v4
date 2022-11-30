@@ -5,22 +5,20 @@ const jwt = require("jsonwebtoken");
 // @route GET /users/refresh
 // @access Public - because access token has expired
 const refresh = (req, res) => {
-  console.log(req.cookies)
-  const cookies = req.cookies;
-
-  if (!cookies?.jwt) return res.status(401).json({ message: "Unauthorized" });
-
-  const refreshToken = cookies.jwt;
+  let refreshToken = req.get("Authorization");
+  refreshToken = refreshToken.slice(refreshToken.indexOf(" ") + 1);
+  console.log(refreshToken);
 
   jwt.verify(
     refreshToken,
     process.env.REFRESH_TOKEN_SECRET,
     async (err, decoded) => {
-      if (err) return res.status(403).json({ message: "Forbidden" });
+      if (err) return res.status(403).json({ message: "Forbidden " + err });
 
       const foundUser = await User.findOne({
         email: decoded.email,
       }).exec();
+      console.log(foundUser);
 
       if (!foundUser) return res.status(401).json({ message: "Unauthorized" });
 
@@ -28,6 +26,7 @@ const refresh = (req, res) => {
         {
           UserInfo: {
             email: foundUser.email,
+            id: foundUser._id,
           },
         },
         process.env.ACCESS_TOKEN_SECRET,
@@ -39,4 +38,4 @@ const refresh = (req, res) => {
   );
 };
 
-module.exports = {refresh};
+module.exports = { refresh };

@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body)
+  console.log(req.body);
 
   if (!email || !password) {
     return res.status(400).json({ message: "All fields are required" });
@@ -17,7 +17,9 @@ const authUser = asyncHandler(async (req, res) => {
   const foundUser = await User.findOne({ email }).exec();
 
   if (!foundUser) {
-    return res.status(401).json({ message: "Login failed, please check your credentials" });
+    return res
+      .status(401)
+      .json({ message: "Login failed, please check your credentials" });
   }
 
   const match = await bcrypt.compare(password, foundUser.password);
@@ -33,11 +35,11 @@ const authUser = asyncHandler(async (req, res) => {
       email: foundUser.email,
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "20m" }
+    { expiresIn: "1m" }
   );
 
   const refreshToken = jwt.sign(
-    { email: foundUser.email },
+    { email: foundUser.email, id: foundUser._id },
     process.env.REFRESH_TOKEN_SECRET,
     { expiresIn: "30d" }
   );
@@ -51,7 +53,7 @@ const authUser = asyncHandler(async (req, res) => {
   });
 
   // Send accessToken containing username and roles
-  res.json({ accessToken });
+  res.json({ accessToken, refreshToken });
 });
 
 module.exports = { authUser };

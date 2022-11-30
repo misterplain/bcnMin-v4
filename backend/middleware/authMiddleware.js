@@ -4,7 +4,7 @@ const User = require("../models/userModel");
 
 const protect = asyncHandler(async (req, res, next) => {
   let token = req.get("Authorization");
-  console.log('protect middleware accessed');
+  console.log("protect middleware accessed");
   // axios.defaults.headers.common["x-auth-token"] = token;
   // let token = req.body.headers.Authorization;
 
@@ -14,6 +14,7 @@ const protect = asyncHandler(async (req, res, next) => {
     try {
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
       req.user = await User.findById(decoded.id).select("-password");
+      console.log(req.user + "console log req. user");
       next();
       console.log("token verified");
     } catch (error) {
@@ -27,6 +28,27 @@ const protect = asyncHandler(async (req, res, next) => {
     console.log("protect middleware token not found");
     throw new Error("No token, authorization denied");
   }
+
+  //decode the refresh token
+  // let refreshToken = req.get("Authorization");
+  // refreshToken = refreshToken.slice(refreshToken.indexOf(" ") + 1);
+
+  // if (refreshToken) {
+  //   try {
+  //     const decoded = jwt.verify(
+  //       refreshToken,
+  //       process.env.REFRESH_TOKEN_SECRET
+  //     );
+  //     req.user = await User.findById(decoded.id).select("-password");
+  //     next();
+  //     console.log("refresh token verified");
+  //   } catch (error) {
+  //     console.error(error);
+  //     res.status(401);
+  //     throw new Error("Not authorized, refresh token failed");
+  //     console.log("refresh token not verified", error);
+  //   }
+  // }
 });
 
 module.exports = { protect };

@@ -305,3 +305,13 @@
 20221120	18:35:56	b2520521-bafb-40ed-9ec3-16eed251dd7a	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
 20221120	18:46:28	2319e099-d5b8-4087-ab1a-09a1eb74dded	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/babel-plugin-macros/dist/index.js	undefined
 20221120	18:46:29	85f70ce0-545a-428c-9d85-42307664ed82	Error: No token, authorization denied	GET	/Users/patrick/Desktop/Learn/Projects/2-bcnMin-v5/frontend/node_modules/gensync/index.js	undefined
+20221130	18:35:58	fea144dc-4e96-4eb5-9231-2e06ff8db018	ReferenceError: refreshToken is not defined	GET	/refresh	undefined
+20221130	18:37:05	f095a1cc-59f0-4eee-b214-33f4f4b50611	ReferenceError: refreshToken is not defined	GET	/refresh	undefined
+20221130	18:39:21	ce1d63d8-0409-4b8b-bf4a-bd318fcae4d9	ReferenceError: token is not defined	GET	/refresh	undefined
+20221130	18:56:47	c8ca6e4a-2c58-4feb-8bb9-29daefa0bdec	Error: Not authorized, token failed	POST	/comments	undefined
+20221130	18:57:12	25c53f6f-5809-4b07-9979-5829af290d9d	Error: Not authorized, token failed	POST	/comments	undefined
+20221130	18:59:55	d4d73827-3bc7-45d0-91f4-6a695880f8d5	Error: Not authorized, token failed	POST	/comments	undefined
+20221130	19:02:56	08571115-97dd-45b6-afb4-ac0fd1ba968c	Error: Not authorized, token failed	POST	/comments	undefined
+20221130	19:10:26	a6b52039-51df-4d90-8ffe-b3af3f3b33f6	Error: Not authorized, token failed	GET	/refresh	undefined
+20221130	19:13:02	0a56270c-8c24-42c4-ab8e-10768c916afc	Error: Not authorized, refresh token failed	POST	/comments	undefined
+20221130	19:17:25	4dde5d7d-c41c-4640-ac4c-9ddb2bd8dfd3	Error: Not authorized, token failed	GET	/refresh	undefined
