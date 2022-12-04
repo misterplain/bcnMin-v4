@@ -8,7 +8,7 @@ import {
   USER_REGISTER_SUCCESS,
 } from "../constants/authConstants";
 
-export const authReducer = (state = { authData: null }, action) => {
+export const authReducer = (state = { accessToken: null }, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
       return { loading: true };
@@ -17,7 +17,8 @@ export const authReducer = (state = { authData: null }, action) => {
       localStorage.setItem("profile", action.payload.data.accessToken);
       return {
         loading: false,
-        authData: action.payload.data.accessToken,
+        accessToken: action.payload.data.accessToken,
+        refreshToken: action.payload.data.refreshToken,
         errors: null,
       };
 
@@ -28,7 +29,8 @@ export const authReducer = (state = { authData: null }, action) => {
       localStorage.removeItem("profile");
       return {
         ...state,
-        authData: null,
+        accessToken: null,
+        refreshToken: null,
       };
 
     //register
@@ -38,7 +40,8 @@ export const authReducer = (state = { authData: null }, action) => {
     case USER_REGISTER_SUCCESS:
       localStorage.setItem("profile", action.payload.data.accessToken);
       return {
-        authData: action.payload.data.accessToken,
+        accessToken: action.payload.data.accessToken,
+        refreshToken: action.payload.data.refreshToken,
         loading: false,
         errors: null,
       };

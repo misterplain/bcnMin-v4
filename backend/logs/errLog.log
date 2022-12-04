@@ -315,3 +315,24 @@
 20221130	19:10:26	a6b52039-51df-4d90-8ffe-b3af3f3b33f6	Error: Not authorized, token failed	GET	/refresh	undefined
 20221130	19:13:02	0a56270c-8c24-42c4-ab8e-10768c916afc	Error: Not authorized, refresh token failed	POST	/comments	undefined
 20221130	19:17:25	4dde5d7d-c41c-4640-ac4c-9ddb2bd8dfd3	Error: Not authorized, token failed	GET	/refresh	undefined
+20221204	14:16:58	45c74141-a0f6-4fc4-855b-3ab49f29b32a	Error: Not authorized, token failed	POST	/comments	undefined
+20221204	14:25:35	2ee8ff50-2bb8-40fa-9dc9-2b4db3077b79	ReferenceError: refreshTokens is not defined	POST	/auth	undefined
+20221204	14:41:03	7bb3b2c8-9a40-46ec-af65-89d164649529	Error: Cannot set headers after they are sent to the client	GET	/refresh	undefined
+20221204	14:41:56	4577af28-324b-4b23-bf2d-3e009d5785d2	Error: Cannot set headers after they are sent to the client	GET	/refresh	undefined
+20221204	14:43:18	7bb9a841-75c6-4f46-9dbe-b74d9f999c53	Error: Cannot set headers after they are sent to the client	GET	/refresh	undefined
+20221204	14:45:43	08745d5f-d016-405a-8c63-8308f84deb00	Error: Cannot set headers after they are sent to the client	GET	/refresh	undefined
+20221204	14:46:33	7255004f-2f96-4403-9d11-efcd250b0b22	Error: Cannot set headers after they are sent to the client	GET	/refresh	undefined
+20221204	14:47:09	190e136c-48b0-42d9-a384-41986224f49a	Error: Cannot set headers after they are sent to the client	GET	/refresh	undefined
+20221204	14:48:21	64fceb17-6615-4568-a6a3-3241045bbe81	Error: Cannot set headers after they are sent to the client	GET	/refresh	undefined
+20221204	15:00:23	40a0b24c-6cdf-42c0-af1e-963f22707289	Error: Not authorized, token failed	GET	/refresh	undefined
+20221204	15:04:03	c4033ee4-1ca8-429e-a950-59a68ca8c0c9	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:06:48	3507a6c2-b019-48b1-b978-9168561edfaf	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:07:53	f4ded5da-66c6-42a9-893b-03b169688101	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:07:54	ff30dab1-a888-44fb-b569-c1823c729ce6	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:08:14	83feb219-f45e-482f-9450-517a942a201c	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:09:25	49afa1b4-1239-4490-9a9c-4e22a9f1f861	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:10:20	d659b357-2fd7-4b9b-a4a0-a1647e294c90	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:13:11	a7b2e95f-87b4-4105-836b-2b55f233435a	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:14:46	f48bf6cd-adfb-4bae-906c-6fbfbfb6ef8a	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:22:30	e4628b84-d8b2-4a32-a02b-c710eebd7860	Error: Not authorized, token failed	POST	/logout	undefined
+20221204	15:54:39	2c217918-f47e-4b3f-a5f0-c07e4abd0ec9	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000

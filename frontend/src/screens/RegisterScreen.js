@@ -21,7 +21,7 @@ const RegisterScreen = ({ match, history }) => {
   const location = useLocation();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, registerError, authData } = userLogin;
+  const { loading, registerError, accessToken } = userLogin;
 
   const registerSchema = Yup.object({
     username: Yup.string().required("Please provide a username"),
@@ -36,10 +36,10 @@ const RegisterScreen = ({ match, history }) => {
   });
 
   useEffect(() => {
-    if (authData) {
+    if (accessToken) {
       navigate("/");
     }
-  }, [authData, navigate]);
+  }, [accessToken, navigate]);
 
   // const submitHandler = (e) => {
   //   e.preventDefault();

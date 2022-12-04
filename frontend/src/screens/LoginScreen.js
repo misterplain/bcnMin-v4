@@ -29,13 +29,14 @@ const LoginScreen = () => {
   const location = useLocation();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, loginError, authData } = userLogin;
+  // console.log(accessToken)
+  const { loading, loginError, accessToken } = userLogin;
 
   useEffect(() => {
-    if (authData) {
+    if (accessToken) {
       navigate("/");
     }
-  }, [navigate, authData]);
+  }, [navigate, accessToken]);
 
   // const submitHandler = (e) => {
   //   e.preventDefault();

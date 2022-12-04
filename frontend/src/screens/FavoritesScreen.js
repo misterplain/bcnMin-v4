@@ -12,7 +12,7 @@ import { getUserDetails } from "../actions/userActions";
 
 const FavoritesScreen = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.userLogin.authData);
+  const token = useSelector((state) => state.userLogin.accessToken);
   const { userData } = useSelector((state) => state.userDetails);
   const blogPosts = useSelector((state) => state.blogPosts);
   // const { loading, error, posts } = blogPosts;

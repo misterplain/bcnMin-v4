@@ -20,7 +20,7 @@ const userInfoFromStorage = localStorage.getItem("profile")
   : null;
 
 const initialState = {
-  userLogin: { authData: userInfoFromStorage },
+  userLogin: { accessToken: userInfoFromStorage },
 };
 
 // const initialState = {}

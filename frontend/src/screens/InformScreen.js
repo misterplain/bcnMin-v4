@@ -13,7 +13,8 @@ import { getUserDetails } from "../actions/userActions";
 const FavoriteButton = ({ post }) => {
   const dispatch = useDispatch();
   const [isFavorite, setIsFavorite] = useState(false);
-  const token = useSelector((state) => state.userLogin.authData);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, loginError, accessToken } = userLogin;
   const userData = useSelector((state) => state.userDetails.userData);
 
   useEffect(() => {
@@ -52,15 +53,16 @@ const FavoriteButton = ({ post }) => {
 const InformScreen = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.userLogin.authData);
+  const userLogin = useSelector((state) => state.userLogin);
+  const { accessToken } = userLogin;
   const userData = useSelector((state) => state.userDetails.userData);
   const blogPosts = useSelector((state) => state.blogPosts);
   const { loading, error, posts } = blogPosts;
 
   useEffect(() => {
     dispatch(fetchBlogPosts());
-    if (token) {
-      dispatch(getUserDetails(token));
+    if (accessToken) {
+      dispatch(getUserDetails(accessToken));
     }
   }, [dispatch]);
 
@@ -105,7 +107,7 @@ const InformScreen = () => {
                     >
                       Learn More
                     </Button>
-                    {userData && <FavoriteButton post={post} />}
+                    {accessToken && <FavoriteButton post={post} />}
                   </Card.Body>
                 </Card>
               </Col>

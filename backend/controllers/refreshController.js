@@ -24,10 +24,8 @@ const refresh = (req, res) => {
 
       const accessToken = jwt.sign(
         {
-          UserInfo: {
-            email: foundUser.email,
-            id: foundUser._id,
-          },
+          email: foundUser.email,
+          id: foundUser._id,
         },
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "15m" }

@@ -12,7 +12,7 @@ import {
 } from "../actions/commentsActions";
 
 const Comment = ({ comment }) => {
-  const token = useSelector((state) => state.userLogin.authData);
+  const token = useSelector((state) => state.userLogin.accessToken);
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
   const [editCommentText, setEditCommentText] = useState("");
@@ -90,7 +90,7 @@ const ConnectScreen = () => {
   const dispatch = useDispatch();
   const commentsList = useSelector((state) => state.comments);
   const { loading, error, comments } = commentsList;
-  const token = useSelector((state) => state.userLogin.authData);
+  const token = useSelector((state) => state.userLogin.accessToken);
 
   useEffect(() => {
     dispatch(fetchComments());

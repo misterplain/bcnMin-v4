@@ -25,7 +25,7 @@ const Header = () => {
   };
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { authData } = userLogin;
+  const { accessToken } = userLogin;
 
   const [show, setShow] = useState(false);
 
@@ -140,7 +140,7 @@ const Header = () => {
                 <Link to='/collab' style={{ textDecoration: "none" }}>
                   <Nav.Link href='/collab' style={{color: 'green'}}>Collab</Nav.Link>
                 </Link>
-                {authData ? (
+                {accessToken ? (
                   <>
                     <Link to='/favorites' style={{ textDecoration: "none" }}>
                       <Nav.Link href='/favorites' style={{color: 'purple'}}>Favorites</Nav.Link>
