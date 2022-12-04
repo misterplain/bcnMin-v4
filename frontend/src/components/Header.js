@@ -18,12 +18,6 @@ const Header = () => {
   const navigate = useNavigate();
   // const location = useLocation();
 
-  const logoutAndRedirect = () => {
-    dispatch(logout());
-    navigate("/login");
-    setShow(false);
-  };
-
   const userLogin = useSelector((state) => state.userLogin);
   const { accessToken } = userLogin;
 
@@ -31,6 +25,12 @@ const Header = () => {
 
   const handleShow = () => setShow(true);
   //   const handleClose = () => setShow(false);
+
+  const logoutAndRedirect = () => {
+    dispatch(logout(accessToken));
+    navigate("/login");
+    setShow(false);
+  };
 
   return (
     <header>

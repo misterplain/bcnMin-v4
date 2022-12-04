@@ -35,10 +35,20 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const logout = () => (dispatch) => {
+export const logout = (token) => (dispatch) => {
   localStorage.removeItem("profile");
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const data = axios.post("/logout", config);
+  console.log(data)
 };
 
 //register

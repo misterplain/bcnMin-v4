@@ -26,12 +26,12 @@ function App() {
   const user = useSelector((state) => state.userLogin);
 
   // check local storage for profile, run use effect to get refresh token
-  useEffect(() => {
-    let token = localStorage.getItem("profile");
-    if (token) {
-      dispatch(getUserDetails(token));
-    }
-  })
+  // useEffect(() => {
+  //   let token = localStorage.getItem("profile");
+  //   if (token) {
+  //     dispatch(getUserDetails(token));
+  //   }
+  // })
 
   return (
     <Router>

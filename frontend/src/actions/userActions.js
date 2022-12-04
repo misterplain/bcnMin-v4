@@ -10,6 +10,8 @@ import {
   REMOVE_FAVORITE_REQUEST,
 } from "../constants/userConstants";
 import axios from "../api/axios";
+import {useState, useSelector} from "react";
+
 
 //decrypt the access token and insert this int othe userDetails state
 export const getUserDetails = (id) => async (dispatch, getState) => {
@@ -48,12 +50,16 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 //favorites
 export const addFavorite = (id) => async (dispatch, getState) => {
   try {
-    const authToken = localStorage.getItem("profile");
+    const accessToken = localStorage.getItem("profile");
+    // const {user} = useSelector((state) => state.userLogin);
+    // console.log(user)
+    // const { accessToken } = user;
+    // console.log(accessToken);
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     };
 
@@ -63,6 +69,8 @@ export const addFavorite = (id) => async (dispatch, getState) => {
       headers: config.headers,
     });
     console.log(data.id);
+
+    // const {data} = await axios.post(`/favorites/${id}`, config);
     dispatch({
       type: ADD_FAVORITE_SUCCESS,
       payload: data,
@@ -81,12 +89,14 @@ export const addFavorite = (id) => async (dispatch, getState) => {
 
 export const removeFavorite = (id) => async (dispatch, getState) => {
   try {
-    const authToken = localStorage.getItem("profile");
+    // const authToken = localStorage.getItem("profile");
+    const userLogin = useSelector((state) => state.userLogin);
+    const { accessToken } = userLogin;
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     };
     console.log("remove favorite action accessed");
