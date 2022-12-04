@@ -14,7 +14,7 @@ export const authReducer = (state = { accessToken: null }, action) => {
       return { loading: true };
 
     case USER_LOGIN_SUCCESS:
-      localStorage.setItem("profile", action.payload.data.accessToken);
+      localStorage.setItem("profile", action.payload.data.refreshToken);
       return {
         loading: false,
         accessToken: action.payload.data.accessToken,
@@ -38,7 +38,7 @@ export const authReducer = (state = { accessToken: null }, action) => {
       return { loading: true };
 
     case USER_REGISTER_SUCCESS:
-      localStorage.setItem("profile", action.payload.data.accessToken);
+      localStorage.setItem("profile", action.payload.data.refreshToken);
       return {
         accessToken: action.payload.data.accessToken,
         refreshToken: action.payload.data.refreshToken,

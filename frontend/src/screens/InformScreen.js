@@ -31,11 +31,11 @@ const FavoriteButton = ({ post }) => {
       onClick={
         isFavorite
           ? () => {
-              dispatch(removeFavorite(post._id));
+              dispatch(removeFavorite(post._id, accessToken));
               setIsFavorite(false);
             }
           : () => {
-              dispatch(addFavorite(post._id));
+              dispatch(addFavorite(post._id, accessToken));
               setIsFavorite(true);
             }
       }

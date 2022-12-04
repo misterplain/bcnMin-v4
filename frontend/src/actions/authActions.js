@@ -77,21 +77,31 @@ export const register = (username, email, password) => async (dispatch) => {
 export const refresh = () => async (dispatch) => {
   try {
     const token = localStorage.getItem("profile");
+    console.log(token)
 
-    const data = await axios.post("/refresh", { token });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: data,
-    });
+    const data = await axios.post("/refresh", config);
+        console.log(data)
 
-    dispatch(getUserDetails(data.data.accessToken));
+    // dispatch({
+    //   type: USER_LOGIN_SUCCESS,
+    //   payload: data,
+    // });
+
+
+
+    // dispatch(getUserDetails(data.data.accessToken));
   } catch (error) {
     console.log(error);
-    console.log(error.response.data.message);
-    dispatch({
-      type: USER_LOGIN_FAIL,
-      payload: error.response.data.message,
-    });
+    // dispatch({
+    //   type: USER_LOGIN_FAIL,
+    //   payload: error.response.data.message,
+    // });
   }
 };

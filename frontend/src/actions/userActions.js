@@ -48,18 +48,19 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 };
 
 //favorites
-export const addFavorite = (id) => async (dispatch, getState) => {
+export const addFavorite = (id, token) => async (dispatch, getState) => {
   try {
-    const accessToken = localStorage.getItem("profile");
+    // const accessToken = localStorage.getItem("profile");
     // const {user} = useSelector((state) => state.userLogin);
     // console.log(user)
     // const { accessToken } = user;
     // console.log(accessToken);
+    console.log(token)
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -87,16 +88,16 @@ export const addFavorite = (id) => async (dispatch, getState) => {
   }
 };
 
-export const removeFavorite = (id) => async (dispatch, getState) => {
+export const removeFavorite = (id,token) => async (dispatch, getState) => {
   try {
     // const authToken = localStorage.getItem("profile");
-    const userLogin = useSelector((state) => state.userLogin);
-    const { accessToken } = userLogin;
+    // const userLogin = useSelector((state) => state.userLogin);
+    // const { accessToken } = userLogin;
 
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${token}`,
       },
     };
     console.log("remove favorite action accessed");
