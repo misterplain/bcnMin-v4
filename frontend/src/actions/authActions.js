@@ -6,10 +6,12 @@ import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+  REFRESH_TOKEN,
 } from "../constants/authConstants";
 import { USER_DETAILS_RESET } from "../constants/userConstants";
 import axios from "../api/axios";
 import { getUserDetails } from "./userActions";
+import {axiosRefresh} from "../api/axios";
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -38,7 +40,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = (token) => (dispatch) => {
   localStorage.removeItem("profile");
   dispatch({ type: USER_LOGOUT });
-  dispatch({ type: USER_DETAILS_RESET });
+  // dispatch({ type: USER_DETAILS_RESET });
 
   const config = {
     headers: {
@@ -48,7 +50,7 @@ export const logout = (token) => (dispatch) => {
   };
 
   const data = axios.post("/logout", config);
-  console.log(data)
+  console.log(data);
 };
 
 //register
@@ -74,10 +76,12 @@ export const register = (username, email, password) => async (dispatch) => {
   }
 };
 
-export const refresh = () => async (dispatch) => {
+export const refresh = (token) => async (dispatch) => {
+
+console.log(token + "refresh action outside of trycatch")
   try {
     const token = localStorage.getItem("profile");
-    console.log(token)
+    console.log(token + "refresh action inside of trycatch")
 
     const config = {
       headers: {
@@ -86,22 +90,17 @@ export const refresh = () => async (dispatch) => {
       },
     };
 
-    const data = await axios.post("/refresh", config);
-        console.log(data)
+    const data = await axios.get("/refresh", config);
+    console.log(data);
 
-    // dispatch({
-    //   type: USER_LOGIN_SUCCESS,
-    //   payload: data,
-    // });
+    dispatch({
+      type: REFRESH_TOKEN,
+      payload: data,
+    });
 
+    // dispatch(getUserDetails(data.accessToken));
 
-
-    // dispatch(getUserDetails(data.data.accessToken));
   } catch (error) {
     console.log(error);
-    // dispatch({
-    //   type: USER_LOGIN_FAIL,
-    //   payload: error.response.data.message,
-    // });
   }
 };

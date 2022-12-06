@@ -48,7 +48,6 @@ const updateComment = async (req, res) => {
   // console.log("update comment controller accessed");
   const { id } = req.params;
   const { comment } = req.body;
-  console.log(req.body);
   // console.log(id);
 
   // Confirm data

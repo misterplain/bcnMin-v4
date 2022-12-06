@@ -11,7 +11,6 @@ let refreshTokens = [];
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body);
 
   if (!email || !password) {
     return res.status(400).json({ message: "All fields are required" });
@@ -38,7 +37,7 @@ const authUser = asyncHandler(async (req, res) => {
       email: foundUser.email,
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "15m" }
+    { expiresIn: "60s" }
   );
 
   const refreshToken = jwt.sign(
@@ -93,7 +92,7 @@ const refresh = (req, res) => {
           id: decoded.id,
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "15m" }
+        { expiresIn: "60s" }
       );
 
       const newRefreshToken = jwt.sign(

@@ -29,31 +29,13 @@ const LoginScreen = () => {
   const location = useLocation();
 
   const userLogin = useSelector((state) => state.userLogin);
-  // console.log(accessToken)
   const { loading, loginError, accessToken } = userLogin;
 
-  useEffect(() => {
-    if (accessToken) {
-      navigate("/");
-    }
-  }, [navigate, accessToken]);
-
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-  //   dispatch(login(email, password));
-  // }
-
-  // const formik = useFormik({
-  //   initialValues: {
-  //     email: "",
-  //     password: "",
-  //   },
-  //   loginSchema,
-  //   onSubmit: (values, { resetForm }) => {
-  //     console.log(formik.errors);
-  //     dispatch(login(email, password));
-  //   },
-  // });
+  // useEffect(() => {
+  //   if (accessToken !== null) {
+  //     navigate("/");
+  //   }
+  // }, [navigate]);
 
   return (
     <Container fluid id='login'>

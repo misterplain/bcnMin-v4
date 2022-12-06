@@ -59,12 +59,12 @@ const InformScreen = () => {
   const blogPosts = useSelector((state) => state.blogPosts);
   const { loading, error, posts } = blogPosts;
 
-  useEffect(() => {
-    dispatch(fetchBlogPosts());
-    if (accessToken) {
-      dispatch(getUserDetails(accessToken));
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchBlogPosts());
+  //   if (accessToken) {
+  //     dispatch(getUserDetails(accessToken));
+  //   }
+  // }, [dispatch]);
 
   return (
     <Container fluid id='inform'>
@@ -107,7 +107,7 @@ const InformScreen = () => {
                     >
                       Learn More
                     </Button>
-                    {accessToken && <FavoriteButton post={post} />}
+                    {userData && <FavoriteButton post={post} />}
                   </Card.Body>
                 </Card>
               </Col>

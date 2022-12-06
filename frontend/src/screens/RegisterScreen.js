@@ -35,11 +35,11 @@ const RegisterScreen = ({ match, history }) => {
     ),
   });
 
-  useEffect(() => {
-    if (accessToken) {
-      navigate("/");
-    }
-  }, [accessToken, navigate]);
+  // useEffect(() => {
+  //   if (accessToken) {
+  //     navigate("/");
+  //   }
+  // }, [accessToken, navigate]);
 
   // const submitHandler = (e) => {
   //   e.preventDefault();

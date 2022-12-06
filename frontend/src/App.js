@@ -20,15 +20,14 @@ import FavoritesScreen from "./screens/FavoritesScreen";
 import UsersScreen from "./screens/UsersScreen";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserDetails } from "./actions/userActions";
-import {refresh} from "./actions/authActions";
+import { refresh } from "./actions/authActions";
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.userLogin);
 
-  // check local storage for profile, run use effect to get refresh token
   useEffect(() => {
     let token = localStorage.getItem("profile");
+    console.log(token + "token on app refresh from local storage")
     if (token) {
       dispatch(refresh(token));
     }

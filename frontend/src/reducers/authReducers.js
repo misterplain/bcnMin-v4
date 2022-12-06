@@ -1,4 +1,5 @@
 import {
+  REFRESH_TOKEN,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -31,6 +32,13 @@ export const authReducer = (state = { accessToken: null }, action) => {
         ...state,
         accessToken: null,
         refreshToken: null,
+      };
+
+    case REFRESH_TOKEN:
+      return {
+        ...state,
+        accessToken: action.payload.data.accessToken,
+        refreshToken: action.payload.data.refreshToken,
       };
 
     //register
