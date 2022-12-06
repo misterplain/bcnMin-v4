@@ -90,7 +90,6 @@ console.log(token + "refresh action outside of trycatch")
       },
     };
 
-    localStorage.removeItem("profile");
 
     const data = await axios.get("/refresh", config);
     console.log(data);
@@ -100,7 +99,9 @@ console.log(token + "refresh action outside of trycatch")
       payload: data,
     });
 
-    localStorage.setItem("profile", JSON.stringify(data.data.refreshToken));
+    localStorage.removeItem("profile");
+
+    localStorage.setItem("profile", data.data.refreshToken);
 
     // dispatch(getUserDetails(data.accessToken));
 

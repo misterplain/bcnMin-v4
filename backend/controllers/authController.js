@@ -106,20 +106,22 @@ const refresh = (req, res) => {
 
       refreshTokens.push(newRefreshToken);
 
-      console.log({
-        refreshTokens: refreshTokens,
-        text: "refresh token array after refresh",
-      });
-
       res.status(200).json({
         accessToken: newAccessToken,
         refreshToken: newRefreshToken,
       });
 
-      console.log(newAccessToken, newRefreshToken);
+      console.log({
+        refreshTokens: refreshTokens,
+        text: "refresh token array after refresh",
+      });
+
+      console.log({
+        newAccessToken: newAccessToken,
+        newRefreshToken: newRefreshToken,
+      });
     }
   );
-
 };
 
 const logout = (req, res) => {
