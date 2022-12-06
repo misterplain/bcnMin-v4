@@ -18,7 +18,8 @@
 6. [x] Display errors - username/password required
 7. [x] Display errors - register, user data not sufficient
 8. [x] Display errors - register, user already exists
-9. [ ] Figure out refresh token so when user logs in, they stay logged in if access key stored in local memory
+9. [x] Figure out refresh token so when user logs in, they stay logged in if access key stored in local memory
+10. [ ] How to store array of refresh tokens somewhere even if the server is stopped and restarted?
 
 ###### Inform Page
 
