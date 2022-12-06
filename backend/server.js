@@ -49,7 +49,7 @@ app.use(cookieParser());
 app.use("/", express.static(path.join(__dirname, "/public")));
 
 
-app.use("/", require("./routes/root"));
+app.use("/", require("./routes/root"))
 app.use("/users", usersRoutes);
 app.use("/auth", authRoutes);
 app.use("/register", registerRoutes);

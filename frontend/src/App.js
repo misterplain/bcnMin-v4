@@ -29,7 +29,11 @@ function App() {
     let token = localStorage.getItem("profile");
     console.log(token + "token on app refresh from local storage")
     if (token) {
-      dispatch(refresh(token));
+      try {
+        dispatch(refresh(token));
+      } catch (error) {
+        console.log(error);
+      }
     }
   }, [dispatch]);
 

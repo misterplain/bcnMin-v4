@@ -115,41 +115,18 @@ const refresh = (req, res) => {
         accessToken: newAccessToken,
         refreshToken: newRefreshToken,
       });
+
+      console.log(newAccessToken, newRefreshToken);
     }
   );
 
-  // jwt.verify(
-  //   refreshToken,
-  //   process.env.REFRESH_TOKEN_SECRET,
-  //   async (err, decoded) => {
-  //     if (err) return res.status(403).json({ message: "Forbidden " + err });
-
-  //     const foundUser = await User.findOne({
-  //       email: decoded.email,
-  //     }).exec();
-  //     console.log(foundUser);
-
-  //     if (!foundUser) return res.status(401).json({ message: "Unauthorized" });
-
-  //     const accessToken = jwt.sign(
-  //       {
-  //         email: foundUser.email,
-  //         id: foundUser._id,
-  //       },
-  //       process.env.ACCESS_TOKEN_SECRET,
-  //       { expiresIn: "15m" }
-  //     );
-
-  //     res.json({ accessToken });
-  //   }
-  // );
 };
 
 const logout = (req, res) => {
   let refreshToken = req.get("Authorization");
   refreshToken = refreshToken.slice(refreshToken.indexOf(" ") + 1);
   // refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
-  refreshTokens = [];
+  refreshTokens = refreshTokens.filter((token) => token !== refreshToken);
   console.log({
     refreshTokens: refreshTokens,
     text: "refresh token array after logout",
