@@ -13080,3 +13080,11 @@
 20221206	16:57:03	9f0deb09-0911-4972-bc82-9eba1d2cd487	GET	/refresh	http://localhost:3000
 20221206	16:57:43	c76f5b1d-6365-4e5c-bb77-15cfb4ce1df0	OPTIONS	/refresh	http://localhost:3000
 20221206	16:57:43	08ba0508-4c8b-465a-8cc5-5822e79057d8	GET	/refresh	http://localhost:3000
+20221206	19:18:26	6519e626-7a6e-414a-9ccb-4cdeaf66fc69	OPTIONS	/refresh	http://localhost:3000
+20221206	19:18:26	76cf93a2-39a8-47cf-a90d-a67951ae05f2	GET	/refresh	http://localhost:3000
+20221206	19:18:34	664b1048-4414-4b26-870c-f7e7d8cc584a	OPTIONS	/auth	http://localhost:3000
+20221206	19:18:34	607d9f19-a184-45d8-b1f6-9b319c35698f	POST	/auth	http://localhost:3000
+20221206	19:18:34	c28c3a64-0277-4950-989f-f86d86475602	OPTIONS	/users/profile	http://localhost:3000
+20221206	19:18:34	6ef86e0f-1927-4d4e-b576-01c1654d3771	GET	/users/profile	http://localhost:3000
+20221206	19:19:02	ab23fa12-825e-4253-8de3-64e789d6a558	OPTIONS	/refresh	http://localhost:3000
+20221206	19:19:02	85f5c05d-3e46-431a-8c85-15f29bb390df	GET	/refresh	http://localhost:3000

@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 const { roundToNearestMinutesWithOptions } = require("date-fns/fp");
 
 let refreshTokens = [];
+//check expiry date of token and refresh if it's about to expire then create a new token, otherwise only create new access token but not refresh token 
+//Express-rate-limit
 
 // @desc    Auth user & get token
 // @route   POST /login
