@@ -92,12 +92,12 @@ const ConnectScreen = () => {
   const { loading, error, comments } = commentsList;
   const token = useSelector((state) => state.userLogin.accessToken);
 
-  // useEffect(() => {
-  //   dispatch(fetchComments());
-  //   if (token) {
-  //     dispatch(getUserDetails(token));
-  //   }
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchComments());
+    if (token) {
+      dispatch(getUserDetails(token));
+    }
+  }, []);
 
   const userInfo = useSelector((state) => state.userDetails.userData);
 

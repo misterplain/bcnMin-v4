@@ -31,11 +31,11 @@ const LoginScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, loginError, accessToken } = userLogin;
 
-  // useEffect(() => {
-  //   if (accessToken !== null) {
-  //     navigate("/");
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    if (accessToken !== null) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   return (
     <Container fluid id='login'>
