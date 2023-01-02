@@ -11,20 +11,51 @@ import { addFavorite, removeFavorite } from "../actions/userActions";
 import { getUserDetails } from "../actions/userActions";
 
 const FavoritesScreen = () => {
-  const dispatch = useDispatch();
+  // const [favorites, setFavorites] = useState([]);
+  // const dispatch = useDispatch();
+  // const token = useSelector((state) => state.userLogin.accessToken);
+  // const { userData } = useSelector((state) => state.userDetails);
+  // const blogPosts = useSelector((state) => state.blogPosts);
+  // const { loading, error, posts } = blogPosts;
+  // console.log(userData)
+
+  // const userFavorites = userData.favorites;
+  // console.log(userFavorites)
+  // const {favorites} = userData;
+  // console.log(favorites);
+  // const allPosts = blogPosts.posts;
+  // console.log(userFavorites);
+  // console.log(allPosts);
+
+  // const filteredPosts = allPosts.filter((post) =>
+  //   userFavorites.includes(post._id)
+  // );
+  // console.log(filteredPosts);
+
+  // useEffect(() => {
+  //   // dispatch(fetchBlogPosts());
+  //   // dispatch(getUserDetails(token));
+  //   userFavorites();
+  // }, [favorites, dispatch]);
+
+  // const userFavorites = () => {
+  //   const allPosts = blogPosts.posts;
+  //   const filteredPosts = allPosts.filter((post) =>
+  //     userData.favorites.includes(post._id)
+  //   );
+  //   setFavorites(filteredPosts);
+  //   console.log(filteredPosts)
+  // };
+    const dispatch = useDispatch();
   const token = useSelector((state) => state.userLogin.accessToken);
   const { userData } = useSelector((state) => state.userDetails);
   const blogPosts = useSelector((state) => state.blogPosts);
   // const { loading, error, posts } = blogPosts;
-  // console.log(userData)
 
   const userFavorites = userData.favorites;
-  console.log(userFavorites)
-  // const {favorites} = userData;
-  // console.log(favorites);
   const allPosts = blogPosts.posts;
-  // console.log(userFavorites);
-  // console.log(allPosts);
+  console.log(userFavorites);
+  console.log(allPosts);
 
   const filteredPosts = allPosts.filter((post) =>
     userFavorites.includes(post._id)
@@ -73,7 +104,7 @@ const FavoritesScreen = () => {
                     </Button>
                     <Button
                       variant='outline-light'
-                      onClick={() => dispatch(removeFavorite(post._id))}
+                      onClick={() => dispatch(removeFavorite(post._id, token))}
                       style={{ margin: "5px" }}
                     >
                       <BsHeartFill

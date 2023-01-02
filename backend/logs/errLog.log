@@ -551,3 +551,16 @@
 20230101	20:59:43	df0eba56-83c6-4969-99cc-7a3b52907b62	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
 20230101	20:59:57	dfbfcf52-2c70-40a4-8527-3049642cbe1f	Error: Not authorized, token failed	DELETE	/favorites/62cc640e30d5b70ac3940373	http://localhost:3000
 20230101	21:00:57	a9031071-6469-4de9-891b-52063c55d9f8	Error: Not authorized, token failed	DELETE	/favorites/62cc63ae30d5b70ac394036f	http://localhost:3000
+20230102	11:39:52	94b48a25-41b3-4893-903e-d9923c1001c4	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20230102	11:42:46	e0fbfcde-d019-404c-aa40-fa528e71f7da	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20230102	11:42:48	9a0d4d80-7851-42ca-b8de-e1e7f95759b2	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20230102	11:42:49	fbe5766f-84a8-4241-836d-66a5773930aa	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20230102	11:42:56	f8f15689-a1e3-45ae-887a-895cb3552835	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20230102	11:43:31	52b0da3f-285c-402b-acb3-c7a4db941e4c	Error: Not authorized, token failed	DELETE	/favorites/62cc640e30d5b70ac3940373	http://localhost:3000
+20230102	11:47:11	da0803c0-d246-4445-bba0-613dbacfcdf2	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20230102	11:47:47	e79e9584-d418-4ddb-a964-b4fa69cc94bd	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20230102	11:48:42	42c17acf-ea49-4cc0-8ba3-6065026f4f60	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000
+20230102	11:56:05	13a68f9a-f98c-4fba-a05e-bc536b29c7f0	Error: Not authorized, token failed	DELETE	/favorites/62cc640e30d5b70ac3940373	http://localhost:3000
+20230102	11:57:15	68853492-9edc-4c5b-95c7-663e3e39abca	Error: Not authorized, token failed	DELETE	/favorites/62cc640e30d5b70ac3940373	http://localhost:3000
+20230102	12:00:06	ef5e2439-647d-493f-ae73-7e92920dd2c4	Error: Not authorized, token failed	DELETE	/favorites/62cc640e30d5b70ac3940373	http://localhost:3000
+20230102	12:00:14	62fdef09-f9d7-47d7-8c84-0e23088e002b	Error: Not authorized, token failed	GET	/users/profile	http://localhost:3000

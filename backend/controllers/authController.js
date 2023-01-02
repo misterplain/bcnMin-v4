@@ -39,7 +39,7 @@ const authUser = asyncHandler(async (req, res) => {
       email: foundUser.email,
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "60s" }
+    { expiresIn: "7d" }
   );
 
   const refreshToken = jwt.sign(
