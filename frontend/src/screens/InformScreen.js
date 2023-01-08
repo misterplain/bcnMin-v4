@@ -114,6 +114,12 @@ const InformScreen = () => {
             );
           })}
       </Row>
+      <div>
+        <code>
+          <pre>{JSON.stringify(userData, null, 2)}</pre>
+        </code>
+        <pre><code>{}</code></pre>
+      </div>
     </Container>
   );
 };

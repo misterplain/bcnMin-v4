@@ -10,8 +10,8 @@ import {
 } from "../constants/authConstants";
 import { USER_DETAILS_RESET } from "../constants/userConstants";
 import axios from "../api/axios";
-import { getUserDetails } from "./userActions";
-import {axiosRefresh} from "../api/axios";
+import { getUserDetails, userDetailsReset } from "./userActions";
+import { axiosRefresh } from "../api/axios";
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -50,7 +50,8 @@ export const logout = (token) => (dispatch) => {
   };
 
   const data = axios.post("/logout", config);
-  console.log(data);
+
+  dispatch(userDetailsReset());
 };
 
 //register
@@ -77,11 +78,8 @@ export const register = (username, email, password) => async (dispatch) => {
 };
 
 export const refresh = (token) => async (dispatch) => {
-
-console.log(token + "refresh action outside of trycatch")
   try {
     const token = localStorage.getItem("profile");
-    console.log(token + "refresh action inside of trycatch")
 
     const config = {
       headers: {
@@ -89,7 +87,6 @@ console.log(token + "refresh action outside of trycatch")
         Authorization: `Bearer ${token}`,
       },
     };
-
 
     const data = await axios.get("/refresh", config);
     console.log(data);
@@ -99,13 +96,14 @@ console.log(token + "refresh action outside of trycatch")
       payload: data,
     });
 
+    //replace old refresh token with new
     localStorage.removeItem("profile");
-
     localStorage.setItem("profile", data.data.refreshToken);
 
-    // dispatch(getUserDetails(data.accessToken));
-
+    //getUserDetails with new access token
+    dispatch(getUserDetails(data.data.accessToken));
   } catch (error) {
     console.log(error);
+    localStorage.removeItem("profile");
   }
 };

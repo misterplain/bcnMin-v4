@@ -24,18 +24,29 @@ const loginSchema = Yup.object({
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, loginError, accessToken } = userLogin;
+  const { loading, loginError, accessToken, refreshToken } = userLogin;
+
+  const authenticatedUser = localStorage.getItem("authenticated");
+
+  // useEffect(() => {
+  //   if (accessToken !== null && refreshToken !== null) {
+  //     navigate("/");
+  //   }
+  // }, [navigate, dispatch]);
 
   useEffect(() => {
-    if (accessToken !== null) {
+    if (authenticatedUser) {
+      setAuthenticated(true);
       navigate("/");
     }
-  }, [navigate]);
+  },[authenticatedUser, navigate])
+
 
   return (
     <Container fluid id='login'>

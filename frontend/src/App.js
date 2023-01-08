@@ -27,12 +27,18 @@ function App() {
 
   useEffect(() => {
     let token = localStorage.getItem("profile");
-    console.log(token + "token on app refresh from local storage")
+    console.log(token + "token on app refresh from local storage");
     if (token) {
       try {
         dispatch(refresh(token));
+        // console.log(accessToken + "accessToken after refresh");
+        // try {
+        //   dispatch(getUserDetails(accessToken));
+        // } catch (error) {
+        //   console.log(accessToken + "get user details with new access token fail");
+        // }
       } catch (error) {
-        console.log(error);
+        console.log(token + "refresh fail")
       }
     }
   }, [dispatch]);
@@ -43,7 +49,7 @@ function App() {
       <main className='py-3'>
         <Container>
           <Routes>
-            <Route path='*' element={<Navigate replace to='/' />} />{" "}
+            <Route path='*' element={<Navigate replace to='/' />} />
             <Route path='/' element={<InformScreen />} />
             <Route path='/login' element={<LoginScreen />} />
             <Route path='/register' element={<RegisterScreen />} />
@@ -59,7 +65,6 @@ function App() {
       <section>
         <Outlet></Outlet>
       </section>
-      {/* <Footer /> */}
     </Router>
   );
 }

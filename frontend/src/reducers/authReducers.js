@@ -16,6 +16,7 @@ export const authReducer = (state = { accessToken: null }, action) => {
 
     case USER_LOGIN_SUCCESS:
       localStorage.setItem("profile", action.payload.data.refreshToken);
+      localStorage.setItem("authenticated", "true")
       return {
         loading: false,
         accessToken: action.payload.data.accessToken,
@@ -24,10 +25,12 @@ export const authReducer = (state = { accessToken: null }, action) => {
       };
 
     case USER_LOGIN_FAIL:
+      localStorage.removeItem("authenticated")
       return { loading: false, loginError: action.payload };
 
     case USER_LOGOUT:
       localStorage.removeItem("profile");
+      localStorage.removeItem("authenticated")
       return {
         ...state,
         accessToken: null,
@@ -47,6 +50,7 @@ export const authReducer = (state = { accessToken: null }, action) => {
 
     case USER_REGISTER_SUCCESS:
       localStorage.setItem("profile", action.payload.data.refreshToken);
+      localStorage.setItem("authenticated", "true")
       return {
         accessToken: action.payload.data.accessToken,
         refreshToken: action.payload.data.refreshToken,

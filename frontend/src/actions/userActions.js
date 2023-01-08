@@ -2,6 +2,7 @@ import {
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
+  USER_DETAILS_RESET,
   ADD_FAVORITE_SUCCESS,
   ADD_FAVORITE_FAIL,
   ADD_FAVORITE_REQUEST,
@@ -46,6 +47,13 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     });
   }
 };
+
+export const userDetailsReset = () => async (dispatch) => {
+  dispatch({
+    type: USER_DETAILS_RESET,
+  });
+
+}
 
 //favorites
 export const addFavorite = (id, token) => async (dispatch, getState) => {
