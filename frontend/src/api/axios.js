@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://bcnminimalista-api.onrender.com",
-  // baseURL: "http://localhost:5000",
+  baseURL: "https://activeserver.onrender.com/bcnmin",
+  // baseURL: "http://localhost:5000/bcnmin",
 });
 
