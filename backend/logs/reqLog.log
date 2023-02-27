@@ -13909,3 +13909,6 @@
 20230108	18:40:33	c4654dee-654d-4f7d-b161-75fbef4e25a4	OPTIONS	/logout	http://localhost:3000
 20230108	18:40:33	b96f5996-abc2-4702-a2e5-b07556d3f283	POST	/logout	http://localhost:3000
 20230108	18:40:33	3f5636d8-a4a4-4000-92b6-96b0e31eee27	GET	/blogs	http://localhost:3000
+20230227	19:28:50	821ba17f-030e-46d6-b3ee-4663dc78b63f	GET	/bcnmin/blogs	http://localhost:3000
+20230227	19:29:00	c03cd124-6b6e-4f36-bf59-be4af8b323cc	GET	/bcnmin/blogs	http://localhost:3000
+20230227	19:29:25	23d5859d-178b-4372-9082-1a1ab50a4e6b	GET	/blogs	undefined

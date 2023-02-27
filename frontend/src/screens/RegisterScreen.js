@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 
 const RegisterScreen = ({ match, history }) => {
+  const [authenticated, setAuthenticated] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -50,6 +51,21 @@ const RegisterScreen = ({ match, history }) => {
   //     dispatch(register(username, email, password));
   //   }
   // };
+
+  const authenticatedUser = localStorage.getItem("authenticated");
+
+  // useEffect(() => {
+  //   if (accessToken !== null && refreshToken !== null) {
+  //     navigate("/");
+  //   }
+  // }, [navigate, dispatch]);
+
+  useEffect(() => {
+    if (authenticatedUser) {
+      setAuthenticated(true);
+      navigate("/");
+    }
+  },[authenticatedUser, navigate])
   return (
     
       <Container fluid id="register">

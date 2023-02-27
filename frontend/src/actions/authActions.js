@@ -61,7 +61,7 @@ export const register = (username, email, password) => async (dispatch) => {
       type: USER_REGISTER_REQUEST,
     });
 
-    const data = await axios.post("/register", { username, email, password });
+    const data = await axios.post("/auth/register", { username, email, password });
 
     dispatch({
       type: USER_REGISTER_SUCCESS,

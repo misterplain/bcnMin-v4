@@ -17,8 +17,8 @@ const FavoritesScreen = () => {
   const blogPosts = useSelector((state) => state.blogPosts);
   // const { loading, error, posts } = blogPosts;
 
-  const userFavorites = userData.favorites;
-  const allPosts = blogPosts.posts;
+  const userFavorites = userData?.favorites || [];
+  const allPosts = blogPosts?.posts || [];
   console.log(userFavorites);
   console.log(allPosts);
 
